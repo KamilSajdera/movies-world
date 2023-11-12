@@ -1,0 +1,30 @@
+.topNavigation 
+{
+    width: 100%;
+    background: #000;
+    border-bottom: 1px solid #232323;
+    position: fixed;
+}
+
+.hamburgerIcon 
+{
+    position: absolute;
+    top: 15px;
+    right: 5%;
+    font-size: 25px;
+    color: #fff;
+}
+
+
+@media screen and (min-width: 1023px) 
+{
+    .topNavigation 
+    { 
+        background: #000000ab;
+        border-bottom: #232323; 
+        position: static;
+    }
+
+    .hamburgerIcon 
+    { display: none; }
+}

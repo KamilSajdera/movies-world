@@ -1,0 +1,98 @@
+.searcher 
+{
+    width: 85%;
+    padding: 15px 0 15px 5%;
+}
+
+.searcher-icon
+{
+    color: #7eceec;
+    padding-right: 15px;
+}
+
+.inputBox 
+{
+    width: 220px;
+    display: inline-block; 
+}
+
+.searcher input
+{
+    width: 220px;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #b0b0b0;
+    padding: 3px 0;
+    font-size: 0.9rem;
+    transition: all 200ms ease-in-out;
+}
+
+.searcher input::placeholder
+{
+   font-style: italic;
+   font-family: 'Lato', sans-serif;
+}
+
+input:-internal-autofill-selected 
+{
+    background-color: #ffff00!important;
+    color: red!important;
+}
+
+input::part(autofill-selected) {
+    background-color: lightyellow!important;
+    border: 1px solid darkorange!important;
+    color: black!important;
+  }  
+
+.inputBar
+{
+    width: 0px;
+    height: 2px;
+    background: #7eceec;
+    margin-left: 30px;
+}
+
+.inputBarHasFocus 
+{
+    animation-name: loadBar;
+    animation-duration: 300ms;
+    animation-fill-mode: both;
+}
+
+.inputBarHasBlur
+{
+    animation-name: unloadBar;
+    animation-duration: 300ms;
+    animation-fill-mode: both;
+}
+
+@keyframes loadBar {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 220px;
+    }
+}
+
+@keyframes unloadBar {
+    from {
+        width: 220px;
+        opacity: 1;
+    }
+    to {
+        width: 0px;
+        opacity: 0;
+    }
+}
+
+@media screen and (min-width: 1023px) {
+    .searcher 
+    {
+        width: 100%;
+        border-bottom: 1px solid #232323;
+        padding: 15px 5%;
+    }
+}

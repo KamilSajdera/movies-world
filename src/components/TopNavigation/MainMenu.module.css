@@ -1,0 +1,178 @@
+.mainMenu 
+{
+    width: 100%;
+    color: #ccc;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 15px 5%;
+    background: #000;
+    position: absolute;
+    top: 60px;
+    transform: translateX(100%);
+    visibility: hidden;
+}
+
+.mainMenu li 
+{
+    width: 90%;
+    list-style-type: none;
+    height: 85px;
+}
+
+.mainMenu li a 
+{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+    text-decoration: none;
+    color: #8b969b;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    border-left: 2px solid transparent;
+}
+
+.img 
+{
+    aspect-ratio: 1;
+    width: 20px;
+    display: block;
+}
+
+.mainMenu li a p 
+{
+    width: 100%;
+    padding-top: 5px;
+}
+
+.mainMenu li a.active 
+{
+    border-left: 2px solid #81d3f1;
+    background: #000000ab;
+    transition: all .3s ease;
+}
+
+.mainMenu li a.active p {
+    color: #e3e3e3;
+    animation-name: scaleP;
+    animation-duration: 200ms;
+    animation-fill-mode: both;
+}
+
+.active img 
+{
+    filter: brightness(1.35);
+    animation-name: imgJump;
+    animation-duration: 200ms;
+    animation-fill-mode: both;
+}
+
+@keyframes imgJump 
+{
+    from {
+        transform: translateY(-15px)
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleP
+{
+    from {
+        transform: scale(1.15)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+@keyframes openMenu-animate 
+{
+    from {
+        transform: translateX(100%); 
+        visibility: hidden;   
+    }
+    to {
+        transform: translateX(0);
+        visibility: visible;
+    }
+}
+
+@keyframes closemenu-animate 
+{
+    from {
+        transform: translateX(0);    
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@media screen and (max-width: 1023px) 
+{
+    .mainMenu.opened 
+    {
+        animation-name: openMenu-animate;
+        animation-duration: 350ms;
+        animation-fill-mode: both;
+    }
+    
+    .mainMenu.closed 
+    {
+        animation-name: closemenu-animate;
+        animation-duration: 350ms;
+        animation-fill-mode: both;
+    }    
+}
+
+@media screen and (min-width: 767px)
+{
+    .mainMenu 
+    { 
+        width: 65%; 
+        flex-direction: row;
+        flex-wrap: wrap;
+        right: 0;
+        justify-content: center;
+    }
+
+    .mainMenu li 
+    { width: 48%; }
+}
+@media screen and (min-width: 1023px) 
+{
+    .mainMenu 
+    { 
+        flex-direction: row; 
+        background: transparent;
+        position: static;
+        padding: 0 5%;
+        transform: translateX(0);
+        visibility: visible;
+        width: 100%;
+    }
+
+    .mainMenu li
+    { 
+        width: 14.28%;
+        height: 100px; 
+    }
+
+    .mainMenu li a 
+    {
+        border-left: none;
+        border-top: 2px solid transparent;
+    }
+
+    .mainMenu li a.active 
+    { 
+        border-top: 2px solid #81d3f1;
+        border-left: none;
+    }
+}
