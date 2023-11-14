@@ -1,0 +1,94 @@
+.popularPeopleWrapper
+{
+    width: 100%;
+    padding: 40px 5% 40px 5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.person-item 
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    text-align: center;
+    padding-top: 35px;
+    border: 1px solid #232323;
+    font-size: 20px;
+}
+
+.image_box
+{
+    width: 60%;
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+.image_box img 
+{
+    width: 90%;
+    border-radius: 20px;
+}
+
+.person_name 
+{
+    width: 100%;
+    font-size: 1.7em;
+    font-weight: 700;
+}
+
+.known_for
+{
+    width: 100%;
+    font-size: 1.25em;
+}
+
+.popularity 
+{
+    padding-top: 12px;
+    font-size: 0.85em;
+}
+
+.person_films 
+{
+    width: 100%;
+    padding: 20px 15px;
+    background: rgb(126,206,236);
+    background: radial-gradient(circle, rgb(95 140 157) 0%, rgb(11 53 61) 98%); 
+    margin-top: 30px;
+    font-size: 0.85em;
+    text-align: left;
+    color: #f3f3f3;
+}
+
+
+@media screen and (min-width: 767px) 
+{
+    .popularPeopleWrapper 
+    { justify-content: space-between; }
+
+    .person-item 
+    { 
+        width: 46%; 
+        margin: 20px 0;
+    }
+
+    .image_box img 
+    { width: 80%; }
+}
+
+
+@media screen and (min-width: 1023px) 
+{
+
+    .popularPeopleWrapper 
+    { padding-top: 0px; }
+
+    .person-item 
+    { width: 31%; }
+
+    .image_box img 
+    { width: 75%; }
+}

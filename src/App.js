@@ -7,7 +7,7 @@ import PopularPage from "./pages/PopularPage";
 import NewlyAddedPage from "./pages/NewlyAddedPage";
 import DiscoverPage from "./pages/DiscoverPage";
 import TopRatedPage from "./pages/TopRatedPage";
-import PeoplePage from "./pages/PeoplePage";
+import { PeoplePage, loader as peoplePageLoader} from "./pages/PeoplePage";
 
 const router = createBrowserRouter([
   { path: "/", element: <RootPage />, children: [
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     { path: "newlyadded", element: <NewlyAddedPage /> },
     { path: "discover", element: <DiscoverPage /> },
     { path: "toprated", element: <TopRatedPage /> },
-    { path: "people", element: <PeoplePage /> },
+    { path: "people", element: <PeoplePage />, loader: peoplePageLoader },
   ]}
 ]);
 
