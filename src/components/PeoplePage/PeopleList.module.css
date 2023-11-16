@@ -17,6 +17,54 @@
     padding-top: 35px;
     border: 1px solid #232323;
     font-size: 20px;
+    position: relative;
+}
+
+.number 
+{
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #133d43;
+    padding-top: 3px;
+    font-weight: 700;
+}
+
+.person-item.first_place .number,
+.person-item.second_place .number,
+.person-item.third_place .number 
+{
+    top: 15px;
+    left: 10px;
+    width: 60px;
+    height: 90px;
+    border-radius: 0;
+    border: none;
+    color: transparent;
+}
+
+.person-item.first_place .number 
+{  
+    background: url('../../assets/people/first-place.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.person-item.second_place .number 
+{
+    background: url('../../assets/people/second-place.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.person-item.third_place .number 
+{
+    background: url('../../assets/people/third-place.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .image_box
@@ -24,12 +72,14 @@
     width: 60%;
     overflow: hidden;
     padding-bottom: 20px;
+    z-index: -1;
 }
 
 .image_box img 
 {
     width: 90%;
     border-radius: 20px;
+    filter: drop-shadow(5px 3px 5px #81d3f1);
 }
 
 .person_name 
@@ -54,15 +104,16 @@
 .person_films 
 {
     width: 100%;
-    padding: 20px 15px;
-    background: rgb(126,206,236);
-    background: radial-gradient(circle, rgb(95 140 157) 0%, rgb(11 53 61) 98%); 
+    padding: 0 15px;
+    background: rgb(49 49 49);
     margin-top: 30px;
     font-size: 0.85em;
     text-align: left;
-    color: #f3f3f3;
+    color: #f0eaea;
+    height: 80px;
+    display: flex;
+    align-items: center;
 }
-
 
 @media screen and (min-width: 767px) 
 {
@@ -77,6 +128,14 @@
 
     .image_box img 
     { width: 80%; }
+
+    .person-item.first_place .number,
+    .person-item.second_place .number,
+    .person-item.third_place .number 
+    {
+        top: 20px;
+        left: 20px;
+    }
 }
 
 
