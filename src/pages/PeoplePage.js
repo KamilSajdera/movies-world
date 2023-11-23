@@ -1,10 +1,54 @@
 import { useLoaderData } from "react-router-dom";
 
 import PeopleList from "../components/PeoplePage/PeopleList";
+import noImage from "../assets/people/noImage.png";
 
 const PeoplePage = () => {
   const data = useLoaderData();
-  const trendingPeopleList = data.results;
+  const fetchedPeopleList = data.results;
+  const trendingPeopleList = [];
+
+  for (const index in fetchedPeopleList) {
+    const person = fetchedPeopleList[index];
+
+    const personData = {
+      id: person.id,
+      name: person.original_name,
+      image:
+        person.profile_path === null
+          ? noImage
+          : `https://image.tmdb.org/t/p/w500${person.profile_path}`,
+      profession: person.known_for_department,
+      popularity: person.popularity,
+      films: person.known_for.length > 0 ? 
+      [
+        {
+          id: person.known_for[0].id,
+          title:
+            person.known_for[0].title === undefined
+              ? person.known_for[0].name
+              : person.known_for[0].title,
+        },
+        {
+          id: person.known_for[1].id,
+          title:
+            person.known_for[1].title === undefined
+              ? person.known_for[1].name
+              : person.known_for[1].title,
+        },
+        {
+          id: person.known_for[2].id,
+          title:
+            person.known_for[2].title === undefined
+              ? person.known_for[2].name
+              : person.known_for[2].title,
+        },
+      ]
+      : [],
+    };
+
+    trendingPeopleList.push(personData);
+  }
 
   return <PeopleList trendingPeople={trendingPeopleList} />;
 };
@@ -23,6 +67,7 @@ const loader = async () => {
     "https://api.themoviedb.org/3/trending/person/day?language=en-US",
     options
   );
+
   return response;
 };
 

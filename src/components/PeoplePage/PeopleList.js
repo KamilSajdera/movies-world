@@ -16,6 +16,7 @@ const PeopleList = ({ trendingPeople }) => {
         : ""
     }`;
 
+    console.log(trendingPeople)
   return (
     <section className={classes.popularPeopleWrapper}>
       {comparedList.map((person, index) => (
@@ -23,17 +24,17 @@ const PeopleList = ({ trendingPeople }) => {
           <div className={classes.number}>{index + 1}</div>
           <div className={classes.image_box}>
             <img
-              src={`https://image.tmdb.org/t/p/w500${person.profile_path}`}
-              alt={`${person.original_name}'s img`}
+              src={person.image}
+              alt={`${person.name}'s img`}
             />
           </div>
-          <div className={classes.person_name}>{person.original_name}</div>
-          <div className={classes.known_for}>{person.known_for_department}</div>
+          <div className={classes.person_name}>{person.name}</div>
+          <div className={classes.known_for}>{person.profession}</div>
           <div className={classes.popularity}>
             Popularity: {person.popularity}
           </div>
           <div className={classes.person_films}>
-            {person.known_for.map((item) => item.title).join(", ")}
+            {person.films.length > 0 ? person.films.map((item) => item.title).join(", ") : "No data"}
           </div>
         </div>
       ))}
