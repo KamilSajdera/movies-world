@@ -20,7 +20,7 @@ const PeopleList = ({ trendingPeople, currentPage }) => {
     <section className={classes.popularPeopleWrapper}>
       {comparedList.map((person, index) => (
         <div className={itemClassname(index)} key={person.id}>
-          <div className={classes.number}>{index + 1}</div>
+          <div className={classes.number}>{20 * currentPage - 20 + (index + 1)}</div>
           <div className={classes.image_box}>
             <img src={person.image} alt={`${person.name}'s img`} />
           </div>
