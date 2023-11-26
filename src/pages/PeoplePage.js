@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, json } from "react-router-dom";
 
 import PeopleList from "../components/PeoplePage/PeopleList";
 import Pagination from "../components/PeoplePage/Pagination";
@@ -26,9 +26,10 @@ const PeoplePage = () => {
         person.known_for.length > 0
           ? {
               id: person.known_for[0].id,
-              title: person.known_for[0].title === undefined
-                ? person.known_for[0].name
-                : person.known_for[0].title,
+              title:
+                person.known_for[0].title === undefined
+                  ? person.known_for[0].name
+                  : person.known_for[0].title,
             }
           : {},
     };
@@ -63,6 +64,16 @@ const loader = async ({ request, params }) => {
     `https://api.themoviedb.org/3/person/popular?language=en-US&page=${pageNumber}`,
     options
   );
+
+  if (!response.ok)
+    throw json(
+      {
+        message: "Could not fetch people page",
+        desc:
+          "Something went wrong while loading the people page. Check the correctness of the link.",
+      },
+      { status: 500 }
+    );
 
   return response;
 };

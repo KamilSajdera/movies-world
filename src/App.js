@@ -11,11 +11,13 @@ import {
   PeoplePage,
   loader as peoplePageLoader,
 } from "./pages/PeoplePage";
+import ErrorPage from "./ui/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootPage />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       { path: "nowplaying", element: <NowPlayingPage /> },
