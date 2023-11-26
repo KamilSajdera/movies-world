@@ -1,12 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 
 import PeopleList from "../components/PeoplePage/PeopleList";
+import Pagination from "../components/PeoplePage/Pagination";
 import noImage from "../assets/people/noImage.png";
 
 const PeoplePage = () => {
   const data = useLoaderData();
   const fetchedPeopleList = data.results;
   const trendingPeopleList = [];
+  const currentPage = data.page;
 
   for (const index in fetchedPeopleList) {
     const person = fetchedPeopleList[index];
@@ -20,40 +22,34 @@ const PeoplePage = () => {
           : `https://image.tmdb.org/t/p/w500${person.profile_path}`,
       profession: person.known_for_department,
       popularity: person.popularity,
-      films: person.known_for.length > 0 ? 
-      [
-        {
-          id: person.known_for[0].id,
-          title:
-            person.known_for[0].title === undefined
-              ? person.known_for[0].name
-              : person.known_for[0].title,
-        },
-        {
-          id: person.known_for[1].id,
-          title:
-            person.known_for[1].title === undefined
-              ? person.known_for[1].name
-              : person.known_for[1].title,
-        },
-        {
-          id: person.known_for[2].id,
-          title:
-            person.known_for[2].title === undefined
-              ? person.known_for[2].name
-              : person.known_for[2].title,
-        },
-      ]
-      : [],
+      films:
+        person.known_for.length > 0
+          ? {
+              id: person.known_for[0].id,
+              title: person.known_for[0].title === undefined
+                ? person.known_for[0].name
+                : person.known_for[0].title,
+            }
+          : {},
     };
 
     trendingPeopleList.push(personData);
   }
 
-  return <PeopleList trendingPeople={trendingPeopleList} />;
+  return (
+    <>
+      <Pagination currentPage={currentPage} />
+      <PeopleList
+        trendingPeople={trendingPeopleList}
+        currentPage={currentPage}
+      />
+      <Pagination currentPage={currentPage} />
+    </>
+  );
 };
 
-const loader = async () => {
+const loader = async ({ request, params }) => {
+  const pageNumber = params.pageNumber || 1;
   const options = {
     method: "GET",
     headers: {
@@ -64,7 +60,7 @@ const loader = async () => {
   };
 
   const response = await fetch(
-    "https://api.themoviedb.org/3/trending/person/day?language=en-US",
+    `https://api.themoviedb.org/3/person/popular?language=en-US&page=${pageNumber}`,
     options
   );
 
