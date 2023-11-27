@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import classes from "./Pagination.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +10,10 @@ const Pagination = ({ currentPage }) => {
   const isPageOne =
     location.pathname === "/people" || location.pathname === "/people/1";
 
+  const navigate = useNavigate();
+  const isPrevButtonDisabled = currentPage === 1;
+  const isNextButtonDisabled = currentPage === 500;
+
   const renderPages = () => {
     const pages = [];
 
@@ -17,38 +21,53 @@ const Pagination = ({ currentPage }) => {
       const page = currentPage > 2 ? currentPage + i : currentPage + i + 2;
       pages.push(
         <div key={page} className={classes["page-number"]}>
-          {page === 1 
-          ? <NavLink
+          {page === 1 ? (
+            <NavLink
               to={`/people/${page}`}
               className={isPageOne ? classes.active : ""}
             >
               {page}
             </NavLink>
-           :<NavLink
+          ) : (
+            <NavLink
               to={`/people/${page}`}
               className={({ isActive }) => (isActive ? classes.active : "")}
             >
               {page}
             </NavLink>
-          }
+          )}
         </div>
       );
     }
     return pages;
   };
 
+  const nextPage = () => {
+    navigate(`/people/${currentPage + 1}`);
+  };
+
+  const prevPage = () => {
+    navigate(`/people/${currentPage - 1}`);
+  };
+
   return (
     <div className={classes.paginationBox}>
-      <button className={classes.modifyCurrentPage}>
-        <NavLink to={`/people/${currentPage - 1}`}>
-          <FontAwesomeIcon icon={faArrowLeft} />
-        </NavLink>
+      <button
+        className={classes.modifyCurrentPage}
+        onClick={() => prevPage()}
+        disabled={isPrevButtonDisabled}
+        style={isPrevButtonDisabled ? {filter: 'brightness(0.5)', cursor: 'default'} : {}}
+      >
+        <FontAwesomeIcon icon={faArrowLeft} />
       </button>
       {renderPages()}
-      <button className={classes.modifyCurrentPage}>
-        <NavLink to={`/people/${currentPage + 1}`}>
-          <FontAwesomeIcon icon={faArrowRight} />
-        </NavLink>
+      <button
+        className={classes.modifyCurrentPage}
+        onClick={() => nextPage()}
+        disabled={isNextButtonDisabled}
+        style={isNextButtonDisabled ? {filter: 'brightness(0.5)', cursor: 'default'} : {}}
+      >
+        <FontAwesomeIcon icon={faArrowRight} />
       </button>
     </div>
   );
