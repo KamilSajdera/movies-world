@@ -1,5 +1,6 @@
 import { useRouteError, useNavigate } from "react-router-dom";
 import classes from './ErrorPage.module.css';
+import logo from "../assets/errorPage.png";
 
 const ErrorPage = () => {
   const error = useRouteError();
@@ -21,6 +22,7 @@ const ErrorPage = () => {
 
   return (
     <div className={classes.errorContainer}>
+      <img src={logo} alt="error-logo" />
       <h1>Oops!</h1>
       <h3>{error.status} - {message}</h3>
       <p>{desc}</p>

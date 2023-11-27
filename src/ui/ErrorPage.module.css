@@ -3,7 +3,12 @@
     text-align: center;
     color: #ccc;
     width: 80%;
-    margin: 100px auto;
+    margin: 50px auto;
+}
+
+.errorContainer img 
+{
+    width: 60%;
 }
 
 .errorContainer h1 
