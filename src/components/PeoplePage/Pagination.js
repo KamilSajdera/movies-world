@@ -18,7 +18,13 @@ const Pagination = ({ currentPage }) => {
     const pages = [];
 
     for (let i = -2; i <= 2; i++) {
-      const page = currentPage > 2 ? currentPage + i : currentPage + i + 2;
+      const page =
+        currentPage > 2 && currentPage < 499
+          ? currentPage + i
+          : currentPage >= 499
+          ? currentPage + i - 2
+          : currentPage + i + 2;
+
       pages.push(
         <div key={page} className={classes["page-number"]}>
           {page === 1 ? (
@@ -56,7 +62,10 @@ const Pagination = ({ currentPage }) => {
         className={classes.modifyCurrentPage}
         onClick={() => prevPage()}
         disabled={isPrevButtonDisabled}
-        style={isPrevButtonDisabled ? {filter: 'brightness(0.5)', cursor: 'default'} : {}}
+        style={isPrevButtonDisabled
+            ? { filter: "brightness(0.5)", cursor: "default" }
+            : {}
+        }
       >
         <FontAwesomeIcon icon={faArrowLeft} />
       </button>
@@ -65,7 +74,10 @@ const Pagination = ({ currentPage }) => {
         className={classes.modifyCurrentPage}
         onClick={() => nextPage()}
         disabled={isNextButtonDisabled}
-        style={isNextButtonDisabled ? {filter: 'brightness(0.5)', cursor: 'default'} : {}}
+        style={isNextButtonDisabled
+            ? { filter: "brightness(0.5)", cursor: "default" }
+            : {}
+        }
       >
         <FontAwesomeIcon icon={faArrowRight} />
       </button>
