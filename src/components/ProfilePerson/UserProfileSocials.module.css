@@ -23,8 +23,9 @@
 }
 
 @media screen and (min-width: 767px) {
+    .socials 
+    { justify-content: flex-start; }
+    
     .socials img 
-    {
-        width: 55%;
-    }
+    { width: 55%; }
 }
