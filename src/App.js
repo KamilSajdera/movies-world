@@ -11,6 +11,7 @@ import {
   PeoplePage,
   loader as peoplePageLoader,
 } from "./pages/PeoplePage";
+import ProfilePage, { loader as profilePageLoader } from "./pages/ProfilePage";
 import ErrorPage from "./ui/ErrorPage";
 
 const router = createBrowserRouter([
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
         path: "people",
         children: [
           { index: true, element: <PeoplePage />, loader: peoplePageLoader},
-          { path: ":pageNumber", element: <PeoplePage />, loader: peoplePageLoader}
+          { path: ":pageNumber", element: <PeoplePage />, loader: peoplePageLoader},
+          { path: "profile/:profileId", element: <ProfilePage />, loader: profilePageLoader}
         ]
       },
     ],

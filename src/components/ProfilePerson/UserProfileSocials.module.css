@@ -1,0 +1,23 @@
+.socials 
+{
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    margin-top: 10px;
+}
+
+.socials a
+{
+    width: 25%;
+}
+
+.socials img 
+{
+    border: none;
+    transition: transform 500ms ease;
+}
+
+.socials img:hover 
+{
+    transform: rotate(360deg);
+}

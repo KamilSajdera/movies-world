@@ -1,0 +1,30 @@
+.profilePage 
+{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 5%;
+    margin-top: 30px;
+}
+
+.left-side
+{
+    width: 100%;
+    text-align: center;
+    display: grid;
+    place-items: center;
+}
+
+.left-side img
+{
+    width: 50%;
+    border: 2px solid #518497;
+    border-radius: 20px;
+}
+
+.left-side h1 
+{
+    font-size: 2em;
+    padding: 15px 0;
+}
