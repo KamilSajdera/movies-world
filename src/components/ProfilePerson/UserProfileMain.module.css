@@ -28,3 +28,17 @@
     font-size: 2em;
     padding: 15px 0;
 }
+
+@media screen and (min-width: 767px) {
+    .profilePage 
+    { justify-content: space-between; }
+    .left-side 
+    { 
+        width: 45%; 
+        display: block;
+        text-align: left;
+    }
+
+    .left-side img 
+    { width: 65%; }
+}

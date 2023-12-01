@@ -21,3 +21,10 @@
 {
     transform: rotate(360deg);
 }
+
+@media screen and (min-width: 767px) {
+    .socials img 
+    {
+        width: 55%;
+    }
+}
