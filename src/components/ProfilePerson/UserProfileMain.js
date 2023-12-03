@@ -15,7 +15,13 @@ const ProfilePerson = ({ personData }) => {
         <UserProfileSocials socials={personData.socials} />
         <UserProfileInfo personData={personData} />
       </section>
-      <section className={classes["rigth-side"]}></section>
+      <section className={classes["rigth-side"]}>
+        <h1>{personData.name}</h1>
+        <div className={classes.biography}>
+          <h3>Biography</h3>
+          {personData.bio}
+        </div>
+      </section>
     </div>
   );
 };

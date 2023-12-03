@@ -30,6 +30,33 @@
     padding-bottom: 15px;
 }
 
+.rigth-side 
+{
+    width: 100%;
+    margin-top: 50px;
+}
+
+.rigth-side h1
+{
+    font-size: 2em;
+    display: none;
+    letter-spacing: 3px;
+}
+
+.biography 
+{
+   font-size: 0.95em;
+   text-align: justify;
+   color: #e1e1e1;
+}
+
+.biography h3
+{
+    padding-bottom: 5px;
+    text-align: center;
+    color: #fff;
+}
+
 @media screen and (min-width: 767px) {
     .profilePage 
     { justify-content: space-between; }
@@ -43,17 +70,39 @@
 
     .left-side img 
     { width: 65%; }
+
+    .rigth-side 
+    { 
+        width: 55%; 
+        margin-top: 0;
+    }
+
+    .biography h3 
+    { text-align: left; }
 }
 
 @media screen and (min-width: 1023px) {
-    .left-side h1 
-    { display: none; }
-
     .profilePage 
     { margin-top: 0; }
 
+    .left-side 
+    { width: 35%;}
+
+    .left-side h1 
+    { display: none; }
+
     .left-side img 
-    { width: 55%; }
+    { width: 65%; }
+
+    .rigth-side 
+    { width: 65%; }
+
+    .rigth-side h1 
+    { display: block; }
+
+    .biography 
+    { padding-top: 20px; }
+  
 }
 
 @media screen and (min-width: 1250px) { 
@@ -61,5 +110,5 @@
     { padding-inline: 10%; }
 
     .left-side img 
-    { width: 40%; }
+    { width: 65%; }
 }
