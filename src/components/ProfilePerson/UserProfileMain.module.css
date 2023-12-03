@@ -20,18 +20,20 @@
 {
     width: 50%;
     border: 2px solid #518497;
-    border-radius: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
 .left-side h1 
 {
     font-size: 2em;
-    padding: 15px 0;
+    padding-bottom: 15px;
 }
 
 @media screen and (min-width: 767px) {
     .profilePage 
     { justify-content: space-between; }
+
     .left-side 
     { 
         width: 45%; 
@@ -41,4 +43,23 @@
 
     .left-side img 
     { width: 65%; }
+}
+
+@media screen and (min-width: 1023px) {
+    .left-side h1 
+    { display: none; }
+
+    .profilePage 
+    { margin-top: 0; }
+
+    .left-side img 
+    { width: 55%; }
+}
+
+@media screen and (min-width: 1250px) { 
+    .profilePage 
+    { padding-inline: 10%; }
+
+    .left-side img 
+    { width: 40%; }
 }

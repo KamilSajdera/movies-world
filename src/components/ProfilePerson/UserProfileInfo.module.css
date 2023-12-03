@@ -1,6 +1,6 @@
 .primaryInfo 
 {
-    margin-top: 15px;
+    margin-top: 5px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -28,13 +28,11 @@
 }
 
 @media screen and (min-width: 767px) {
-    /* .info-item:nth-child(1),
-    .info-item:nth-child(3)
-    {
-        border-right: 1px solid #626262;
-    } */
 
     .info-item 
-    { margin: 10px 0; 
-    font-size: 1em;}
+    { 
+        margin: 10px 0; 
+        font-size: 1em;
+        min-width: 40%;
+    }
 }

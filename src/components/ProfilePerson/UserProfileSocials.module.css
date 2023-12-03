@@ -15,6 +15,7 @@
 {
     border: none;
     transition: transform 500ms ease;
+    margin-bottom: 0px;
 }
 
 .socials img:hover 
@@ -28,4 +29,20 @@
     
     .socials img 
     { width: 55%; }
+}
+
+@media screen and (min-width: 1023px) {
+    .socials 
+    { width: 75%; }
+
+    .socials img 
+    { width: 45%; }
+}
+
+@media screen and (min-width: 1023px) {
+    .socials 
+    { width: 50%; }
+
+    .socials img 
+    { width: 50%; }
 }
