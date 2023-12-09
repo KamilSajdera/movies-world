@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 .profilePage 
 {
     width: 100%;
@@ -6,6 +8,17 @@
     justify-content: center;
     padding: 0 5%;
     margin-top: 30px;
+    font-size: 16px;
+    animation: fadeIn 300ms 100ms backwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .left-side
@@ -19,9 +32,9 @@
 .left-side img
 {
     width: 50%;
-    border: 2px solid #518497;
-    border-radius: 10px;
     margin-bottom: 15px;
+    box-shadow: 15px 15px 2px 2px #1b1b1b;
+    border-radius: 5px;
 }
 
 .left-side h1 
@@ -43,11 +56,13 @@
     letter-spacing: 3px;
 }
 
+
 .biography 
 {
    font-size: 0.95em;
    text-align: justify;
    color: #e1e1e1;
+   font-family: 'Montserrat', sans-serif;
 }
 
 .biography h3
@@ -86,7 +101,7 @@
     { margin-top: 0; }
 
     .left-side 
-    { width: 35%;}
+    { width: 30%;}
 
     .left-side h1 
     { display: none; }
@@ -95,7 +110,7 @@
     { width: 65%; }
 
     .rigth-side 
-    { width: 65%; }
+    { width: 70%; }
 
     .rigth-side h1 
     { display: block; }
@@ -110,5 +125,5 @@
     { padding-inline: 10%; }
 
     .left-side img 
-    { width: 65%; }
+    { width: 75%; }
 }
