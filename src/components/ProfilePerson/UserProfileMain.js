@@ -21,8 +21,8 @@ const ProfilePerson = ({ personData }) => {
         <div className={classes.biography}>
           <h3>Biography</h3>
           {personData.bio}
-          <UserPopularFilms films={personData.films}/>
         </div>
+        <UserPopularFilms films={personData.films}/>
       </section>
     </div>
   );

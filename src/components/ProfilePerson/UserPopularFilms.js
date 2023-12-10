@@ -55,7 +55,7 @@ const UserPopularFilms = ({ films }) => {
   }, [films]);
 
   return (
-    <section className={classes.filmsWrapper}>
+    <div className={classes.filmsWrapper}>
       <h3>Popular films</h3>
       <div className={classes.filmsContainer} ref={containerRef}>
         {films.map((film) => {
@@ -68,7 +68,7 @@ const UserPopularFilms = ({ films }) => {
           );
         })}
       </div>
-    </section>
+    </div>
   );
 };
 
