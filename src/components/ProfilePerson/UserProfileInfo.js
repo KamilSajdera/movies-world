@@ -3,9 +3,9 @@ import classes from "./UserProfileInfo.module.css";
 const UserProfileInfo = ({ personData }) => {
   const userBirthday = new Date(personData.birthday);
   const userDeathday =
-    personData.deathday === null
-      ? personData.deathday
-      : new Date(personData.deathday);
+    personData.deathday === null ? null : new Date(personData.deathday);
+
+  const isUserDead = personData.deathday !== null ? true : false;
 
   function calculateAge(birthday, deathday) {
     const currentDate = deathday ? deathday : new Date();
@@ -16,7 +16,9 @@ const UserProfileInfo = ({ personData }) => {
       birthday.getDate()
     );
 
-    return birthdayOnCurrentYear > currentDate ? `${age - 1}✝️` : `${age}yo`;
+    if (isUserDead) return `${age - 1}✝️`;
+    if (birthdayOnCurrentYear > currentDate) return `${age - 1}yo`;
+    if (birthdayOnCurrentYear < currentDate) return `${age}yo`;
   }
 
   const userAge = calculateAge(userBirthday, userDeathday);
