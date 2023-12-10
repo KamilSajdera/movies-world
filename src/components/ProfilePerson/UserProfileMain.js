@@ -2,6 +2,7 @@ import classes from "./UserProfileMain.module.css";
 
 import UserProfileSocials from "./UserProfileSocials";
 import UserProfileInfo from "./UserProfileInfo";
+import UserPopularFilms from "./UserPopularFilms";
 
 const ProfilePerson = ({ personData }) => {
   return (
@@ -20,6 +21,7 @@ const ProfilePerson = ({ personData }) => {
         <div className={classes.biography}>
           <h3>Biography</h3>
           {personData.bio}
+          <UserPopularFilms films={personData.films}/>
         </div>
       </section>
     </div>
