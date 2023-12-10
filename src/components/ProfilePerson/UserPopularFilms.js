@@ -7,7 +7,7 @@ const UserPopularFilms = ({ films }) => {
 
   useEffect(() => {
     const filmsContainer = containerRef.current;
-    const filmImage = containerRef.current.querySelectorAll("img");
+    const filmImage = containerRef.current.querySelectorAll(`.${classes['film-item']}`);
     const filmCaption = containerRef.current.querySelectorAll("p");
     let isMouseDown = false;
     let startX;

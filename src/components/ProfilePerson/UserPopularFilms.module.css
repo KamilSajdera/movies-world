@@ -13,20 +13,34 @@
     cursor: grab;
 }
 
+.filmsContainer:hover .film-item
+{
+    opacity: 0.6;
+}
+
 .film-item 
 {
     margin: 5px 20px 20px 20px;
     flex: 0 0 45%;
+    transition: opacity 250ms ease;
 }
 
 .film-item:first-child 
 { margin-left: 0px; }
+
+.film-item:last-child 
+{ margin-right: 0px; }
 
 .film-item img 
 {
     width: 100%;
     aspect-ratio: 3/4.5;
     cursor: pointer;
+}
+
+.film-item:hover
+{
+    opacity: 1!important;
 }
 
 .slideOver
