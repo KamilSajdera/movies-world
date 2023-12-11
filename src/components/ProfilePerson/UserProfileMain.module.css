@@ -56,7 +56,6 @@
     letter-spacing: 3px;
 }
 
-
 .biography 
 {
    font-size: 0.95em;
@@ -69,6 +68,21 @@
 {
     padding-bottom: 5px;
     text-align: center;
+    color: #fff;
+}
+
+.otherNames 
+{
+    margin-top: 40px;
+    color: #d5d4d4;
+}
+
+.otherNames h3 
+{
+    padding-bottom: 5px;
+    display: inline-block;
+    border-bottom: 2px solid #239cc8;
+    margin-bottom: 10px;
     color: #fff;
 }
 

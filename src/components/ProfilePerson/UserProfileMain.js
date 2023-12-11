@@ -3,6 +3,7 @@ import classes from "./UserProfileMain.module.css";
 import UserProfileSocials from "./UserProfileSocials";
 import UserProfileInfo from "./UserProfileInfo";
 import UserPopularFilms from "./UserPopularFilms";
+import UserOtherNames from "./UserOtherNames";
 
 const ProfilePerson = ({ personData }) => {
   return (
@@ -15,6 +16,7 @@ const ProfilePerson = ({ personData }) => {
         <h1>{personData.name}</h1>
         <UserProfileSocials socials={personData.socials} />
         <UserProfileInfo personData={personData} />
+        <UserOtherNames otherNames={personData.otherName}/>
       </section>
       <section className={classes["rigth-side"]}>
         <h1>{personData.name}</h1>
