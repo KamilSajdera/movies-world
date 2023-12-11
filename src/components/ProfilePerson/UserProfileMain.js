@@ -16,7 +16,7 @@ const ProfilePerson = ({ personData }) => {
         <h1>{personData.name}</h1>
         <UserProfileSocials socials={personData.socials} />
         <UserProfileInfo personData={personData} />
-        <UserOtherNames otherNames={personData.otherName}/>
+        { personData.otherName.length > 0 && <UserOtherNames otherNames={personData.otherName}/> }
       </section>
       <section className={classes["rigth-side"]}>
         <h1>{personData.name}</h1>

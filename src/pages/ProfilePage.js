@@ -3,7 +3,7 @@ import UserProfileMain from "../components/ProfilePerson/UserProfileMain";
 
 const ProfilePage = () => {
   const fetchedPersonData = useLoaderData();
-  
+
   const allPersonFilms =
     fetchedPersonData.known_for_department === "Acting"
       ? fetchedPersonData.movie_credits.cast
@@ -17,7 +17,7 @@ const ProfilePage = () => {
     name: fetchedPersonData.name,
     otherName: fetchedPersonData.also_known_as,
     img: fetchedPersonData.profile_path,
-    birthday: fetchedPersonData.birthday,
+    birthday: fetchedPersonData.birthday || "-",
     deathday: fetchedPersonData.deathday,
     gender:
       fetchedPersonData.gender === 1
@@ -27,8 +27,8 @@ const ProfilePage = () => {
         : fetchedPersonData.gender === 3
         ? "Non-binary"
         : "Not set",
-    bio: fetchedPersonData.biography,
-    birthplace: fetchedPersonData.place_of_birth,
+    bio: fetchedPersonData.biography || "Sorry, we do not have a biography of this person.",
+    birthplace: fetchedPersonData.place_of_birth || "-",
     popularity: fetchedPersonData.popularity,
     profession: fetchedPersonData.known_for_department,
     films: topPersonFilms,
