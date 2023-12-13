@@ -20,9 +20,10 @@
 {
     .topNavigation 
     { 
-        background: #000000ab;
+        background: #000000b9;
         border-bottom: #232323; 
-        position: static;
+        position: relative;
+        z-index: 999;
     }
 
     .hamburgerIcon 

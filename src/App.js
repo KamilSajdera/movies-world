@@ -7,11 +7,9 @@ import PopularPage from "./pages/PopularPage";
 import NewlyAddedPage from "./pages/NewlyAddedPage";
 import DiscoverPage from "./pages/DiscoverPage";
 import TopRatedPage from "./pages/TopRatedPage";
-import {
-  PeoplePage,
-  loader as peoplePageLoader,
-} from "./pages/PeoplePage";
+import { PeoplePage, loader as peoplePageLoader } from "./pages/PeoplePage";
 import ProfilePage, { loader as profilePageLoader } from "./pages/ProfilePage";
+import FilmDetailsPage, { loader as movieDetailsLoader } from "./pages/FilmDetailsPage";
 import ErrorPage from "./ui/ErrorPage";
 
 const router = createBrowserRouter([
@@ -29,10 +27,23 @@ const router = createBrowserRouter([
       {
         path: "people",
         children: [
-          { index: true, element: <PeoplePage />, loader: peoplePageLoader},
-          { path: ":pageNumber", element: <PeoplePage />, loader: peoplePageLoader},
-          { path: "profile/:profileId", element: <ProfilePage />, loader: profilePageLoader}
-        ]
+          { index: true, element: <PeoplePage />, loader: peoplePageLoader },
+          {
+            path: ":pageNumber",
+            element: <PeoplePage />,
+            loader: peoplePageLoader,
+          },
+          {
+            path: "profile/:profileId",
+            element: <ProfilePage />,
+            loader: profilePageLoader,
+          },
+        ],
+      },
+      {
+        path: "movie/:movieId",
+        element: <FilmDetailsPage />,
+        loader: movieDetailsLoader,
       },
     ],
   },

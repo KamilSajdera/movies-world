@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.movieWrapper 
+{
+    width: 100%;
+    padding-inline: 5%;
+    height: 85vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    background-position-x: 40%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: 40px;
+}
+
+.movieIntroContent 
+{
+    padding-top: 65px;
+    text-align: center;
+    margin-inline: auto;
+}
+
+.movieIntroContent h1
+{
+    font-weight: 100;
+    font-size: 2.5em;
+}
+
+.overview 
+{
+    text-align: justify;
+    margin-inline: auto;
+    margin-top: 55px;
+    color: #ddd;
+    width: 100%;
+}
+
+@media screen and (min-width: 500px) {
+    .overview 
+    { width: 85%; }
+}
+
+@media screen and (min-width: 767px) {
+    .overview 
+    { 
+        width: 70%; 
+        font-size: 1.1em;
+        margin-top: 35px;
+    }
+}
+
+@media screen and (min-width: 1023px) {
+    .movieWrapper 
+    { 
+        padding-top: 175px; 
+        height: 100vh;
+    }
+
+    .overview 
+    { width: 55%; }
+}
+
+@media screen and (min-width: 1300px) {
+    .overview 
+    { 
+        width: 40%; 
+    }
+}
+

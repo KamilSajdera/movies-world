@@ -1,0 +1,44 @@
+.movie-basics 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 15px;
+    color: #d1d1d1;
+    font-size: 1.15em;
+    list-style-type: none;
+}
+
+.movie-basics li 
+{
+    word-wrap: break-word;
+}
+
+.movie-basics li::before 
+{
+    content: "\2022"; 
+    padding-right: 10px;
+}
+
+.movie-basics li:nth-child(2), 
+.movie-basics li:nth-child(4) 
+{
+    display: none;
+}
+
+@media screen and (min-width: 767px) {
+    .movie-basics 
+    {
+        flex-direction: row;
+        font-size: 1em;
+    }
+    .movie-basics li::before 
+    {
+        content: '';
+    }  
+    .movie-basics li:nth-child(2), 
+    .movie-basics li:nth-child(4) 
+{
+    display: block;
+}
+}

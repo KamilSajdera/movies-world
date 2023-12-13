@@ -1,0 +1,45 @@
+.ratingWrapper 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.ratingWrapper svg
+{
+    padding-inline: 3px;
+    color: #696969;
+    font-size: 1.2em;
+}
+
+.stars 
+{
+    position: relative;
+}
+
+.tooltip 
+{
+    background: transparent;
+    color: #f2f2f2;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 100ms ease;
+    padding: 3px 5px;
+}
+
+.stars:hover .tooltip
+{
+    opacity: 1;
+}
+
+.reviews 
+{
+    font-size: 0.85em;
+    color: #85b6c9;
+    margin-left: 5px;
+    cursor: pointer;
+}
