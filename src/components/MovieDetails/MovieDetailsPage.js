@@ -5,6 +5,7 @@ import IntroButtons from "./IntroButtons";
 
 const MovieDetailsPage = ({ movieData }) => {
   return (
+    <>
     <div
       className={classes.movieWrapper}
       style={{
@@ -15,6 +16,9 @@ const MovieDetailsPage = ({ movieData }) => {
       <div className={classes.overview}>{movieData.overview}</div>
       <IntroButtons homepage={movieData.homepage} trailer={movieData.trailer} />
     </div>
+
+    
+    </>
   );
 };
 
