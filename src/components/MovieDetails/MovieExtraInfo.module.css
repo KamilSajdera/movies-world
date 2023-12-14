@@ -1,0 +1,133 @@
+.extraInfoSection 
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px 5%;
+    margin-top: 30px;
+}
+
+.movieImages
+{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actualPoster
+{
+    width: 60%;
+    overflow: hidden;
+}
+
+.movieImages img 
+{
+    width: 100%;
+    filter: drop-shadow(3px 3px 4px #565656);
+}
+
+.controlPoster
+{
+    width: 50px!important;
+    cursor: pointer;
+}
+
+.informations 
+{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.info-item
+{
+    text-align: center;
+    width: 43%;
+    border-bottom: 1px solid #565656;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+.info-item .personName 
+{ font-weight: 700 }
+
+.nextImage
+{
+    animation-name: slideToRight;
+    animation-duration: 400ms;
+}
+
+.prevImage
+{
+    animation-name: slideToLeft;
+    animation-duration: 400ms;
+}
+
+@media screen and (min-width: 767px) {
+    .extraInfoSection 
+    {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .movieImages 
+    { width: 45%; }
+
+    .informations 
+    { width: 50%; }
+}
+
+@media screen and (min-width: 1023px) {
+    .extraInfoSection 
+    { align-items: center; }
+
+    .movieImages 
+    { justify-content: space-evenly; }
+
+    .actualPoster
+    { width: 45%; }
+
+    .informations
+    { padding-right: 5%; }
+
+}
+
+@media screen and (min-width: 1300px) {
+    .informations 
+    { justify-content: space-around; }
+
+    .info-item 
+    { width: 38%; }
+}
+
+@keyframes slideToRight {
+    35% 
+    { transform: translateX(-100%); }
+    45%
+    { opacity: 0; }
+    55% 
+    { transform: translateX(100%); }
+    100% 
+    {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideToLeft {
+    35% 
+    { transform: translateX(100%); }
+    45%
+    { opacity: 0; }
+    55% 
+    { transform: translateX(-100%); }
+    100% 
+    {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

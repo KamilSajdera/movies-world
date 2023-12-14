@@ -5,11 +5,18 @@ import MovieDetailsPage from "../components/MovieDetails/MovieDetailsPage";
 const FilmDetailsPage = () => {
   const fetchedDetails = useLoaderData();
 
+  const returnCrewMember = (job) => {
+    return fetchedDetails.credits.crew
+      .filter((item) => item.known_for_department === job)
+      .sort((a, b) => b.popularity - a.popularity);
+  };
+
   const movieDetails = {
     id: fetchedDetails.id,
     title: fetchedDetails.title,
     backdrop: fetchedDetails.backdrop_path,
     poster: fetchedDetails.poster_path,
+    posters: fetchedDetails.images.posters,
     overview: fetchedDetails.overview,
     status: fetchedDetails.status,
     releaseDate: fetchedDetails.release_date,
@@ -18,14 +25,27 @@ const FilmDetailsPage = () => {
     duration: fetchedDetails.runtime,
     adult: fetchedDetails.adult,
     usersRating: Math.floor(fetchedDetails.vote_average * 10),
-    topActors: fetchedDetails.credits.cast.slice(0,15),
-    profit: fetchedDetails.revenue,
-    budget: fetchedDetails.budget,
-    director: fetchedDetails.credits.crew.find(item => item.known_for_department === "Directing").name,
+    topActors: fetchedDetails.credits.cast.slice(0, 15),
+    profit: fetchedDetails.revenue.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2,
+    }),
+    budget: fetchedDetails.budget.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2,
+    }),
+    movieCrew: {
+      director: returnCrewMember("Directing"),
+      writer: returnCrewMember("Writing"),
+      producer: returnCrewMember("Production"),
+    },
     homepage: fetchedDetails.homepage,
-    trailer: `https://www.youtube.com/watch?v=${fetchedDetails.videos.results.find(item => item.type === "Trailer").key}`
+    trailer: `https://www.youtube.com/watch?v=${
+      fetchedDetails.videos.results.find((item) => item.type === "Trailer").key
+    }`,
   };
-
   return <MovieDetailsPage movieData={movieDetails} />;
 };
 
@@ -41,7 +61,7 @@ export const loader = async ({ request, params }) => {
   };
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?append_to_response=reviews,similar,credits,videos`,
+    `https://api.themoviedb.org/3/movie/${movieId}?append_to_response=reviews,similar,credits,videos,images`,
     options
   );
 

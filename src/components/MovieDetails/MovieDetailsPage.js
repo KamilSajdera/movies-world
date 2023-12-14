@@ -2,6 +2,7 @@ import classes from "./MovieDetailsPage.module.css";
 
 import MovieIntoContent from "./MovieIntroContent";
 import IntroButtons from "./IntroButtons";
+import MovieExtraInfo from "./MovieExtraInfo";
 
 const MovieDetailsPage = ({ movieData }) => {
   return (
@@ -16,8 +17,7 @@ const MovieDetailsPage = ({ movieData }) => {
       <div className={classes.overview}>{movieData.overview}</div>
       <IntroButtons homepage={movieData.homepage} trailer={movieData.trailer} />
     </div>
-
-    
+    <MovieExtraInfo movieData={movieData}/>
     </>
   );
 };
