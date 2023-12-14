@@ -1,0 +1,12 @@
+.movieIntroContent 
+{
+    padding-top: 65px;
+    text-align: center;
+    margin-inline: auto;
+}
+
+.movieIntroContent h1
+{
+    font-weight: 100;
+    font-size: 2.5em;
+}

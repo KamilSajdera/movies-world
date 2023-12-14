@@ -1,0 +1,65 @@
+.btnWatchTrailer,
+.btnVisitPage
+{
+    margin-top: 60px;
+    outline: none;
+    padding: 13px 5px;
+    background: transparent;
+    text-align: center;
+    color: #7eceec;
+    border: 2px solid #7eceec;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-inline: 10px;
+    position: relative;
+    width: 190px;
+}
+
+.btnWatchTrailer b
+{ 
+    position: relative;
+    z-index: 1;
+}
+
+.btnVisitPage 
+{ 
+    color: #ccc; 
+    border: 2px solid #ccc;
+    transition: opacity 200ms ease;
+    margin-top: 20px;
+}
+
+.btnVisitPage a 
+{
+    color: #ccc;
+    text-decoration: none;
+}
+
+.btnWatchTrailer svg,
+.btnVisitPage svg
+{ padding-right: 7px; }
+
+.btnWatchTrailer::after
+{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #7eceec;
+    transition: width 200ms ease;
+}
+
+.btnWatchTrailer:hover
+{ color: #0b2934; }
+
+.btnVisitPage:hover
+{ opacity: 0.7; }
+
+.btnWatchTrailer:hover::after
+{ width: 100%; }
