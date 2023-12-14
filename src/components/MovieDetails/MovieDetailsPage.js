@@ -1,5 +1,8 @@
 import classes from "./MovieDetailsPage.module.css";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faPlay } from "@fortawesome/free-solid-svg-icons";
+
 import MovieBasics from "./MovieBasics";
 import UsersRating from "./UsersRating";
 
@@ -20,6 +23,20 @@ const MovieDetailsPage = ({ movieData }) => {
         />
       </div>
       <div className={classes.overview}>{movieData.overview}</div>
+      <button className={classes.btnWatchTrailer}>
+        <b>
+          <FontAwesomeIcon icon={faPlay} />
+          Watch trailer
+        </b>
+      </button>
+      {movieData.homepage && (
+        <a href={movieData.homepage} target="_blank" rel="noreferrer">
+          <button className={classes.btnVisitPage}>
+            <FontAwesomeIcon icon={faHome} />
+            Visit HomePage
+          </button>
+        </a>
+      )}
     </div>
   );
 };
