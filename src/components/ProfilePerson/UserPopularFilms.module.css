@@ -63,21 +63,6 @@
     padding-top: 5px;
 }
 
-.filmsContainer::-webkit-scrollbar 
-{
-    width: 12px;               
-    height: 10px;
-}
-  
-.filmsContainer::-webkit-scrollbar-track 
-{ background: #3e3d3d; }
-
-.filmsContainer::-webkit-scrollbar-thumb 
-{
-    background-color: #6d6d6d;
-    border-radius: 20px;       
-}
-
 @media screen and (min-width: 1023px) {
     .film-item 
     { flex-basis: 19%; }
