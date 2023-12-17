@@ -7,7 +7,6 @@ import DisplayMovieActors from "./DisplayMovieActors";
 import DisplayMovieKeywords from "./DisplayMovieKeywords";
 
 const MovieDetailsPage = ({ movieData }) => {
-  console.log(movieData)
   return (
     <>
     <div

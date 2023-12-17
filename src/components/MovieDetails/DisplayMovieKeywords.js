@@ -5,7 +5,7 @@ const DisplayMovieKeywords = ({ keywords }) => {
     <div className={classes.movieKeywords}>
       <h1>Keywords</h1>
       {keywords.map((item) => (
-        <div className={classes["keyword-item"]}>{item.name}</div>
+        <div className={classes["keyword-item"]} key={item.id}>{item.name}</div>
       ))}
     </div>
   );
