@@ -22,6 +22,17 @@
     width: 100%;
 }
 
+.actorsWrapper 
+{
+    width: 100%;
+    padding: 30px 5%;
+    background: #131313;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
 @media screen and (min-width: 500px) {
     .overview 
     { width: 85%; }

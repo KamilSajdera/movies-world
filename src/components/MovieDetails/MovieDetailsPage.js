@@ -3,8 +3,11 @@ import classes from "./MovieDetailsPage.module.css";
 import MovieIntoContent from "./MovieIntroContent";
 import IntroButtons from "./IntroButtons";
 import MovieExtraInfo from "./MovieExtraInfo";
+import DisplayMovieActors from "./DisplayMovieActors";
+import DisplayMovieKeywords from "./DisplayMovieKeywords";
 
 const MovieDetailsPage = ({ movieData }) => {
+  console.log(movieData)
   return (
     <>
     <div
@@ -18,6 +21,10 @@ const MovieDetailsPage = ({ movieData }) => {
       <IntroButtons homepage={movieData.homepage} trailer={movieData.trailer} />
     </div>
     <MovieExtraInfo movieData={movieData}/>
+    <div className={classes.actorsWrapper}>
+      <DisplayMovieActors cast={movieData.topActors} />
+      <DisplayMovieKeywords keywords={movieData.keywords.keywords} />
+    </div>
     </>
   );
 };

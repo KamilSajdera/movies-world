@@ -1,0 +1,43 @@
+.castContent 
+{
+    width: 100%;
+    text-align: center;
+}
+
+.castScroll 
+{
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+}
+
+.actor-item 
+{
+    flex: 0 0 45%;
+    margin: 30px 10px;  
+}
+
+.actor-item img 
+{
+    width: 100%;
+    filter: drop-shadow(2px 2px 2px black)
+}
+
+.actor-item h3
+{
+    padding-top: 10px;
+    padding-bottom: 3px;
+}
+
+@media screen and (min-width: 767px) {
+    .actor-item 
+    { flex: 0 0 31%; }
+}
+
+@media screen and (min-width: 1023px) {
+    .castContent 
+    { width: 65%; }
+
+    .actor-item 
+    { flex: 0 0 23%; }
+}
