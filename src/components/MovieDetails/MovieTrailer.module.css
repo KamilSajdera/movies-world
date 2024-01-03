@@ -1,0 +1,94 @@
+.trailerContainer 
+{
+    width: 100%;
+    margin: 30px auto;
+    padding: 30px 5%;
+    text-align: center;
+    position: relative;
+}
+
+.playerToolbox
+{
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 50px);
+    padding-inline: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #cfcfcf;
+    opacity: 0;
+    transition: all 100ms ease;
+}
+
+.trailerContainer:hover .playerToolbox
+{
+    opacity: 1;
+    transform: translate(-50%, 0px);
+}
+
+.playerToolbox [type='range']
+{
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+}
+
+.playerOptions 
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.playerOptions button 
+{
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding-inline: 5px;
+}
+
+.timeBar 
+{
+    width: 80%;
+    height: 10px;
+    border-radius: 15px;
+    background-color: #323232;
+    position: relative;
+}
+
+.expireTime,
+.loadedTime
+{
+    height: 100%;
+    background: #7eceec;
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.expireTime 
+{
+    z-index: 1;
+}
+
+.loadedTime 
+{ background: #5e5e5e; }
+
+.movieTime
+{
+    width: 5%;
+}

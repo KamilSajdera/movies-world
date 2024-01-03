@@ -5,6 +5,7 @@ import IntroButtons from "./IntroButtons";
 import MovieExtraInfo from "./MovieExtraInfo";
 import DisplayMovieActors from "./DisplayMovieActors";
 import DisplayMovieKeywords from "./DisplayMovieKeywords";
+import MovieTrailer from "./MovieTrailer";
 
 const MovieDetailsPage = ({ movieData }) => {
   return (
@@ -24,6 +25,7 @@ const MovieDetailsPage = ({ movieData }) => {
       <DisplayMovieActors cast={movieData.topActors} />
       <DisplayMovieKeywords keywords={movieData.keywords.keywords} />
     </div>
+    <MovieTrailer videoId={movieData.trailer} />
     </>
   );
 };
