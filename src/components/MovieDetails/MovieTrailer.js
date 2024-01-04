@@ -60,6 +60,7 @@ const MovieTrailer = ({ videoId }) => {
 
   return (
     <div className={classes.trailerContainer}>
+      <h1>Trailer</h1>
       <ReactPlayer
         ref={playerRef}
         url={`https://www.youtube.com/watch?v=${videoId}`}

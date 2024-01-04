@@ -25,7 +25,7 @@ const MovieDetailsPage = ({ movieData }) => {
       <DisplayMovieActors cast={movieData.topActors} />
       <DisplayMovieKeywords keywords={movieData.keywords.keywords} />
     </div>
-    <MovieTrailer videoId={movieData.trailer} />
+    { movieData.trailer && <MovieTrailer videoId={movieData.trailer} /> }
     </>
   );
 };
