@@ -17,6 +17,11 @@
     margin: 30px 10px;  
 }
 
+.actor-item:first-child
+{
+    margin-left: 0px;
+}
+
 .actor-item img 
 {
     width: 100%;
@@ -36,8 +41,13 @@
 
 @media screen and (min-width: 1023px) {
     .castContent 
-    { width: 65%; }
+    { width: 70%; }
 
     .actor-item 
     { flex: 0 0 23%; }
+}
+
+@media screen and (min-width: 1300px) {
+    .actor-item 
+    { flex: 0 0 18%; }
 }
