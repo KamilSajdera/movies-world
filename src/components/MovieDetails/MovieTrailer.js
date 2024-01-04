@@ -10,6 +10,7 @@ const MovieTrailer = ({ videoId }) => {
   const [movieProgress, setMovieProgress] = useState(0);
   const [loadedPart, setLoadedPart] = useState(0);
   const [displayMovieDuration, setDisplayMovieDration] = useState(null);
+  const [displayMovieProgress, setDisplayMovieProgress] = useState(null);
   const playerRef = useRef(null);
 
   const switchPlayHandle = () => {
@@ -19,6 +20,12 @@ const MovieTrailer = ({ videoId }) => {
   const movieProgressHandler = (state) => {
     setMovieProgress(state.played);
     setLoadedPart(state.loaded);
+
+    const minutes = Math.floor(state.playedSeconds / 60);
+    const seconds = Math.floor(state.playedSeconds  % 60);
+    const formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    setDisplayMovieProgress(formattedTime)
+    
   };
 
   const changePlaybackMomentHandle = (e) => {
@@ -42,13 +49,10 @@ const MovieTrailer = ({ videoId }) => {
       if (playerElement.requestFullscreen) {
         playerElement.requestFullscreen();
       } else if (playerElement.mozRequestFullScreen) {
-        // Firefox
         playerElement.mozRequestFullScreen();
       } else if (playerElement.webkitRequestFullscreen) {
-        // Chrome, Safari, Opera
         playerElement.webkitRequestFullscreen();
       } else if (playerElement.msRequestFullscreen) {
-        // IE/Edge
         playerElement.msRequestFullscreen();
       }
     }
@@ -60,8 +64,8 @@ const MovieTrailer = ({ videoId }) => {
         ref={playerRef}
         url={`https://www.youtube.com/watch?v=${videoId}`}
         width="100%"
-        height="600px"
-        light={true}
+        height="650px"
+        light={false}
         playing={isPlaying}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
@@ -88,7 +92,9 @@ const MovieTrailer = ({ videoId }) => {
               <FontAwesomeIcon icon={faPlay} />
             )}
           </button>
-          <FontAwesomeIcon icon={faExpand} onClick={toggleFullscreen} />
+          <button onClick={toggleFullscreen}>
+          <FontAwesomeIcon icon={faExpand} />
+          </button>
         </div>
         <div className={classes.timeBar}>
           <div
@@ -108,7 +114,7 @@ const MovieTrailer = ({ videoId }) => {
             onChange={changePlaybackMomentHandle}
           />
         </div>
-        <div className={classes.movieTime}>{displayMovieDuration}</div>
+        <div className={classes.movieTime}>{displayMovieProgress}/{displayMovieDuration}</div>
       </div>
     </div>
   );
