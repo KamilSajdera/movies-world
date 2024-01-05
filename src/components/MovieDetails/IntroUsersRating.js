@@ -2,6 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStarHalfStroke, faStar } from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./IntroUsersRating.module.css";
+import reviewsClass from './ReviewsSection.module.css';
+
+import MoveTo from "moveto";
 
 const UsersRating = ({usersRating, quantityReviews}) => {
   const movieRating = usersRating;
@@ -86,13 +89,26 @@ const UsersRating = ({usersRating, quantityReviews}) => {
     return starsTab;
   };
 
+  const moveToOptions = {
+    tolerance: 20,
+    duration: 1000,
+  };
+
+  const moveTo = new MoveTo(moveToOptions);
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    const target = document.querySelector(`.${reviewsClass.reviewsContainer}`);
+    moveTo.move(target);
+  };
+
   return (
     <div className={classes.ratingWrapper}>
       <div className={classes.stars}>
         <span className={classes.tooltip}>{usersRating}%</span>
        {renderStars()}
       </div>
-      <div className={classes.reviews}>
+      <div className={classes.reviews} onClick={handleClick}>
         ({quantityReviews} reviews)
       </div>
     </div>

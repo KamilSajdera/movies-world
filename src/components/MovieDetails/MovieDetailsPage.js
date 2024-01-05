@@ -6,8 +6,10 @@ import MovieExtraInfo from "./MovieExtraInfo";
 import DisplayMovieActors from "./DisplayMovieActors";
 import DisplayMovieKeywords from "./DisplayMovieKeywords";
 import MovieTrailer from "./MovieTrailer";
+import ReviewsSection from "./ReviewsSection";
 
 const MovieDetailsPage = ({ movieData }) => {
+  console.log(movieData);
   return (
     <>
     <div
@@ -26,6 +28,7 @@ const MovieDetailsPage = ({ movieData }) => {
       <DisplayMovieKeywords keywords={movieData.keywords.keywords} />
     </div>
     { movieData.trailer && <MovieTrailer videoId={movieData.trailer} /> }
+      <ReviewsSection reviews={movieData.reviews.results}/>
     </>
   );
 };
