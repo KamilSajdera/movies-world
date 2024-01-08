@@ -1,0 +1,57 @@
+.similarWrapper 
+{
+    width: 100%;
+    padding: 30px 5%;
+    text-align: center;
+}
+
+.moviesItems 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 15px;
+    max-width: 100%;
+}
+
+.movie-item 
+{
+    width: 80%;
+    margin: 15px 0; 
+}
+
+.movie-item img 
+{
+    width: 80%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+}
+
+.movie-item p
+{
+    padding-top: 5px;
+    font-style: italic;
+}
+
+@media screen and (min-width: 767px) 
+{
+    .moviesItems 
+    { 
+        flex-direction: row; 
+        overflow-x: auto;
+        justify-content: space-between;
+    }
+
+    .movie-item 
+    { 
+        margin: 20px 0;
+        flex: 0 0 26%;
+    }
+}
+
+@media screen and (min-width: 1023px) 
+{
+    .movie-item 
+    { flex: 0 0 20%; }
+}

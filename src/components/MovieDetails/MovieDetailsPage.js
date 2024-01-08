@@ -7,28 +7,33 @@ import DisplayMovieActors from "./DisplayMovieActors";
 import DisplayMovieKeywords from "./DisplayMovieKeywords";
 import MovieTrailer from "./MovieTrailer";
 import ReviewsSection from "./ReviewsSection";
+import SimilarFilms from "./SimilarFilms";
 
 const MovieDetailsPage = ({ movieData }) => {
-  console.log(movieData);
+
   return (
     <>
-    <div
-      className={classes.movieWrapper}
-      style={{
-        backgroundImage: `linear-gradient( rgba(0,0,0,0.6), rgba(0, 0, 0, 0.6) ),url(https://image.tmdb.org/t/p/original${movieData.backdrop})`,
-      }}
-    >
-      <MovieIntoContent movieData={movieData} />
-      <div className={classes.overview}>{movieData.overview}</div>
-      <IntroButtons homepage={movieData.homepage} trailer={movieData.trailer} />
-    </div>
-    <MovieExtraInfo movieData={movieData}/>
-    <div className={classes.actorsWrapper}>
-      <DisplayMovieActors cast={movieData.topActors} />
-      <DisplayMovieKeywords keywords={movieData.keywords.keywords} />
-    </div>
-    { movieData.trailer && <MovieTrailer videoId={movieData.trailer} /> }
-      <ReviewsSection reviews={movieData.reviews.results}/>
+      <div
+        className={classes.movieWrapper}
+        style={{
+          backgroundImage: `linear-gradient( rgba(0,0,0,0.6), rgba(0, 0, 0, 0.6) ),url(https://image.tmdb.org/t/p/original${movieData.backdrop})`,
+        }}
+      >
+        <MovieIntoContent movieData={movieData} />
+        <div className={classes.overview}>{movieData.overview}</div>
+        <IntroButtons
+          homepage={movieData.homepage}
+          trailer={movieData.trailer}
+        />
+      </div>
+      <MovieExtraInfo movieData={movieData} />
+      <div className={classes.actorsWrapper}>
+        <DisplayMovieActors cast={movieData.topActors} />
+        <DisplayMovieKeywords keywords={movieData.keywords.keywords} />
+      </div>
+      {movieData.trailer && <MovieTrailer videoId={movieData.trailer} />}
+      <ReviewsSection reviews={movieData.reviews.results} />
+      <SimilarFilms movies={movieData.similar.results.slice(0,15)}/>
     </>
   );
 };

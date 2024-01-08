@@ -59,6 +59,7 @@ const FilmDetailsPage = () => {
     trailer: movieTrailer ? movieTrailer.key : null,
     homepage: fetchedDetails.homepage,  
     keywords: fetchedDetails.keywords,
+    similar: fetchedDetails.similar
   };
   
   return <MovieDetailsPage movieData={movieDetails} />;
