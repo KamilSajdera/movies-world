@@ -4,8 +4,9 @@ import classes from "./SimilarFilms.module.css";
 const SimilarFilms = ({ movies }) => {
   const navigate = useNavigate();
 
-  const navigateToMovie = (id) => {
-    navigate(`/movie/${id}`)
+  const navigateToMovie = (id, name) => {
+    const urlName = name.toLowerCase().replace(/\s+/g, '-').trim();
+    navigate(`/movie/${id}-${urlName}`)
   };
 
   return (
@@ -16,7 +17,7 @@ const SimilarFilms = ({ movies }) => {
           <div
             className={classes["movie-item"]}
             key={movie.id}
-            onClick={() => navigateToMovie(movie.id)}
+            onClick={() => navigateToMovie(movie.id, movie.title)}
           >
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}

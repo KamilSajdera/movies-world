@@ -19,11 +19,12 @@
 {
     width: 80%;
     margin: 15px 0; 
+    cursor: pointer;
 }
 
 .movie-item img 
 {
-    width: 80%;
+    width: 100%;
     aspect-ratio: 3/4;
     object-fit: cover;
 }
@@ -45,7 +46,7 @@
 
     .movie-item 
     { 
-        margin: 20px 0;
+        margin: 20px;
         flex: 0 0 26%;
     }
 }
@@ -53,5 +54,5 @@
 @media screen and (min-width: 1023px) 
 {
     .movie-item 
-    { flex: 0 0 20%; }
+    { flex: 0 0 17%; }
 }
