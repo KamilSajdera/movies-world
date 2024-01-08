@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import classes from "./SimilarFilms.module.css";
 
-const SimilarFilms = ({ movies }) => {
+const SimilarFilms = ({ movies, title }) => {
   const navigate = useNavigate();
 
   const navigateToMovie = (id, name) => {
@@ -11,7 +11,7 @@ const SimilarFilms = ({ movies }) => {
 
   return (
     <div className={classes.similarWrapper}>
-      <h1>Similar movies</h1>
+      <h1>{title}</h1>
       <div className={classes.moviesItems}>
         {movies.map((movie) => (
           <div

@@ -59,7 +59,8 @@ const FilmDetailsPage = () => {
     trailer: movieTrailer ? movieTrailer.key : null,
     homepage: fetchedDetails.homepage,  
     keywords: fetchedDetails.keywords,
-    similar: fetchedDetails.similar
+    similar: fetchedDetails.similar,
+    recommendations: fetchedDetails.recommendations.results
   };
   
   return <MovieDetailsPage movieData={movieDetails} />;
@@ -77,7 +78,7 @@ export const loader = async ({ request, params }) => {
   };
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?append_to_response=reviews,similar,credits,videos,images,keywords`,
+    `https://api.themoviedb.org/3/movie/${movieId}?append_to_response=reviews,similar,credits,videos,images,keywords,recommendations`,
     options
   );
 

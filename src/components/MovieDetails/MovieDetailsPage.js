@@ -11,6 +11,7 @@ import SimilarFilms from "./SimilarFilms";
 
 const MovieDetailsPage = ({ movieData }) => {
 
+  console.log(movieData)
   return (
     <>
       <div
@@ -33,7 +34,8 @@ const MovieDetailsPage = ({ movieData }) => {
       </div>
       {movieData.trailer && <MovieTrailer videoId={movieData.trailer} />}
       <ReviewsSection reviews={movieData.reviews.results} />
-      <SimilarFilms movies={movieData.similar.results.slice(0,15)}/>
+      <SimilarFilms movies={movieData.recommendations.slice(0,15)} title="Recommendations"/>
+      <SimilarFilms movies={movieData.similar.results.slice(0,15)} title="Similar movies"/>
     </>
   );
 };
