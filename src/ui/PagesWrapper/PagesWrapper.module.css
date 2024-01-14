@@ -102,6 +102,19 @@
     cursor: pointer;
 }
 
+.changingBg 
+{
+    animation-name: fadeInBg;
+    animation-duration: 600ms;
+}
+
+@keyframes fadeInBg {
+    from 
+    { opacity: 0; }
+    to 
+    { opacity: 1; }
+}
+
 @media screen and (min-width: 767px){
     .overview 
     { width: 70%; }
