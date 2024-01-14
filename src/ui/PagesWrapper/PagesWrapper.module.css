@@ -6,6 +6,7 @@
     background-size: cover;
     background-position-x: 55%;
     background-position-y: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .sliderControls 
@@ -49,7 +50,7 @@
 .backgroundContent h1 
 {
     font-weight: 400;
-    font-size: 2em;
+    font-size: 2.5em;
     color: aliceblue;
 }
 
@@ -119,6 +120,12 @@
 @media screen and (min-width: 767px){
     .overview 
     { width: 70%; }
+
+    .backgroundContent h1 
+    { 
+        width: 70%;
+        margin: auto;
+    }
 }
 
 @media screen and (min-width: 1023px) {
