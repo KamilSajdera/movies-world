@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
@@ -7,6 +9,8 @@ import classes from "./PagesWrapper.module.css";
 const PagesWrapper = ({ movies }) => {
   const [currentlyShowingMovie, setCurrentlyShowingMovie] = useState(0);
   const pageWrapperRef = useRef();
+  const sliderControlsRef = useRef();
+  const navigate = useNavigate();
 
   const movie = movies[currentlyShowingMovie];
 
@@ -34,6 +38,43 @@ const PagesWrapper = ({ movies }) => {
     };
   }, [currentlyShowingMovie]);
 
+  const changeMovieByUser = useCallback((e) => {
+    const clickedNumber = parseInt(e.target.getAttribute("data-number-movie")) || 0;
+    
+    const newMovieIndex =
+      (currentlyShowingMovie + clickedNumber + movies.length) % movies.length;
+
+    if(newMovieIndex === currentlyShowingMovie)
+      return;
+
+    pageWrapperRef.current.classList.add(classes.changingBg);
+    setTimeout(() => {
+      pageWrapperRef.current.classList.remove(classes.changingBg);
+    }, 600);
+    setCurrentlyShowingMovie(newMovieIndex);
+  }, [currentlyShowingMovie, movies]);
+  
+
+  useEffect(() => {
+    const sliderItems = sliderControlsRef.current.querySelectorAll(
+      `.${classes["control-item"]}`
+    );
+    sliderItems.forEach((item) =>
+      item.addEventListener("click", changeMovieByUser)
+    );
+
+    return () =>
+      sliderItems.forEach((item) =>
+        item.removeEventListener("click", changeMovieByUser)
+      );
+  }, [changeMovieByUser]);
+  
+  const visitProfileHandler = () => 
+  {
+    const urlName = movie.title.toLowerCase().replace(/\s+/g, '-').trim();
+    navigate(`/movie/${movie.id}-${urlName}`)
+  }
+
   return (
     <section
       className={classes.backgroundWrapper}
@@ -45,19 +86,20 @@ const PagesWrapper = ({ movies }) => {
       <div className={classes.backgroundContent}>
         <h1>{movie.title}</h1>
         <p>{movieDate}</p>
+        <div className={classes.overview}>{movie.overview}</div>
       </div>
-      <div className={classes.overview}>{movie.overview}</div>
-      <button className={classes["visit-movie-profile"]}>
+      
+      <button className={classes["visit-movie-profile"]} onClick={visitProfileHandler}>
         <FontAwesomeIcon icon={faPlay} /> Check more
       </button>
-      <div className={classes.sliderControls}>
-        <div className={classes["control-item"]}></div>
-        <div className={classes["control-item"]}></div>
+      <div className={classes.sliderControls} ref={sliderControlsRef}>
+        <div className={classes["control-item"]} data-number-movie="-2"></div>
+        <div className={classes["control-item"]} data-number-movie="-1"></div>
         <div
           className={`${classes["control-item"]} ${classes["control-mid"]} `}
         ></div>
-        <div className={classes["control-item"]}></div>
-        <div className={classes["control-item"]}></div>
+        <div className={classes["control-item"]} data-number-movie="1"></div>
+        <div className={classes["control-item"]} data-number-movie="2"></div>
       </div>
     </section>
   );
