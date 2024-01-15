@@ -30,6 +30,13 @@
     width: 70%;
     border-radius: 5px;
     cursor: pointer;
+    transition: all .3s cubic-bezier(0, 0.26, 0, 1.15);
+}
+
+.movie-item img:hover 
+{
+    box-shadow: 0px 0px 4px 2px #464646;
+    transform: scale(1.02);
 }
 
 .movie-item p 
