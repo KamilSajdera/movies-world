@@ -6,6 +6,8 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./PagesWrapper.module.css";
 
+import MoviesList from "./MoviesList";
+
 const PagesWrapper = ({ movies }) => {
   const [currentlyShowingMovie, setCurrentlyShowingMovie] = useState(0);
   const pageWrapperRef = useRef();
@@ -76,6 +78,7 @@ const PagesWrapper = ({ movies }) => {
   }
 
   return (
+    <>
     <section
       className={classes.backgroundWrapper}
       style={{
@@ -102,6 +105,8 @@ const PagesWrapper = ({ movies }) => {
         <div className={classes["control-item"]} data-number-movie="2"></div>
       </div>
     </section>
+    <MoviesList title="Currently playing in cinemas" movies={movies}/>
+    </>
   );
 };
 
