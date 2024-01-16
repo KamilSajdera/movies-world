@@ -2,14 +2,18 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import RootPage from "./pages/RootPage";
 import HomePage from "./pages/HomePage";
-import NowPlayingPage from "./pages/NowPlayingPage";
+import NowPlayingPage, {
+  loader as NowPlayingLoader,
+} from "./pages/NowPlayingPage";
 import PopularPage from "./pages/PopularPage";
 import NewlyAddedPage from "./pages/NewlyAddedPage";
 import DiscoverPage from "./pages/DiscoverPage";
 import TopRatedPage from "./pages/TopRatedPage";
 import { PeoplePage, loader as peoplePageLoader } from "./pages/PeoplePage";
 import ProfilePage, { loader as profilePageLoader } from "./pages/ProfilePage";
-import FilmDetailsPage, { loader as movieDetailsLoader } from "./pages/FilmDetailsPage";
+import FilmDetailsPage, {
+  loader as movieDetailsLoader,
+} from "./pages/FilmDetailsPage";
 import ErrorPage from "./ui/ErrorPage";
 
 const router = createBrowserRouter([
@@ -19,7 +23,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "nowplaying", element: <NowPlayingPage /> },
+      {
+        path: "nowplaying",
+        element: <NowPlayingPage />,
+        loader: NowPlayingLoader,
+      },
       { path: "popular", element: <PopularPage /> },
       { path: "newlyadded", element: <NewlyAddedPage /> },
       { path: "discover", element: <DiscoverPage /> },
