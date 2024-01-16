@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,11 +7,11 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import classes from "./PagesWrapper.module.css";
 
 import MoviesList from "./MoviesList";
+import SliderControls from "./SliderControls";
 
 const PagesWrapper = ({ movies }) => {
   const [currentlyShowingMovie, setCurrentlyShowingMovie] = useState(0);
   const pageWrapperRef = useRef();
-  const sliderControlsRef = useRef();
   const navigate = useNavigate();
 
   const movie = movies[currentlyShowingMovie];
@@ -24,59 +24,34 @@ const PagesWrapper = ({ movies }) => {
 
   useEffect(() => {
     const changeMovieInterval = setInterval(() => {
-      if (currentlyShowingMovie < 19) {
-        pageWrapperRef.current.classList.add(classes.changingBg);
+      if (currentlyShowingMovie < 19) 
         setCurrentlyShowingMovie(currentlyShowingMovie + 1);
-      } else setCurrentlyShowingMovie(0);
+      else 
+        setCurrentlyShowingMovie(0);
     }, 9000);
-
-    const removeClassTimeout = setTimeout(() => {
-      pageWrapperRef.current.classList.remove(classes.changingBg);
-    }, 600);
 
     return () => {
       clearInterval(changeMovieInterval);
-      clearTimeout(removeClassTimeout);
     };
   }, [currentlyShowingMovie]);
-
-  const changeMovieByUser = useCallback(
-    (e) => {
-      const clickedNumber =
-        parseInt(e.target.getAttribute("data-number-movie")) || 0;
-
-      const newMovieIndex =
-        (currentlyShowingMovie + clickedNumber + movies.length) % movies.length;
-
-      if (newMovieIndex === currentlyShowingMovie) return;
-
-      pageWrapperRef.current.classList.add(classes.changingBg);
-      setTimeout(() => {
-        pageWrapperRef.current.classList.remove(classes.changingBg);
-      }, 600);
-      setCurrentlyShowingMovie(newMovieIndex);
-    },
-    [currentlyShowingMovie, movies]
-  );
-
-  useEffect(() => {
-    const sliderItems = sliderControlsRef.current.querySelectorAll(
-      `.${classes["control-item"]}`
-    );
-    sliderItems.forEach((item) =>
-      item.addEventListener("click", changeMovieByUser)
-    );
-
-    return () =>
-      sliderItems.forEach((item) =>
-        item.removeEventListener("click", changeMovieByUser)
-      );
-  }, [changeMovieByUser]);
 
   const visitProfileHandler = () => {
     const urlName = movie.title.toLowerCase().replace(/\s+/g, "-").trim();
     navigate(`/movie/${movie.id}-${urlName}`);
   };
+
+  const changeMovieByUser = (value) => setCurrentlyShowingMovie(value);
+
+  useEffect(() => {
+    pageWrapperRef.current.classList.add(classes.changingBg);
+
+    const removeClassTimeout = setTimeout(() => {
+      pageWrapperRef.current.classList.remove(classes.changingBg);
+    }, 600);
+
+    return () => clearTimeout(removeClassTimeout);
+
+  }, [currentlyShowingMovie])
 
   return (
     <>
@@ -99,15 +74,7 @@ const PagesWrapper = ({ movies }) => {
         >
           <FontAwesomeIcon icon={faPlay} /> Check more
         </button>
-        <div className={classes.sliderControls} ref={sliderControlsRef}>
-          <div className={classes["control-item"]} data-number-movie="-2"></div>
-          <div className={classes["control-item"]} data-number-movie="-1"></div>
-          <div
-            className={`${classes["control-item"]} ${classes["control-mid"]} `}
-          ></div>
-          <div className={classes["control-item"]} data-number-movie="1"></div>
-          <div className={classes["control-item"]} data-number-movie="2"></div>
-        </div>
+        <SliderControls currentlyShowingMovie={currentlyShowingMovie} moviesLength={movies.length} onChangeNumber={changeMovieByUser} />
       </section>
       <MoviesList
         title="Currently playing in cinemas"
