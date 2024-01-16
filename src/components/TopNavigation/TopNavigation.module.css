@@ -4,7 +4,7 @@
     background: #000;
     border-bottom: 1px solid #232323;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hamburgerIcon 
@@ -23,7 +23,6 @@
         background: #000000b9;
         border-bottom: #232323; 
         position: relative;
-        z-index: 999;
     }
 
     .hamburgerIcon 
