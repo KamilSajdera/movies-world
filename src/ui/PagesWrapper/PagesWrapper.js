@@ -9,12 +9,12 @@ import classes from "./PagesWrapper.module.css";
 import MoviesList from "./MoviesList";
 import SliderControls from "./SliderControls";
 
-const PagesWrapper = ({ movies }) => {
-  const [currentlyShowingMovie, setCurrentlyShowingMovie] = useState(0);
+const PagesWrapper = ({ movies, title }) => {
+  const [currentlyMovieNumber, setCurrentlyMovieNumber] = useState(0);
   const pageWrapperRef = useRef();
   const navigate = useNavigate();
 
-  const movie = movies[currentlyShowingMovie];
+  const movie = movies[currentlyMovieNumber];
 
   const movieDate = new Date(movie.release_date).toLocaleDateString("en-GB", {
     day: "2-digit",
@@ -24,23 +24,20 @@ const PagesWrapper = ({ movies }) => {
 
   useEffect(() => {
     const changeMovieInterval = setInterval(() => {
-      if (currentlyShowingMovie < 19) 
-        setCurrentlyShowingMovie(currentlyShowingMovie + 1);
-      else 
-        setCurrentlyShowingMovie(0);
+      if (currentlyMovieNumber < 19)
+        setCurrentlyMovieNumber(currentlyMovieNumber + 1);
+      else setCurrentlyMovieNumber(0);
     }, 9000);
 
     return () => {
       clearInterval(changeMovieInterval);
     };
-  }, [currentlyShowingMovie]);
+  }, [currentlyMovieNumber]);
 
   const visitProfileHandler = () => {
     const urlName = movie.title.toLowerCase().replace(/\s+/g, "-").trim();
     navigate(`/movie/${movie.id}-${urlName}`);
   };
-
-  const changeMovieByUser = (value) => setCurrentlyShowingMovie(value);
 
   useEffect(() => {
     pageWrapperRef.current.classList.add(classes.changingBg);
@@ -50,8 +47,7 @@ const PagesWrapper = ({ movies }) => {
     }, 600);
 
     return () => clearTimeout(removeClassTimeout);
-
-  }, [currentlyShowingMovie])
+  }, [currentlyMovieNumber]);
 
   return (
     <>
@@ -74,12 +70,16 @@ const PagesWrapper = ({ movies }) => {
         >
           <FontAwesomeIcon icon={faPlay} /> Check more
         </button>
-        <SliderControls currentlyShowingMovie={currentlyShowingMovie} moviesLength={movies.length} onChangeNumber={changeMovieByUser} />
+        <SliderControls
+          currentlyShowingMovie={currentlyMovieNumber}
+          moviesLength={movies.length}
+          onChangeNumber={(value) => setCurrentlyMovieNumber(value)}
+        />
       </section>
       <MoviesList
-        title="Currently playing in cinemas"
+        title={title}
         movies={movies}
-        onChangeMovie={(value) => setCurrentlyShowingMovie(value)}
+        onChangeMovie={(value) => setCurrentlyMovieNumber(value)}
       />
     </>
   );
