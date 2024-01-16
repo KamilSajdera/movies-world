@@ -4,36 +4,43 @@ import classes from "./SliderControls.module.css";
 
 const SliderControls = (props) => {
   const sliderControlsRef = useRef();
-
+  const blockUsingControls = useRef();
   const { currentlyShowingMovie, moviesLength } = props;
 
-  const changeMovieByUser = useCallback((e) => {
+  const changeMovieByUser = useCallback(
+    (e) => {
       const clickedNumber =
         parseInt(e.target.getAttribute("data-number-movie")) || 0;
 
       const newMovieIndex =
         (currentlyShowingMovie + clickedNumber + moviesLength) % moviesLength;
 
-      if (newMovieIndex === currentlyShowingMovie) return;
+      if (newMovieIndex === currentlyShowingMovie || blockUsingControls.current) return;
 
-      props.onChangeNumber(newMovieIndex)
+      props.onChangeNumber(newMovieIndex);
+      blockUsingControls.current = true;
+
+      setTimeout(() => {
+        blockUsingControls.current = false;
+      }, 600);
     },
-    [currentlyShowingMovie, moviesLength, props]
+    [currentlyShowingMovie, moviesLength, props, blockUsingControls]
   );
 
   useEffect(() => {
-    const sliderItems = sliderControlsRef.current.querySelectorAll(
+    const controlItems = sliderControlsRef.current.querySelectorAll(
       `.${classes["control-item"]}`
     );
-    sliderItems.forEach((item) =>
+    controlItems.forEach((item) =>
       item.addEventListener("click", changeMovieByUser)
     );
 
     return () =>
-      sliderItems.forEach((item) =>
+      controlItems.forEach((item) =>
         item.removeEventListener("click", changeMovieByUser)
       );
   }, [changeMovieByUser]);
+
   return (
     <div className={classes.sliderControls} ref={sliderControlsRef}>
       <div className={classes["control-item"]} data-number-movie="-2"></div>
