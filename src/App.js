@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import NowPlayingPage, {
   loader as NowPlayingLoader,
 } from "./pages/NowPlayingPage";
-import PopularPage from "./pages/PopularPage";
+import PopularPage, { loader as PopularPageLoader } from "./pages/PopularPage";
 import NewlyAddedPage from "./pages/NewlyAddedPage";
 import DiscoverPage from "./pages/DiscoverPage";
 import TopRatedPage from "./pages/TopRatedPage";
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <NowPlayingPage />,
         loader: NowPlayingLoader,
       },
-      { path: "popular", element: <PopularPage /> },
+      { path: "popular", element: <PopularPage />, loader: PopularPageLoader },
       { path: "newlyadded", element: <NewlyAddedPage /> },
       { path: "discover", element: <DiscoverPage /> },
       { path: "toprated", element: <TopRatedPage /> },
