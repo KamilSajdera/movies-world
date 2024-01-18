@@ -16,6 +16,9 @@
     text-align: center;
     width: 100%;
     padding-bottom: 10px;
+    animation-name: floatingCaption;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
 }
 
 .movie-item 
@@ -61,4 +64,12 @@
 
     .movie-item img 
     { width: 80%; }
+}
+
+@keyframes floatingCaption {
+    0% 
+    { transform: translateY(0); }
+
+    50% 
+    { transform: translateY(-10px); }
 }
