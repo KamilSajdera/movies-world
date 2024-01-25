@@ -43,7 +43,10 @@ const ProfilePage = () => {
   return <UserProfileMain personData={personData} />;
 };
 
-export const loader = async ({ request, params }) => {
+export const loader = async ({ request }) => {
+  const searchParams = new URL(request.url).searchParams;
+  const profileId = searchParams.get("id");
+
   const options = {
     method: "GET",
     headers: {
@@ -54,7 +57,7 @@ export const loader = async ({ request, params }) => {
   };
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/person/${params.profileId}?append_to_response=movie_credits,external_ids&language=en-US`,
+    `https://api.themoviedb.org/3/person/${profileId}?append_to_response=movie_credits,external_ids&language=en-US`,
     options
   );
 
