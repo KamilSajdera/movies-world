@@ -24,7 +24,7 @@ const PeopleList = ({ trendingPeople, currentPage }) => {
   useEffect(() => {
     const getPersonProfile = (event) => {
       const profileId = event.currentTarget.getAttribute("data-key");
-      navigate(`/people/profile/${profileId}`);
+      navigate(`/people/profile?id=${profileId}`);
     };
 
     const peopleItems = peopleItemsRef.current.querySelectorAll(
