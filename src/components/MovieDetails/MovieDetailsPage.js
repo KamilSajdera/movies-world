@@ -11,7 +11,6 @@ import SimilarFilms from "./SimilarFilms";
 
 const MovieDetailsPage = ({ movieData }) => {
 
-  console.log(movieData)
   return (
     <>
       <div

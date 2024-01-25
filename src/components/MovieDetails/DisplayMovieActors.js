@@ -7,7 +7,7 @@ const DisplayMovieActors = ({ cast }) => {
 
   const navigateToProfile = (id, name) => {
     const urlName = name.toLowerCase().replace(/\s+/g, '-').trim();
-    navigate(`../people/profile/${id}-${urlName}`)
+    navigate(`../people/profile?id=${id}-${urlName}`)
   };
 
   return (
