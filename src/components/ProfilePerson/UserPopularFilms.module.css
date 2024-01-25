@@ -13,16 +13,17 @@
     cursor: grab;
 }
 
-.filmsContainer:hover .film-item
-{
-    opacity: 0.5;
-}
-
 .film-item 
 {
     margin: 5px 20px 20px 20px;
     flex: 0 0 45%;
-    transition: opacity 250ms ease;
+    transition: filter 250ms ease;
+}
+
+.filmsContainer:has(.film-item:hover)
+.film-item:not(:hover)
+{
+    filter: grayscale(70%) brightness(50%)
 }
 
 .film-item:first-child 
@@ -36,11 +37,6 @@
     width: 100%;
     aspect-ratio: 3/4.5;
     cursor: pointer;
-}
-
-.film-item:hover
-{
-    opacity: 1!important;
 }
 
 .slideOver
