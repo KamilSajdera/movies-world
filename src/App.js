@@ -37,11 +37,6 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <PeoplePage />, loader: peoplePageLoader },
           {
-            path: ":pageNumber",
-            element: <PeoplePage />,
-            loader: peoplePageLoader,
-          },
-          {
             path: "profile/:profileId",
             element: <ProfilePage />,
             loader: profilePageLoader,

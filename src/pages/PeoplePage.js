@@ -50,7 +50,9 @@ const PeoplePage = () => {
 };
 
 const loader = async ({ request, params }) => {
-  const pageNumber = params.pageNumber || 1;
+  const searchParams = new URL(request.url).searchParams;
+  const pageNumber = searchParams.get('page') || 1;
+
   const options = {
     method: "GET",
     headers: {
@@ -69,8 +71,7 @@ const loader = async ({ request, params }) => {
     throw json(
       {
         message: "Could not fetch people page",
-        desc:
-          "Something went wrong while loading the people page. Check the correctness of the link.",
+        desc: "Something went wrong while loading the people page. Check the correctness of the link.",
       },
       { status: 500 }
     );
