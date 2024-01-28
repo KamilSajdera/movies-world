@@ -67,7 +67,9 @@ const FilmDetailsPage = () => {
 };
 
 export const loader = async ({ request, params }) => {
-  const movieId = params.movieId;
+  const searchParams = new URL(request.url).searchParams;
+  const movieId = searchParams.get('id');
+
   const options = {
     method: "GET",
     headers: {
@@ -85,8 +87,8 @@ export const loader = async ({ request, params }) => {
   if (!response.ok) {
     throw json(
       {
-        message: "Could not fetch film details page.",
-        desc: "Something went wrong while loading the film details page. Check the correctness of the link.",
+        message: "Could not fetch movie details page.",
+        desc: "Something went wrong while loading the movie details page. Check the correctness of the link.",
       },
       { status: 500 }
     );

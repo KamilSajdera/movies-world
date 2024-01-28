@@ -36,7 +36,7 @@ const PagesWrapper = ({ movies, title }) => {
 
   const visitProfileHandler = () => {
     const urlName = movie.title.toLowerCase().replace(/\s+/g, "-").trim();
-    navigate(`/movie/${movie.id}-${urlName}`);
+    navigate(`/movie?id=${movie.id}-${urlName}`);
   };
 
   useEffect(() => {

@@ -1,13 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { useRef, useEffect } from "react";
 
 import classes from "./UserPopularFilms.module.css";
 
 const UserPopularFilms = ({ films }) => {
   const containerRef = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const filmsContainer = containerRef.current;
-    const filmImage = containerRef.current.querySelectorAll(`.${classes['film-item']}`);
+    const filmImage = containerRef.current.querySelectorAll(
+      `.${classes["film-item"]}`
+    );
     const filmCaption = containerRef.current.querySelectorAll("p");
     let isMouseDown = false;
     let startX;
@@ -42,7 +46,9 @@ const UserPopularFilms = ({ films }) => {
         filmCaption[index].classList.remove(classes.slideOut);
         filmCaption[index].classList.add(classes.slideOver);
 
-        filmCaption[index].innerHTML = `as <i><b>${films[index].character}</b></i>`;
+        filmCaption[
+          index
+        ].innerHTML = `as <i><b>${films[index].character}</b></i>`;
       });
 
       item.addEventListener("mouseout", (e) => {
@@ -52,7 +58,14 @@ const UserPopularFilms = ({ films }) => {
         filmCaption[index].innerText = films[index].title;
       });
     });
-  }, [films]);
+
+    filmImage.forEach((item, index) => {
+      item.addEventListener("click", () => {
+        const urlName = films[index].title.toLowerCase().replace(/\s+/g, '-').trim();
+        navigate(`/movie?id=${films[index].id}-${urlName}`);
+      });
+    });
+  }, [films, navigate]);
 
   return (
     <div className={classes.filmsWrapper}>
