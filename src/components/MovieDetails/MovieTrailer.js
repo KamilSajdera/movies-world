@@ -23,9 +23,8 @@ const MovieTrailer = ({ videoId }) => {
 
     const minutes = Math.floor(state.playedSeconds / 60);
     const seconds = Math.floor(state.playedSeconds  % 60);
-    const formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    const formattedTime = `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
     setDisplayMovieProgress(formattedTime)
-    
   };
 
   const changePlaybackMomentHandle = (e) => {
@@ -37,7 +36,7 @@ const MovieTrailer = ({ videoId }) => {
   const setDurationHandle = (e) => {
     const minutes = Math.floor(e / 60);
     const seconds = e % 60;
-    setDisplayMovieDration(`${minutes}:${seconds}`);
+    setDisplayMovieDration(`${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`);
   };
 
   const toggleFullscreen = () => {
@@ -66,7 +65,6 @@ const MovieTrailer = ({ videoId }) => {
         url={`https://www.youtube.com/watch?v=${videoId}`}
         width="100%"
         height="650px"
-        light={false}
         playing={isPlaying}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
