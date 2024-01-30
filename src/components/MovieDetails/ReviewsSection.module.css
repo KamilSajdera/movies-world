@@ -51,6 +51,14 @@
     text-align: justify;
 }
 
+.noReviewsMsg 
+{
+    font-size: 1.05em;
+    text-align: center;
+    padding: 10px 10px 20px 10px;
+    color: #ccc;
+}
+
 .review-item::-webkit-scrollbar {
     width: 5px;
 }

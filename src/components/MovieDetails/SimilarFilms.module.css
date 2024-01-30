@@ -35,6 +35,14 @@
     font-style: italic;
 }
 
+.noInfoMessage
+{
+    font-size: 1.05em;
+    margin: auto;
+    padding: 20px 10px;
+    color: #ccc;
+}
+
 @media screen and (min-width: 767px) 
 {
     .moviesItems 
