@@ -22,8 +22,7 @@
     margin-top: 25px;
     padding-inline: 15px;
     padding-bottom: 25px;
-    max-height: 200px;
-    overflow-y: auto;
+    
 }
 
 .review-item:last-child
@@ -46,9 +45,12 @@
 
 .review_content 
 {
-    padding-top: 15px;
+    margin-top: 15px;
+    padding-right: 10px;
     font-family: 'Raleway', sans-serif;
     text-align: justify;
+    max-height: 200px;
+    overflow-y: auto;
 }
 
 .noReviewsMsg 
@@ -59,14 +61,14 @@
     color: #ccc;
 }
 
-.review-item::-webkit-scrollbar {
-    width: 5px;
+.review_content::-webkit-scrollbar {
+    width: 3px;
 }
-.review-item::-webkit-scrollbar-thumb {
+.review_content::-webkit-scrollbar-thumb {
     background-color: #6d6d6d;
     border-radius: 20px;
 }
-.review-item::-webkit-scrollbar-track {
+.review_content::-webkit-scrollbar-track {
     background: #202020;
 }
 
