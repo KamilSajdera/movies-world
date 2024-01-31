@@ -20,15 +20,15 @@ body
 }
 
 *::-webkit-scrollbar {
-  width: 12px;
-  height: 8px;
+  width: 9px;
+  height: 5px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #6d6d6d;
+  background-color: #4f4f4f;
   border-radius: 20px;
 }
 
 *::-webkit-scrollbar-track {
-  background: #3e3d3d;
+  background: #1c1c1c;
 }
