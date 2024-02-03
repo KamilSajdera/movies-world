@@ -8,7 +8,7 @@ import NowPlayingPage, {
 import PopularPage, { loader as PopularPageLoader } from "./pages/PopularPage";
 import NewlyAddedPage from "./pages/NewlyAddedPage";
 import DiscoverPage from "./pages/DiscoverPage";
-import TopRatedPage from "./pages/TopRatedPage";
+import TopRatedPage, { loader as topRatedLoader } from "./pages/TopRatedPage";
 import { PeoplePage, loader as peoplePageLoader } from "./pages/PeoplePage";
 import ProfilePage, { loader as profilePageLoader } from "./pages/ProfilePage";
 import FilmDetailsPage, {
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       { path: "popular", element: <PopularPage />, loader: PopularPageLoader },
       { path: "newlyadded", element: <NewlyAddedPage /> },
       { path: "discover", element: <DiscoverPage /> },
-      { path: "toprated", element: <TopRatedPage /> },
+      { path: "toprated", element: <TopRatedPage />, loader: topRatedLoader },
       {
         path: "people",
         children: [
