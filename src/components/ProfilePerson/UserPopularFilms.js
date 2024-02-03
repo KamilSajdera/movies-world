@@ -3,6 +3,8 @@ import { useRef, useEffect } from "react";
 
 import classes from "./UserPopularFilms.module.css";
 
+import noMovieImg from "../../assets/people/noImage.png";
+
 const UserPopularFilms = ({ films }) => {
   const containerRef = useRef();
   const navigate = useNavigate();
@@ -61,7 +63,10 @@ const UserPopularFilms = ({ films }) => {
 
     filmImage.forEach((item, index) => {
       item.addEventListener("click", () => {
-        const urlName = films[index].title.toLowerCase().replace(/\s+/g, '-').trim();
+        const urlName = films[index].title
+          .toLowerCase()
+          .replace(/\s+/g, "-")
+          .trim();
         navigate(`/movie?id=${films[index].id}-${urlName}`);
       });
     });
@@ -72,7 +77,10 @@ const UserPopularFilms = ({ films }) => {
       <h3>Popular films</h3>
       <div className={classes.filmsContainer} ref={containerRef}>
         {films.map((film) => {
-          const img = `https://image.tmdb.org/t/p/w500${film.poster_path}`;
+          const img =
+            film.poster_path === null
+              ? noMovieImg
+              : `https://image.tmdb.org/t/p/w500${film.poster_path}`;
           return (
             <div className={classes["film-item"]} key={film.id}>
               <img src={img} alt="Film img" />

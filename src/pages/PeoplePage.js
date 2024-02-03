@@ -2,7 +2,7 @@ import { useLoaderData, json } from "react-router-dom";
 
 import PeopleList from "../components/PeoplePage/PeopleList";
 import Pagination from "../components/PeoplePage/Pagination";
-import noImage from "../assets/people/noImage.png";
+import noImage from "../assets/people/noProfileImage.png";
 
 const PeoplePage = () => {
   const data = useLoaderData();

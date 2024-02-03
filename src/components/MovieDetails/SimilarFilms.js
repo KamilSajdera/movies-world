@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import classes from "./SimilarFilms.module.css";
 
+import noMovieImg from "../../assets/people/noImage.png";
+
 const SimilarFilms = ({ movies, title }) => {
   const navigate = useNavigate();
 
@@ -10,21 +12,29 @@ const SimilarFilms = ({ movies, title }) => {
   };
 
   let content =
-    movies.length > 0
-      ? movies.map((movie) => (
+    movies.length > 0 ? (
+      movies.map((movie) => {
+        const img =
+          movie.backdrop_path === null
+            ? noMovieImg
+            : `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`;
+            
+        return (
           <div
             className={classes["movie-item"]}
             key={movie.id}
             onClick={() => navigateToMovie(movie.id, movie.title)}
           >
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-              alt="Movie poster"
-            />
+            <img src={img} alt="Movie poster" />
             <p>{movie.title}</p>
           </div>
-        ))
-      : <p className={classes.noInfoMessage}>We don't have informations about {title} for this movie.</p>
+        );
+      })
+    ) : (
+      <p className={classes.noInfoMessage}>
+        We don't have informations about {title} for this movie.
+      </p>
+    );
 
   return (
     <div className={classes.similarWrapper}>

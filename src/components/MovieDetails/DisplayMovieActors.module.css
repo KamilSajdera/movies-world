@@ -16,6 +16,9 @@
     flex: 0 0 45%;
     margin: 30px 10px;  
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .actor-item:first-child
