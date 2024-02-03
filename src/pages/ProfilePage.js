@@ -17,7 +17,7 @@ const ProfilePage = () => {
     name: fetchedPersonData.name,
     otherName: fetchedPersonData.also_known_as,
     img: fetchedPersonData.profile_path,
-    birthday: fetchedPersonData.birthday || "-",
+    birthday: fetchedPersonData.birthday || "No data",
     deathday: fetchedPersonData.deathday,
     gender:
       fetchedPersonData.gender === 1
@@ -28,9 +28,9 @@ const ProfilePage = () => {
         ? "Non-binary"
         : "Not set",
     bio: fetchedPersonData.biography || "Sorry, we do not have a biography of this person.",
-    birthplace: fetchedPersonData.place_of_birth || "-",
-    popularity: fetchedPersonData.popularity,
-    profession: fetchedPersonData.known_for_department,
+    birthplace: fetchedPersonData.place_of_birth || "No data",
+    popularity: fetchedPersonData.popularity || "No data",
+    profession: fetchedPersonData.known_for_department || "No data",
     films: topPersonFilms,
     socials: {
       facebook: fetchedPersonData.external_ids.facebook_id,

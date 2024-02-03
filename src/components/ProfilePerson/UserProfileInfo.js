@@ -17,8 +17,8 @@ const UserProfileInfo = ({ personData }) => {
     );
 
     if (isUserDead) return `${age - 1}✝️`;
-    if (birthdayOnCurrentYear > currentDate) return `${age - 1}yo`;
-    if (birthdayOnCurrentYear < currentDate) return `${age}yo`;
+    if (birthdayOnCurrentYear > currentDate) return `(${age - 1}yo)`;
+    if (birthdayOnCurrentYear < currentDate) return `(${age}yo)`;
   }
 
   const userAge = calculateAge(userBirthday, userDeathday);
@@ -31,9 +31,7 @@ const UserProfileInfo = ({ personData }) => {
       </div>
       <div className={classes["info-item"]}>
         <h3>Birthday</h3>
-        <p>
-          {personData.birthday} ({userAge})
-        </p>
+        <p>{personData.birthday && personData.birthday} {userAge}</p>
       </div>
       <div className={classes["info-item"]}>
         <h3>Gender</h3>
