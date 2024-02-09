@@ -1,15 +1,16 @@
 .resultsContainer 
 {
-    width: 50%;
-    margin: 5px auto;
+    width: 95%;
+    padding-top: 40px;
+    margin: 0 auto;
     text-align: center;
 }
 
 .searcherForm 
 {
-    width: 80%;
-    margin: 40px auto 0px auto;
-    padding: 10px 0;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
     border-radius: 10px;
     font-size: 1.25em;
     display: flex;
@@ -27,12 +28,12 @@
 .searcherForm input 
 {
     width: 70%;
-    margin-right: 5%;
+    margin-inline: 5%;
     border: none; 
     outline: none;
     background: transparent;
     color: #d2d2d2;
-    font-size: 0.85em;
+    font-size: 0.75em;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -45,7 +46,6 @@
 {
     width: 35px;
     height: 35px;
-    margin-right: 20px;
     outline: none;
     border: none;
     border-radius: 50%;
@@ -57,32 +57,60 @@
 
 .typeSomething 
 {
-    padding-top: 30px;
+    padding-top: 15px;
     font-size: 1.2em;
     font-style: italic;
 }
 
 .noResults 
 {
-    background: #b25454;
-    display: inline-flex;
+    width: 95%;
+    margin: auto;
+    background: #be3d3d;
+    display: flex;
     padding: 10px 20px;
-    align-content: flex-start;
+    justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .noResults svg 
 {
-    margin-right: 20px;
-    width: 15px;
-    height: 15px;
-    padding: 5px;
+    margin-right: 10px;
+    width: 16px;
+    aspect-ratio: 1/1;
+    padding: 8px;
     border: 1px solid white;
     border-radius: 50%;
-    background: #6c4040;
+    background: #824343;
 }
 
-.noResults b {
-    padding-left: 5px;
+@media screen and (min-width: 767px) {
+    .noResults 
+    { width: 55%; }
+
+    .searcherForm 
+    { width: 65%; }
 }
 
+@media screen and (min-width: 1023px) { 
+    .resultsContainer 
+    { padding-top: 0; }
+
+    .noResults 
+    { 
+        width: 45%; 
+        margin-bottom: 40px;
+    }
+
+    .searcherForm 
+    { width: 50%; }
+}
+
+@media screen and (min-width: 1350px) { 
+    .noResults 
+    { width: 30%; }
+
+    .searcherForm 
+    { width: 40%; }
+}

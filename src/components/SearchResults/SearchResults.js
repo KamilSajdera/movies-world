@@ -13,7 +13,7 @@ const SearchResults = ({ title, results }) => {
   if (title?.trim().length > 0 && results?.total_results === 0)
     content = (
       <>
-        <div className={classes.noResults}><FontAwesomeIcon icon={faX} />Sorry, we could not find any results for <b> {title}</b></div>
+        <div className={classes.noResults}><FontAwesomeIcon icon={faX} /><p>Sorry, we could not find any results for <b>{title}</b></p></div>
         <DefaultContent />
       </>
     );
