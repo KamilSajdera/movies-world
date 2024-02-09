@@ -5,7 +5,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./SearchResults.module.css";
 
-const DefaultContent = () => {   
+const DefaultContent = () => {  
 
   return (
     <>

@@ -62,3 +62,27 @@
     font-style: italic;
 }
 
+.noResults 
+{
+    background: #b25454;
+    display: inline-flex;
+    padding: 10px 20px;
+    align-content: flex-start;
+    align-items: center;
+}
+
+.noResults svg 
+{
+    margin-right: 20px;
+    width: 15px;
+    height: 15px;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 50%;
+    background: #6c4040;
+}
+
+.noResults b {
+    padding-left: 5px;
+}
+
