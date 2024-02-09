@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Form } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -7,6 +8,7 @@ import classes from "./InputSearch.module.css";
 
 const InputSearch = () => {
   const inputBottomBarRef = useRef(null);
+  const userSearchTermRef = useRef();
 
   const focusHandle = () => {
     inputBottomBarRef.current.classList.remove(classes.inputBarHasBlur);
@@ -19,19 +21,20 @@ const InputSearch = () => {
   };
 
   return (
-    <form className={classes.searcher}>
-      <label htmlFor="userSearch">
+    <Form className={classes.searcher} action="/search">
+      <label htmlFor="query">
         <FontAwesomeIcon icon={faSearch} className={classes["searcher-icon"]} />
       </label>
       <input
         type="text"
         placeholder="Show movie, serial, actor..."
-        name="userSearch"
+        name="query"
         onFocus={focusHandle}
         onBlur={blurHandle}
+        ref={userSearchTermRef}
       />
       <div className={classes.inputBar} ref={inputBottomBarRef}></div>
-    </form>
+    </Form>
   );
 };
 
