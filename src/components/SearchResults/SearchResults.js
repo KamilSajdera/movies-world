@@ -8,12 +8,30 @@ import classes from "./SearchResults.module.css";
 const SearchResults = ({ title, results }) => {
   let content;
 
-  if (!title) content = <DefaultContent />;
-  if (results && title) content = <ResultsContent title={title} results={results} />;
-  if (title?.trim().length > 0 && results?.total_results === 0)
+  const anyResults =
+    results.movies.total_results +
+      results.series.total_results +
+      results.people.total_results >
+    0;
+
+  const hasTitle = title?.trim().length > 0;
+  
+  if (!hasTitle || !title) {
+    content = <DefaultContent />;
+  }
+
+  if (results && title && hasTitle)
+    content = <ResultsContent title={title} results={results} />;
+
+  if (hasTitle && !anyResults)
     content = (
       <>
-        <div className={classes.noResults}><FontAwesomeIcon icon={faX} /><p>Sorry, we could not find any results for <b>{title}</b></p></div>
+        <div className={classes.noResults}>
+          <FontAwesomeIcon icon={faX} />
+          <p>
+            Sorry, we could not find any results for <b>{title}</b>
+          </p>
+        </div>
         <DefaultContent />
       </>
     );

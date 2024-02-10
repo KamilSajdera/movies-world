@@ -1,11 +1,16 @@
+import classes from "./ResultsContent.module.css";
+
+import CategoryMenu from "./CategoryMenu";
+
 const ResultsContent = ({ results, title }) => {
-  console.log(results);
+ 
   return (
-    <>
-      <h2>
+    <div className={classes.resultsContent}>
+      <h3>
         Search results for: <b>{title}</b>
-      </h2>
-    </>
+      </h3>
+      <CategoryMenu results={results} />
+    </div>
   );
 };
 

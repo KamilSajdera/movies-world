@@ -21,21 +21,60 @@ export async function loader({ request }) {
     },
   };
 
-  const response = await fetch(
-    `https://api.themoviedb.org/3/search/multi?query=${searchTerm}`,
+  const responseMovies = await fetch(
+    `https://api.themoviedb.org/3/search/movie?query=${searchTerm}`,
     options
   );
 
-  if (!response.ok) {
-    throw json({
-      message: "An error occured!",
-      desc: "Failed to search this phrase. Please try again later.",
-    },
-    { status: 500 });
+  const responseSeries = await fetch(
+    `https://api.themoviedb.org/3/search/tv?query=${searchTerm}`,
+    options
+  );
+
+  const responsePeople = await fetch(
+    `https://api.themoviedb.org/3/search/person?query=${searchTerm}`,
+    options
+  );
+
+  if (!responseMovies.ok) {
+    throw json(
+      {
+        message: "An error occured!",
+        desc: "Failed to search movies section. Please try again later.",
+      },
+      { status: 500 }
+    );
   }
 
-  const responseData = await response.json();
+  if (!responseSeries.ok) {
+    throw json(
+      {
+        message: "An error occured!",
+        desc: "Failed to search series section. Please try again later.",
+      },
+      { status: 500 }
+    );
+  }
 
-  return { results: responseData, title: searchTerm };
+  if (!responsePeople.ok) {
+    throw json(
+      {
+        message: "An error occured!",
+        desc: "Failed to search people section. Please try again later.",
+      },
+      { status: 500 }
+    );
+  }
 
+  const responseMoviesData = await responseMovies.json();
+  const responseSeriesData = await responseSeries.json();
+  const responsePeopleData = await responsePeople.json();
+
+  const results = {
+    movies: responseMoviesData,
+    series: responseSeriesData,
+    people: responsePeopleData,
+  };
+
+  return { results: results, title: searchTerm };
 }
