@@ -34,11 +34,25 @@
 {
     background: #232323;
 }
+
 .category_active 
 {
     background: #353535;
     box-shadow: 0px 0px 0px 7px #1a1a1a;
-    transition: all .1s ease;
+    transition: all .2s ease;
+    animation-name: jumpScale;
+    animation-duration: 200ms;
+    color: #a3c0de;
+}
+
+@keyframes jumpScale {
+    40% {
+        transform: scale(1.15);
+    }
+
+    80% {
+        transform: scale(1);
+    }
 }
 
 @media screen and (min-width: 767px) {

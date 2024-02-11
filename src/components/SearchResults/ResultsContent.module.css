@@ -1,6 +1,6 @@
 .resultsContent 
 {
-    width: 100%;
+    width: 100%;   
 }
 
 .resultsContent h3
@@ -11,7 +11,7 @@
 .results_items 
 {
     margin-top: 50px;
-    width: 100%;
+    width: 100%;  
 }
 
 .result-item
@@ -21,6 +21,8 @@
     margin-bottom: 30px;
     height: 220px;
     background: #161616;
+    animation-name: fadeInContent;
+    animation-duration: 200ms;
 }
 
 .result-img 
@@ -61,6 +63,11 @@
     text-align: center!important;
 }
 
+@keyframes fadeInContent {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @media screen and (min-width: 767px) {
     .results_items 
     {
@@ -86,14 +93,10 @@
     { width: 140px; }
 
     .result-item-data
-    { 
-        width: calc(100% - 140px); 
-    }
+    { width: calc(100% - 140px); }
 }
 
 @media screen and (min-width: 1350px) {
     .results_items 
-    {
-        width: 70%;
-    }
+    { width: 70%; }
 }
