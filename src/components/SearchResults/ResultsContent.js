@@ -3,6 +3,7 @@ import classes from "./ResultsContent.module.css";
 
 import CategoryMenu from "./CategoryMenu";
 import MoviesSection from "./MoviesSection";
+import SeriesSection from "./SeriesSection";
 import { useState } from "react";
 
 const ResultsContent = ({ results, title }) => {
@@ -21,6 +22,7 @@ const ResultsContent = ({ results, title }) => {
       </h3>
       <CategoryMenu results={results} categoryNr={categoryNr} onChangeCategory={changeCategoryHandle} />
       { categoryNr === 1 && <MoviesSection movies={results.movies.results} /> }
+      { categoryNr === 2 && <SeriesSection series={results.series.results} /> }
     </div>
   );
 };
