@@ -1,6 +1,7 @@
 import classes from "./ResultsContent.module.css";
 
 import CategoryMenu from "./CategoryMenu";
+import MoviesSection from "./MoviesSection";
 
 const ResultsContent = ({ results, title }) => {
  
@@ -10,6 +11,7 @@ const ResultsContent = ({ results, title }) => {
         Search results for: <b>{title}</b>
       </h3>
       <CategoryMenu results={results} />
+      <MoviesSection movies={results.movies.results} />
     </div>
   );
 };
