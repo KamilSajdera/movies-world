@@ -1,7 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 import classes from "./ResultsContent.module.css";
 import noImage from "../../assets/people/noImage.png";
 
 const MoviesSection = ({ movies }) => {
+
+  const navigate = useNavigate();
+
   return (
     <div className={classes["results_items"]}>
       {movies.map((movie) => {
@@ -15,8 +20,17 @@ const MoviesSection = ({ movies }) => {
           ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
           : noImage;
 
+        const navigateUrl = `/movie?id=${movie.id}-${movie.title
+          .toLowerCase()
+          .replace(/\s+/g, "-")
+          .trim()}`;
+
         return (
-          <div className={classes["result-item"]} key={movie.id}>
+          <div
+            className={classes["result-item"]}
+            key={movie.id}
+            onClick={() => navigate(navigateUrl)}
+          >
             <div className={classes["result-img"]}>
               <img src={image} alt="alt" />
             </div>

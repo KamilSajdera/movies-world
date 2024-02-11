@@ -23,6 +23,7 @@
     background: #161616;
     animation-name: fadeInContent;
     animation-duration: 200ms;
+    cursor: pointer;
 }
 
 .result-img 
