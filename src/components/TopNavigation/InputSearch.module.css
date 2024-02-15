@@ -34,17 +34,15 @@
    font-family: 'Lato', sans-serif;
 }
 
-input:-internal-autofill-selected 
+.searcher button 
 {
-    background-color: #ffff00!important;
-    color: red!important;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.1em;
 }
-
-input::part(autofill-selected) {
-    background-color: lightyellow!important;
-    border: 1px solid darkorange!important;
-    color: black!important;
-  }  
 
 .inputBar
 {

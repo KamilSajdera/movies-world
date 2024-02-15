@@ -22,9 +22,9 @@ const InputSearch = () => {
 
   return (
     <Form className={classes.searcher} action="/search">
-      <label htmlFor="query">
+      <button type="submit">
         <FontAwesomeIcon icon={faSearch} className={classes["searcher-icon"]} />
-      </label>
+      </button>
       <input
         type="text"
         placeholder="Show movie, serial, actor..."
