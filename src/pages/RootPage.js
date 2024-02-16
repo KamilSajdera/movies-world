@@ -1,4 +1,4 @@
-import { Outlet, useNavigation } from "react-router-dom";
+import { Outlet, useNavigation, ScrollRestoration } from "react-router-dom";
 
 import TopNavigation from "../components/TopNavigation/TopNavigation";
 import LoaderPage from "../ui/LoaderPage";
@@ -20,8 +20,10 @@ const RootPage = () => {
       <main style={mainStyle}>
         <Outlet />
       </main>
+      <ScrollRestoration />
     </>
   );
 };
 
 export default RootPage;
+
