@@ -16,6 +16,7 @@ import FilmDetailsPage, {
 } from "./pages/FilmDetailsPage";
 import ErrorPage from "./ui/ErrorPage";
 import SearchPage, { loader as searchTermLoader } from "./pages/SearchPage";
+import SerialDetailsPage, { loader as tvPageLoader } from "./pages/SerialDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
         path: "movie",
         element: <FilmDetailsPage />,
         loader: movieDetailsLoader,
+      },
+      {
+        path: "tv",
+        element: <SerialDetailsPage />,
+        loader: tvPageLoader,
       },
       {
         path: "search",

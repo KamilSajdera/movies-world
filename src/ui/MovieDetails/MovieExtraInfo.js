@@ -67,28 +67,28 @@ const MovieExtraInfo = ({ movieData }) => {
       <div className={classes.informations}>
         <div className={classes["info-item"]}>
           <p className={classes.personName}>
-            { movieData.movieCrew.director[0] ? movieData.movieCrew.director[0].name : "No data"}
+            {movieData.movieCrew.director[0]?.name || "No data"}
           </p>
-          <p className={classes.personName}>  
-            { movieData.movieCrew.director[1] ? movieData.movieCrew.director[1].name : ""}
+          <p className={classes.personName}>
+            {movieData.movieCrew.director[1]?.name || ""}
           </p>
           <p>Directing</p>
         </div>
         <div className={classes["info-item"]}>
           <p className={classes.personName}>
-            { movieData.movieCrew.writer[0] ? movieData.movieCrew.writer[0].name : "No data"}
+            {movieData.movieCrew.writer[0]?.name || "No data"}
           </p>
-         <p className={classes.personName}>
-            { movieData.movieCrew.writer[1] ? movieData.movieCrew.writer[1].name : ""}
+          <p className={classes.personName}>
+            {movieData.movieCrew.writer[1]?.name || ""}
           </p>
-          <p>Screenplay</p> 
+          <p>Screenplay</p>
         </div>
         <div className={classes["info-item"]}>
           <p className={classes.personName}>
-            { movieData.movieCrew.producer[0] ? movieData.movieCrew.producer[0].name : "No data"}
+            {movieData.movieCrew.producer[0]?.name || "No data"}
           </p>
           <p className={classes.personName}>
-            { movieData.movieCrew.producer[1] ? movieData.movieCrew.producer[1].name : ""}
+            {movieData.movieCrew.producer[1]?.name || ""}
           </p>
           <p>Production</p>
         </div>
@@ -97,12 +97,20 @@ const MovieExtraInfo = ({ movieData }) => {
           <p>Status</p>
         </div>
         <div className={classes["info-item"]}>
-          <p className={classes.personName}>{movieData.budget}</p>
-          <p>Budget</p>
+          <p className={classes.personName}>
+            {movieData.budget || movieData.lastRelease}
+          </p>
+          <p>{movieData.budget ? "Budget" : "Last air date"}</p>
         </div>
         <div className={classes["info-item"]}>
-          <p className={classes.personName}>{movieData.profit}</p>
-          <p>Profit</p>
+          {movieData.profit && (
+            <p className={classes.personName}>{movieData.profit}</p>
+          )}
+          {movieData.providers &&
+            movieData.providers.map((item, index) => (
+              <p className={classes.personName} key={index}>{item}</p>
+            ))}
+          <p>{movieData.profit ? "Profit" : "Networks"}</p>
         </div>
       </div>
     </div>

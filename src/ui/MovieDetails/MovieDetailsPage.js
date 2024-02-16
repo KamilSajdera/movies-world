@@ -29,7 +29,7 @@ const MovieDetailsPage = ({ movieData }) => {
       <MovieExtraInfo movieData={movieData} />
       <div className={classes.actorsWrapper}>
         <DisplayMovieActors cast={movieData.topActors} />
-        <DisplayMovieKeywords keywords={movieData.keywords.keywords.slice(0,17)} />
+        <DisplayMovieKeywords keywords={movieData.keywords.keywords?.slice(0,17) || movieData.keywords.results.slice(0,17)} />
       </div>
       {movieData.trailer && <MovieTrailer videoId={movieData.trailer} />}
       <ReviewsSection reviews={movieData.reviews.results} />

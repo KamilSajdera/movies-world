@@ -1,14 +1,19 @@
 import classes from "./IntroBasicInfo.module.css";
 
 const MovieBasics = ({ movieData }) => {
-  const movieDuration = `${Math.floor(movieData.duration / 60)}h ${movieData.duration % 60}m`;
+  const movieDuration = movieData.duration
+    ? `${Math.floor(movieData.duration / 60)}h ${movieData.duration % 60}m`
+    : movieData.tvLength;
 
-  const movieDate = new Date(movieData.releaseDate).toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric'
-});
-   
+  const movieDate = new Date(movieData.releaseDate).toLocaleDateString(
+    "en-US",
+    {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    }
+  );
+
   return (
     <ul className={classes["movie-basics"]}>
       {movieData.adult && <li>+18</li>}

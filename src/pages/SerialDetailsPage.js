@@ -2,31 +2,34 @@ import { useLoaderData, json } from "react-router-dom";
 
 import MovieDetailsPage from "../ui/MovieDetails/MovieDetailsPage";
 
-const FilmDetailsPage = () => {
+const SerialDetailsPage = () => {
   const fetchedDetails = useLoaderData();
 
-  const movieTrailer = fetchedDetails.videos.results.find((item) => item.type === "Trailer");
+  const lastRelease = new Date(fetchedDetails.last_air_date).toLocaleDateString(
+    "en-GB",
+    {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    }
+  );
 
-  const movieBudget = fetchedDetails.budget.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  });
+  const tvLength = `SE: ${fetchedDetails.number_of_seasons} | EP: ${fetchedDetails.number_of_episodes}`;
 
-  const movieProfit =  fetchedDetails.revenue.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  });
+  const movieTrailer = fetchedDetails.videos.results.find(
+    (item) => item.type === "Trailer"
+  );
 
   let uniqeMovieCast = new Set();
-  let crewWithoutRepetitions = fetchedDetails.credits.crew.filter((item) => {
-    if (!uniqeMovieCast.has(item.name)) {
-      uniqeMovieCast.add(item.name);
-      return true;
+  let crewWithoutRepetitions = fetchedDetails.aggregate_credits.crew.filter(
+    (item) => {
+      if (!uniqeMovieCast.has(item.name)) {
+        uniqeMovieCast.add(item.name);
+        return true;
+      }
+      return false;
     }
-    return false;
-  });
+  );
 
   const returnCrewMember = (job) => {
     return crewWithoutRepetitions
@@ -34,41 +37,41 @@ const FilmDetailsPage = () => {
       .sort((a, b) => b.popularity - a.popularity);
   };
 
-  const movieDetails = {
+  const tvDetails = {
     id: fetchedDetails.id,
-    title: fetchedDetails.title,
+    title: fetchedDetails.name,
     backdrop: fetchedDetails.backdrop_path,
     poster: fetchedDetails.poster_path,
     posters: fetchedDetails.images.posters,
     overview: fetchedDetails.overview,
     status: fetchedDetails.status,
-    releaseDate: fetchedDetails.release_date,
+    releaseDate: fetchedDetails.first_air_date,
     genres: fetchedDetails.genres,
     reviews: fetchedDetails.reviews,
-    duration: fetchedDetails.runtime,
     adult: fetchedDetails.adult,
     usersRating: Math.floor(fetchedDetails.vote_average * 10),
-    topActors: fetchedDetails.credits.cast.slice(0, 15),
-    profit:movieProfit,
-    budget: movieBudget,
+    topActors: fetchedDetails.aggregate_credits.cast.slice(0, 15),
+    tvLength: tvLength,
+    lastRelease: lastRelease,
+    providers: fetchedDetails.networks.map(item => { return item.name}),
     movieCrew: {
       director: returnCrewMember("Directing"),
       writer: returnCrewMember("Writing"),
       producer: returnCrewMember("Production"),
     },
     trailer: movieTrailer ? movieTrailer.key : null,
-    homepage: fetchedDetails.homepage,  
+    homepage: fetchedDetails.homepage,
     keywords: fetchedDetails.keywords,
     similar: fetchedDetails.similar,
-    recommendations: fetchedDetails.recommendations.results
+    recommendations: fetchedDetails.recommendations.results,
   };
-  
-  return <MovieDetailsPage movieData={movieDetails} />;
+
+  return <MovieDetailsPage movieData={tvDetails} />;
 };
 
 export const loader = async ({ request, params }) => {
   const searchParams = new URL(request.url).searchParams;
-  const movieId = searchParams.get('id');
+  const serialId = searchParams.get("id");
 
   const options = {
     method: "GET",
@@ -80,15 +83,15 @@ export const loader = async ({ request, params }) => {
   };
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?append_to_response=reviews,similar,credits,videos,images,keywords,recommendations`,
+    `https://api.themoviedb.org/3/tv/${serialId}?append_to_response=reviews,similar,aggregate_credits,videos,images,keywords,recommendations`,
     options
   );
 
   if (!response.ok) {
     throw json(
       {
-        message: "Could not fetch movie details page.",
-        desc: "Something went wrong while loading the movie details page. Check the correctness of the link.",
+        message: "Could not fetch tv series details page.",
+        desc: "Something went wrong while loading the tv series details page. Check the correctness of the link.",
       },
       { status: 500 }
     );
@@ -97,4 +100,4 @@ export const loader = async ({ request, params }) => {
   return response;
 };
 
-export default FilmDetailsPage;
+export default SerialDetailsPage;
