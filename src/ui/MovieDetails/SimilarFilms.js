@@ -8,7 +8,11 @@ const SimilarFilms = ({ movies, title }) => {
 
   const navigateToMovie = (id, name) => {
     const urlName = name.toLowerCase().replace(/\s+/g, "-").trim();
-    navigate(`/movie?id=${id}-${urlName}`);
+
+    if(movies.find(movie => movie.id === id).first_air_date === undefined)
+      navigate(`/movie?id=${id}-${urlName}`);
+    else 
+      navigate(`/tv?id=${id}-${urlName}`);
   };
 
   let content =
@@ -23,10 +27,10 @@ const SimilarFilms = ({ movies, title }) => {
           <div
             className={classes["movie-item"]}
             key={movie.id}
-            onClick={() => navigateToMovie(movie.id, movie.title)}
+            onClick={() => navigateToMovie(movie.id, movie.title || movie.name)}
           >
             <img src={img} alt="Movie poster" />
-            <p>{movie.title}</p>
+            <p>{movie.title || movie.name}</p>
           </div>
         );
       })
