@@ -16,12 +16,18 @@ const UserProfileInfo = ({ personData }) => {
       birthday.getDate()
     );
 
-    if (isUserDead) return `${age - 1}✝️`;
+    if (isUserDead) return `(${age - 1}✝️)`;
     if (birthdayOnCurrentYear > currentDate) return `(${age - 1}yo)`;
     if (birthdayOnCurrentYear < currentDate) return `(${age}yo)`;
   }
 
   const userAge = calculateAge(userBirthday, userDeathday);
+  const displayingBirthday = userBirthday.toLocaleDateString({
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <div className={classes.primaryInfo}>
@@ -31,7 +37,12 @@ const UserProfileInfo = ({ personData }) => {
       </div>
       <div className={classes["info-item"]}>
         <h3>Birthday</h3>
-        <p>{personData.birthday && personData.birthday} {userAge}</p>
+        <p>
+          {displayingBirthday !== "Invalid Date"
+            ? displayingBirthday
+            : "No data"}{" "}
+          {userAge}
+        </p>
       </div>
       <div className={classes["info-item"]}>
         <h3>Gender</h3>
