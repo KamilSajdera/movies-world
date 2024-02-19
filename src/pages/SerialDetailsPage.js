@@ -16,12 +16,12 @@ const SerialDetailsPage = () => {
 
   const tvLength = `SE: ${fetchedDetails.number_of_seasons} | EP: ${fetchedDetails.number_of_episodes}`;
 
-  const movieTrailer = fetchedDetails.videos.results.find(
+  const movieTrailer = fetchedDetails.videos?.results.find(
     (item) => item.type === "Trailer"
   );
 
   let uniqeMovieCast = new Set();
-  let crewWithoutRepetitions = fetchedDetails.aggregate_credits.crew.filter(
+  let crewWithoutRepetitions = fetchedDetails.aggregate_credits?.crew.filter(
     (item) => {
       if (!uniqeMovieCast.has(item.name)) {
         uniqeMovieCast.add(item.name);
@@ -32,6 +32,9 @@ const SerialDetailsPage = () => {
   );
 
   const returnCrewMember = (job) => {
+    if(crewWithoutRepetitions === undefined) 
+      return [];
+
     return crewWithoutRepetitions
       .filter((item) => item.known_for_department === job)
       .sort((a, b) => b.popularity - a.popularity);
@@ -42,15 +45,15 @@ const SerialDetailsPage = () => {
     title: fetchedDetails.name,
     backdrop: fetchedDetails.backdrop_path,
     poster: fetchedDetails.poster_path,
-    posters: fetchedDetails.images.posters,
+    posters: fetchedDetails.images?.posters || [],
     overview: fetchedDetails.overview,
     status: fetchedDetails.status,
     releaseDate: fetchedDetails.first_air_date,
     genres: fetchedDetails.genres,
-    reviews: fetchedDetails.reviews,
+    reviews: fetchedDetails.reviews || [],
     adult: fetchedDetails.adult,
     usersRating: Math.floor(fetchedDetails.vote_average * 10),
-    topActors: fetchedDetails.aggregate_credits.cast.slice(0, 15),
+    topActors: fetchedDetails.aggregate_credits?.cast.slice(0, 15) || [],
     tvLength: tvLength,
     lastRelease: lastRelease,
     providers: fetchedDetails.networks.map(item => { return item.name}),
@@ -61,9 +64,9 @@ const SerialDetailsPage = () => {
     },
     trailer: movieTrailer ? movieTrailer.key : null,
     homepage: fetchedDetails.homepage,
-    keywords: fetchedDetails.keywords,
-    similar: fetchedDetails.similar,
-    recommendations: fetchedDetails.recommendations.results,
+    keywords: fetchedDetails.keywords || [],
+    similar: fetchedDetails.similar || [],
+    recommendations: fetchedDetails.recommendations?.results || [],
   };
 
   return <MovieDetailsPage movieData={tvDetails} />;
@@ -71,7 +74,7 @@ const SerialDetailsPage = () => {
 
 export const loader = async ({ request, params }) => {
   const searchParams = new URL(request.url).searchParams;
-  const serialId = searchParams.get("id");
+  const serialId = searchParams.get("id").split("-")[0];
 
   const options = {
     method: "GET",
@@ -83,7 +86,7 @@ export const loader = async ({ request, params }) => {
   };
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/tv/${serialId}?append_to_response=reviews,similar,aggregate_credits,videos,images,keywords,recommendations`,
+    `https://api.themoviedb.org/3/tv/${serialId}?append_to_response=reviews%2Csimilar%2Caggregate_credits%2Cvideos%2Cimages%2Ckeywords%2Crecommendations`,
     options
   );
 

@@ -68,7 +68,7 @@ const FilmDetailsPage = () => {
 
 export const loader = async ({ request, params }) => {
   const searchParams = new URL(request.url).searchParams;
-  const movieId = searchParams.get('id');
+  const movieId = searchParams.get('id').split("-")[0];
 
   const options = {
     method: "GET",
