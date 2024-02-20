@@ -6,11 +6,23 @@ const ProfilePage = () => {
 
   const allPersonFilms =
     fetchedPersonData.known_for_department === "Acting"
-      ? fetchedPersonData.movie_credits.cast
-      : fetchedPersonData.movie_credits.crew;
+      ? fetchedPersonData.combined_credits.cast
+      : fetchedPersonData.combined_credits.crew;
 
-  allPersonFilms.sort((a, b) => b.popularity - a.popularity);
-  const topPersonFilms = allPersonFilms.slice(0, 10);
+  /// leave only this productions when actor's character is other
+  /// than 'self' and empty string (99% probability it's talk show)
+  const topPersonFilms = allPersonFilms
+    .filter((item) => {
+      if (
+        item.character.includes("Self") ||
+        item.character.includes("self") ||
+        item.character === ""
+      )
+        return false;
+      return true;
+    })
+    .sort((a, b) => b.popularity - a.popularity)
+    .slice(0, 15);
 
   const personData = {
     id: fetchedPersonData.id,
@@ -27,7 +39,9 @@ const ProfilePage = () => {
         : fetchedPersonData.gender === 3
         ? "Non-binary"
         : "Not set",
-    bio: fetchedPersonData.biography || "Sorry, we do not have a biography of this person.",
+    bio:
+      fetchedPersonData.biography ||
+      "Sorry, we do not have a biography of this person.",
     birthplace: fetchedPersonData.place_of_birth || "No data",
     popularity: fetchedPersonData.popularity || "No data",
     profession: fetchedPersonData.known_for_department || "No data",
@@ -57,7 +71,7 @@ export const loader = async ({ request }) => {
   };
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/person/${profileId}?append_to_response=movie_credits,external_ids&language=en-US`,
+    `https://api.themoviedb.org/3/person/${profileId}?append_to_response=combined_credits,external_ids&language=en-US`,
     options
   );
 

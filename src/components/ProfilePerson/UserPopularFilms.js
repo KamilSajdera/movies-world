@@ -57,24 +57,27 @@ const UserPopularFilms = ({ films }) => {
         filmCaption[index].classList.remove(classes.slideOver);
         filmCaption[index].classList.add(classes.slideOut);
 
-        filmCaption[index].innerText = films[index].title;
+        filmCaption[index].innerText = films[index].title || films[index].name;
       });
     });
 
     filmImage.forEach((item, index) => {
       item.addEventListener("click", () => {
-        const urlName = films[index].title
-          .toLowerCase()
-          .replace(/\s+/g, "-")
-          .trim();
-        navigate(`/movie?id=${films[index].id}-${urlName}`);
+        
+        const isMovie = films[index].media_type === "movie";
+        const urlName = !isMovie
+          ? films[index].name.toLowerCase().replace(/\s+/g, "-").trim()
+          : films[index].title.toLowerCase().replace(/\s+/g, "-").trim();
+
+        if (isMovie) navigate(`/movie?id=${films[index].id}-${urlName}`);
+        else navigate(`/tv?id=${films[index].id}-${urlName}`);
       });
     });
   }, [films, navigate]);
 
   return (
     <div className={classes.filmsWrapper}>
-      <h3>Popular films</h3>
+      <h3>Popular productions</h3>
       <div className={classes.filmsContainer} ref={containerRef}>
         {films.map((film) => {
           const img =
@@ -84,10 +87,11 @@ const UserPopularFilms = ({ films }) => {
           return (
             <div className={classes["film-item"]} key={film.id}>
               <img src={img} alt="Film img" />
-              <p>{film.title}</p>
+              <p>{film.title || film.name}</p>
             </div>
           );
         })}
+        {films.length === 0 && <p className={classes.noProductions}>Not found productions for this person.</p>}
       </div>
     </div>
   );
