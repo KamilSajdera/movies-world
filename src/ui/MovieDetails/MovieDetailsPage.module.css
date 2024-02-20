@@ -51,7 +51,7 @@
     .movieWrapper 
     { 
         padding-top: 175px; 
-        height: 100vh;
+        min-height: 100vh;
         margin-top: -210px;
     }
 
