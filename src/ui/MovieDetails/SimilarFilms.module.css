@@ -8,31 +8,46 @@
 .moviesItems 
 {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch;
     margin-top: 15px;
     max-width: 100%;
 }
 
 .movie-item 
 {
-    width: 80%;
-    margin: 15px 0; 
+    width: 47%;
+    margin: 10px 0;
+    padding-bottom: 10px;
     cursor: pointer;
+    border-bottom: 1px solid #232323;
 }
+
 
 .movie-item img 
 {
     width: 100%;
     aspect-ratio: 3/4;
     object-fit: cover;
+    transition: filter 150ms ease-in-out;
 }
 
+.movie-item img:hover 
+{
+    filter: brightness(1.2);
+}
+
+.movie-item:hover p
+{
+    font-weight: 700;
+}
 .movie-item p
 {
     padding-top: 5px;
     font-style: italic;
+    transition: all 150ms ease-in-out;
 }
 
 .noInfoMessage
@@ -54,8 +69,9 @@
 
     .movie-item 
     { 
-        margin: 20px;
-        flex: 0 0 26%;
+        margin: 15px;
+        width: 26%;
+        padding-bottom: 15px;
     }
 }
 
@@ -65,8 +81,13 @@
     { padding-inline: 10%; }
 
     .moviesItems
-    { width: 80%; }
+    { 
+        width: 80%; 
+        margin: auto;
+    }
+}
 
-    .movie-item 
-    { flex: 0 0 16%; }
+@media screen and (min-width: 1300px) {
+    .movie-item
+    { width: 18%; }
 }
