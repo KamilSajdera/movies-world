@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import classes from "./ResultsContent.module.css";
 
 import CategoryMenu from "./CategoryMenu";
@@ -7,10 +7,14 @@ import SeriesSection from "./SeriesSection";
 import PeopleSection from "./PeopleSection";
 
 const ResultsContent = ({ results, title }) => {
-  const [categoryNr, setCategoryNr] = useState(1);
+  
+  let [searchParams, setSearchParams] = useSearchParams();
+  let categoryNr = parseInt(searchParams.get("category")) || 1
 
   const changeCategoryHandle = (value) => {
-    if (categoryNr !== value) setCategoryNr(value);
+    if (categoryNr !== value) {
+      setSearchParams(`query=${searchParams.get("query")}&category=${value}`);
+    }
   };
 
   return (
