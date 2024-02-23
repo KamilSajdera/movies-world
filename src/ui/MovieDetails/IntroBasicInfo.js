@@ -6,7 +6,7 @@ const MovieBasics = ({ movieData }) => {
     : movieData.tvLength;
 
   const movieDate = new Date(movieData.releaseDate).toLocaleDateString(
-    "en-US",
+    "pl-PL",
     {
       day: "2-digit",
       month: "2-digit",
