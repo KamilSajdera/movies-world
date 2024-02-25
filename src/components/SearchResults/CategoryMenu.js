@@ -12,7 +12,9 @@ const CategoryMenu = (props) => {
         onClick={() => props.onChangeCategory(1)}
       >
         Movies
-        <span className={classes["category-amout"]}>{totalMovies}</span>
+        <span className={classes["category-amout"]}>
+          {totalMovies}
+        </span>
       </div>
       <div
         className={`${classes["category-item"]} ${
@@ -21,7 +23,9 @@ const CategoryMenu = (props) => {
         onClick={() => props.onChangeCategory(2)}
       >
         Series
-        <span className={classes["category-amout"]}>{totalSeries}</span>
+        <span className={classes["category-amout"]}>
+          {totalSeries}
+        </span>
       </div>
       <div
         className={`${classes["category-item"]} ${
@@ -30,7 +34,9 @@ const CategoryMenu = (props) => {
         onClick={() => props.onChangeCategory(3)}
       >
         People
-        <span className={classes["category-amout"]}>{totalPeople}</span>
+        <span className={classes["category-amout"]}>
+          {totalPeople}
+        </span>
       </div>
     </div>
   );

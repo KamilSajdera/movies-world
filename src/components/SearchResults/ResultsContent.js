@@ -1,4 +1,5 @@
-import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import classes from "./ResultsContent.module.css";
 
 import CategoryMenu from "./CategoryMenu";
@@ -8,12 +9,29 @@ import PeopleSection from "./PeopleSection";
 import PaginationBox from "./PaginationBox";
 
 const ResultsContent = ({ results, title }) => {
-  let [searchParams, setSearchParams] = useSearchParams();
-  let categoryNr = parseInt(searchParams.get("category")) || 1;
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [searchParams, setSearchParams] = useState(new URLSearchParams(location.search));
+  const categoryNr = parseInt(searchParams.get("category")) || 1;
+  const pageNumber = parseInt(searchParams.get("page")) || 1;
+
+  const params = new URLSearchParams(searchParams);
+
+  useEffect(() => {
+    setSearchParams(new URLSearchParams(location.search));
+  }, [location.search]);
 
   const changeCategoryHandle = (value) => {
     if (categoryNr !== value) {
-      setSearchParams(`query=${searchParams.get("query")}&category=${value}`);
+      params.set("category", value);
+      const newUrl = `${window.location.pathname}?${params.toString()}`;
+      window.history.pushState({ path: newUrl }, "", newUrl);
+
+      if (pageNumber > 1) {
+        params.delete("page");
+        navigate(`?${params.toString()}`);
+      } else setSearchParams(params);
     }
   };
 
@@ -23,6 +41,12 @@ const ResultsContent = ({ results, title }) => {
       : categoryNr === 2
       ? results.series.total_pages
       : results.people.total_pages;
+
+  const changePageHandler = (value) => {
+    params.delete("page");
+    const newUrl = `?${params.toString()}&page=${value}`;
+    navigate(newUrl);
+  };
 
   return (
     <div className={classes.resultsContent}>
@@ -36,11 +60,20 @@ const ResultsContent = ({ results, title }) => {
         categoryNr={categoryNr}
         onChangeCategory={changeCategoryHandle}
       />
-      <PaginationBox totalPages={totalPages} />
+      <PaginationBox
+        totalPages={totalPages}
+        pageNumber={pageNumber}
+        onChangePage={changePageHandler}
+      />
       {categoryNr === 1 && <MoviesSection movies={results.movies.results} />}
       {categoryNr === 2 && <SeriesSection series={results.series.results} />}
       {categoryNr === 3 && <PeopleSection people={results.people.results} />}
-      <PaginationBox totalPages={totalPages} />
+      <PaginationBox
+        totalPages={totalPages}
+        pageNumber={pageNumber}
+        onChangePage={changePageHandler}
+      />
+      
     </div>
   );
 };

@@ -1,17 +1,10 @@
-import React, { useEffect, useRef, useMemo } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
 import classes from "./PaginationBox.module.css";
 
-export default function PaginationBox({ totalPages }) {
+export default function PaginationBox(props) {
   const numbersRef = useRef();
-  const navigate = useNavigate();
-  const location = useLocation();
 
-  const searchParams = useMemo(
-    () => new URLSearchParams(location.search),
-    [location.search]
-  );
-  const pageNumber = parseInt(searchParams.get("page")) || 1;
+  const { totalPages,pageNumber } = props;
 
   useEffect(() => {
     const numbers = numbersRef.current.querySelectorAll(
@@ -22,9 +15,7 @@ export default function PaginationBox({ totalPages }) {
       const clickedNumber = parseInt(event.target.textContent);
 
       if (pageNumber === clickedNumber) return;
-
-      searchParams.set("page", clickedNumber);
-      navigate(`?${searchParams.toString()}`);
+      props.onChangePage(clickedNumber)
 
       if (window.scrollY > 300) window.scrollTo(0, 0);
     };
@@ -38,7 +29,7 @@ export default function PaginationBox({ totalPages }) {
         item.removeEventListener("click", handleClick);
       });
     };
-  }, [navigate, searchParams, pageNumber]);
+  }, [pageNumber, props]);
 
   const displayNumbers = () => {
     let numbersArr = [];
