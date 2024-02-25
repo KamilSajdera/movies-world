@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import classes from "./PaginationBox.module.css";
 
-export default function PaginationBox() {
+export default function PaginationBox({ totalPages }) {
   const numbersRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
+
   const searchParams = useMemo(
     () => new URLSearchParams(location.search),
     [location.search]
@@ -39,43 +40,51 @@ export default function PaginationBox() {
     };
   }, [navigate, searchParams, pageNumber]);
 
+  const displayNumbers = () => {
+    let numbersArr = [];
+
+    let start, end;
+
+    if (totalPages <= 5) {
+      start = 1;
+      end = totalPages;
+    } else {
+      if (pageNumber <= 3) {
+        start = 1;
+        end = 5;
+      } else if (pageNumber >= totalPages - 2) {
+        start = totalPages - 4;
+        end = totalPages;
+      } else {
+        start = pageNumber - 2;
+        end = pageNumber + 2;
+      }
+    }
+
+    for (let i = start; i <= end; i++) {
+      numbersArr.push(
+        <div
+          key={i}
+          className={`${classes["numer-item"]} ${
+            pageNumber === i ? classes.active : ""
+          }`}
+        >
+          {i}
+        </div>
+      );
+    }
+
+    return numbersArr;
+  };
+
   return (
-    <div className={classes.paginationContainer} ref={numbersRef}>
-      <div
-        className={`${classes["numer-item"]} ${
-          pageNumber === 1 ? classes.active : ""
-        }`}
-      >
-        1
-      </div>
-      <div
-        className={`${classes["numer-item"]} ${
-          pageNumber === 2 ? classes.active : ""
-        }`}
-      >
-        2
-      </div>
-      <div
-        className={`${classes["numer-item"]} ${
-          pageNumber === 3 ? classes.active : ""
-        }`}
-      >
-        3
-      </div>
-      <div
-        className={`${classes["numer-item"]} ${
-          pageNumber === 4 ? classes.active : ""
-        }`}
-      >
-        4
-      </div>
-      <div
-        className={`${classes["numer-item"]} ${
-          pageNumber === 5 ? classes.active : ""
-        }`}
-      >
-        5
-      </div>
+    <div
+      className={`${classes.paginationContainer} ${
+        totalPages === 1 ? classes.margin0 : ''
+      }`}
+      ref={numbersRef}
+    >
+      {totalPages > 1 && displayNumbers()}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import classes from "./CategoryMenu.module.css";
 
 const CategoryMenu = (props) => {
-  const { results, categoryNr } = props;
+  const { totalMovies, totalSeries, totalPeople, categoryNr } = props;
 
   return (
     <div className={classes.results_category}>
@@ -12,9 +12,7 @@ const CategoryMenu = (props) => {
         onClick={() => props.onChangeCategory(1)}
       >
         Movies
-        <span className={classes["category-amout"]}>
-          {results.movies.total_results}
-        </span>
+        <span className={classes["category-amout"]}>{totalMovies}</span>
       </div>
       <div
         className={`${classes["category-item"]} ${
@@ -23,9 +21,7 @@ const CategoryMenu = (props) => {
         onClick={() => props.onChangeCategory(2)}
       >
         Series
-        <span className={classes["category-amout"]}>
-          {results.series.total_results}
-        </span>
+        <span className={classes["category-amout"]}>{totalSeries}</span>
       </div>
       <div
         className={`${classes["category-item"]} ${
@@ -34,9 +30,7 @@ const CategoryMenu = (props) => {
         onClick={() => props.onChangeCategory(3)}
       >
         People
-        <span className={classes["category-amout"]}>
-          {results.people.total_results}
-        </span>
+        <span className={classes["category-amout"]}>{totalPeople}</span>
       </div>
     </div>
   );

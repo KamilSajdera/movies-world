@@ -11,6 +11,7 @@ export default SearchPage;
 export async function loader({ request }) {
   const url = new URL(request.url);
   const searchTerm = url.searchParams.get("query");
+  const page = url.searchParams.get("page") || 1;
 
   const options = {
     method: "GET",
@@ -22,17 +23,17 @@ export async function loader({ request }) {
   };
 
   const responseMovies = await fetch(
-    `https://api.themoviedb.org/3/search/movie?query=${searchTerm}`,
+    `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&page=${page}`,
     options
   );
 
   const responseSeries = await fetch(
-    `https://api.themoviedb.org/3/search/tv?query=${searchTerm}`,
+    `https://api.themoviedb.org/3/search/tv?query=${searchTerm}&page=${page}`,
     options
   );
 
   const responsePeople = await fetch(
-    `https://api.themoviedb.org/3/search/person?query=${searchTerm}`,
+    `https://api.themoviedb.org/3/search/person?query=${searchTerm}&page=${page}`,
     options
   );
 

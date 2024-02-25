@@ -25,3 +25,8 @@
     font-weight: 700;
     transform: scale(1.05);
 }
+
+.margin0 
+{
+    margin-top: 0;
+}
