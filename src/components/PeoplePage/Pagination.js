@@ -25,10 +25,9 @@ const Pagination = ({ currentPage }) => {
           : currentPage + i + 2;
 
       pagesArray.push(
-        <div key={pageNr} className={classes["page-number"]}>
+        <div key={pageNr} className={`${classes["page-number"]} ${pageNumberFromUrl === pageNr ? classes.active : ""}`}>
           <Link
             to={`/people?page=${pageNr}`}
-            className={pageNumberFromUrl === pageNr ? classes.active : ""}
           >
             {pageNr}
           </Link>
