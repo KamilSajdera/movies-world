@@ -1,14 +1,25 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import classes from "./DisplayMovieActors.module.css";
 
 import noProfileImg from "../../assets/people/noProfileImage.png";
 
-const DisplayMovieActors = ({ cast }) => {
+const DisplayMovieActors = ({ cast, id, title }) => {
+  const location = useLocation();
   const navigate = useNavigate();
+
+  const pathname = location.pathname.slice(1)
 
   const navigateToProfile = (id, name) => {
     const urlName = name.toLowerCase().replace(/\s+/g, "-").trim();
-    navigate(`../people/profile?id=${id}-${urlName}`);
+    navigate(`/people/profile?id=${id}-${urlName}`);
+  };
+
+  const navigateToCredits = () => {
+
+    if(pathname === "movie")
+      navigate(`/credits?id=${id}&title=${title}&type=1`)
+    else 
+      navigate(`/credits?id=${id}&title=${title}&type=2`)
   };
 
   return (
@@ -42,6 +53,7 @@ const DisplayMovieActors = ({ cast }) => {
           </div>
         )}
       </div>
+      <button className={classes.more_credits} onClick={() => navigateToCredits()}>Show more</button>
     </div>
   );
 };

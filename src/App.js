@@ -17,6 +17,7 @@ import FilmDetailsPage, {
 import ErrorPage from "./ui/ErrorPage";
 import SearchPage, { loader as searchTermLoader } from "./pages/SearchPage";
 import SerialDetailsPage, { loader as tvPageLoader } from "./pages/SerialDetailsPage";
+import CreditsPage, { loader as creditsLoader } from "./pages/CreditsPage";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,11 @@ const router = createBrowserRouter([
         element: <SearchPage />,
         loader: searchTermLoader,
       },
+      {
+        path: "credits",
+        element: <CreditsPage />,
+        loader: creditsLoader
+      }
     ],
   },
 ]);

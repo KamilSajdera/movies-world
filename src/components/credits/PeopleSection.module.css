@@ -1,0 +1,84 @@
+.peopleContainer 
+{
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+    animation-name: fadeIn;
+    animation-duration: 200ms;
+}
+
+.peopleContainer h2 
+{
+    padding-bottom: 10px;
+    flex: 0 0 100%;
+}
+
+.person-item 
+{
+    width: 80%;
+    margin: 20px auto;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #393939;
+    cursor: pointer;
+}
+
+.person-item img {
+    width: 120px;
+    border-radius: 3px;
+}
+
+.person-name 
+{
+    padding-top: 5px;
+    font-weight: 700;
+}
+
+.person-known_for 
+{
+    padding-top: 10px;
+    font-style: italic;
+    font-size: 1.2em;
+}
+
+@media screen and (min-width: 767px) {
+    .peopleContainer 
+    {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 85%;
+    }
+
+    .person-item 
+    { width: 31%; }
+}
+
+@media screen and (min-width: 1023px) {
+
+    .peopleContainer 
+    { width: 75%; }
+
+    .person-item  img 
+    { width: 140px; }
+
+}
+
+@media screen and (min-width: 1300px) {
+
+    .person-item 
+    { width: 23%; }
+
+    .person-item  img 
+    { width: 150px; }
+
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}

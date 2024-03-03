@@ -1,6 +1,7 @@
 import classes from "./ReviewsSection.module.css";
 
 const ReviewsSection = ({ reviews }) => {
+
   let content =
     reviews.length > 0 ? (
       reviews.map((item, index) => {

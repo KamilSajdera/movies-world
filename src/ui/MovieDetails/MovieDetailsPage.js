@@ -33,7 +33,7 @@ const MovieDetailsPage = ({ movieData }) => {
       </div>
       <MovieExtraInfo movieData={movieData} />
       <div className={classes.actorsWrapper}>
-        <DisplayMovieActors cast={movieData.topActors} />
+        <DisplayMovieActors cast={movieData.topActors} id={movieData.id} title={movieData.title}/>
         <DisplayMovieKeywords
           keywords={
             movieData.keywords.keywords?.slice(0, 17) ||

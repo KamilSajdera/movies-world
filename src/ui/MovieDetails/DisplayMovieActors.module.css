@@ -2,6 +2,7 @@
 {
     width: 100%;
     text-align: center;
+    position: relative;
 }
 
 .castScroll 
@@ -36,6 +37,22 @@
 {
     padding-top: 10px;
     padding-bottom: 3px;
+}
+
+.more_credits 
+{
+    position: absolute;
+    bottom: -50px;
+    left: 0px;
+    outline: none;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background: #373737;
+    color: #fff;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 767px) {
