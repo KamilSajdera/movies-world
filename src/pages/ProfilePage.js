@@ -14,8 +14,8 @@ const ProfilePage = () => {
   const topPersonFilms = allPersonFilms
     .filter((item) => {
       if (
-        item.character.includes("Self") ||
-        item.character.includes("self") ||
+        item.character?.includes("Self") ||
+        item.character?.includes("self") ||
         item.character === ""
       )
         return false;
