@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from "react-player";
 import classes from "./MovieTrailer.module.css";
 
@@ -13,6 +13,10 @@ const MovieTrailer = ({ videoId }) => {
   const [displayMovieProgress, setDisplayMovieProgress] = useState(null);
   const playerRef = useRef(null);
 
+  useEffect(() => {
+    setIsPlaying(false)
+  }, [videoId])
+
   const switchPlayHandle = () => {
     setIsPlaying(!isPlaying);
   };
@@ -21,10 +25,8 @@ const MovieTrailer = ({ videoId }) => {
     setMovieProgress(state.played);
     setLoadedPart(state.loaded);
 
-    const minutes = Math.floor(state.playedSeconds / 60);
-    const seconds = Math.floor(state.playedSeconds  % 60);
-    const formattedTime = `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
-    setDisplayMovieProgress(formattedTime)
+    const formattedTime = formatTime(state.playedSeconds);
+    setDisplayMovieProgress(formattedTime);
   };
 
   const changePlaybackMomentHandle = (e) => {
@@ -34,9 +36,8 @@ const MovieTrailer = ({ videoId }) => {
   };
 
   const setDurationHandle = (e) => {
-    const minutes = Math.floor(e / 60);
-    const seconds = e % 60;
-    setDisplayMovieDration(`${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`);
+    const formattedTime = formatTime(e);
+    setDisplayMovieDration(formattedTime);
   };
 
   const toggleFullscreen = () => {
@@ -55,6 +56,14 @@ const MovieTrailer = ({ videoId }) => {
         playerElement.msRequestFullscreen();
       }
     }
+  };
+
+  const formatTime = (value) => {
+    const minutes = Math.floor(value / 60);
+    const seconds = Math.floor(value % 60);
+    const formattedTime = `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+
+    return formattedTime;
   };
 
   return (
@@ -92,7 +101,7 @@ const MovieTrailer = ({ videoId }) => {
             )}
           </button>
           <button onClick={toggleFullscreen}>
-          <FontAwesomeIcon icon={faExpand} />
+            <FontAwesomeIcon icon={faExpand} />
           </button>
         </div>
         <div className={classes.timeBar}>
@@ -113,7 +122,9 @@ const MovieTrailer = ({ videoId }) => {
             onChange={changePlaybackMomentHandle}
           />
         </div>
-        <div className={classes.movieTime}>{displayMovieProgress}/{displayMovieDuration}</div>
+        <div className={classes.movieTime}>
+          {displayMovieProgress}/{displayMovieDuration}
+        </div>
       </div>
     </div>
   );
