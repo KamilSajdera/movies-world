@@ -41,6 +41,10 @@ const MovieExtraInfo = ({ movieData }) => {
     setActualPoster(postersTab[currentIndex]);
   }, [currentIndex, postersTab]);
 
+  useEffect(() => {
+    setActualPoster(postersTab[0]);
+  }, [postersTab])
+
   return (
     <div className={classes.extraInfoSection}>
       <div className={classes.movieImages}>
