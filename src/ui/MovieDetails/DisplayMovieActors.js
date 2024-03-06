@@ -42,7 +42,7 @@ const DisplayMovieActors = ({ cast, id, title }) => {
                 <img src={actorProfileImg} alt="Profile img" />
                 <h3>{item.name}</h3>
                 <p>
-                  <i>{item.character}</i>
+                  <i>{item.character || item.roles.map(item => item.character)}</i>
                 </p>
               </div>
             );
