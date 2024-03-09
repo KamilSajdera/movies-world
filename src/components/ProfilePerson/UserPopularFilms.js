@@ -8,7 +8,7 @@ import noMovieImg from "../../assets/people/noImage.png";
 const UserPopularFilms = ({ films }) => {
   const containerRef = useRef();
   const navigate = useNavigate();
-  
+
   const uniqueFilms = useMemo(() => {
     const array = [];
 
@@ -33,66 +33,86 @@ const UserPopularFilms = ({ films }) => {
 
   useEffect(() => {
     const filmsContainer = containerRef.current;
-    const filmImage = containerRef.current.querySelectorAll(
-      `.${classes["film-item"]}`
-    );
+    const filmImage = containerRef.current.querySelectorAll(`.${classes["film-item"]}`);
     const filmCaption = containerRef.current.querySelectorAll("p");
     let isMouseDown = false;
     let startX;
     let scrollLeft;
 
-    // start animate for move films by cursor
-    filmsContainer.addEventListener("mousedown", (e) => {
+    /// slide films by hold and move mouse
+    const handleMouseDown = (e) => {
       isMouseDown = true;
       startX = e.pageX - filmsContainer.offsetLeft;
       scrollLeft = filmsContainer.scrollLeft;
-    });
+    };
 
-    filmsContainer.addEventListener("mouseleave", () => {
+    const handleMouseLeave = () => {
       isMouseDown = false;
-    });
+    };
 
-    filmsContainer.addEventListener("mouseup", () => {
+    const handleMouseUp = () => {
       isMouseDown = false;
-    });
+    };
 
-    filmsContainer.addEventListener("mousemove", (e) => {
+    const handleMouseMove = (e) => {
       if (!isMouseDown) return;
       e.preventDefault();
       const x = e.pageX - filmsContainer.offsetLeft;
       const walk = (x - startX) * 2;
       filmsContainer.scrollLeft = scrollLeft - walk;
-    });
+    };
 
-    // changing and animate for changing caption under film image
+    /// changing captions under film
+    const handleMouseOver = (index) => {
+      filmCaption[index].classList.remove(classes.slideOut);
+      filmCaption[index].classList.add(classes.slideOver);
+
+      filmCaption[index].innerHTML = `as ${uniqueFilms[index].character
+        .map((item) => `<b>${item}</b>`)
+        .join(", ")}`;
+    };
+
+    const handleMouseOut = (index) => {
+      filmCaption[index].classList.remove(classes.slideOver);
+      filmCaption[index].classList.add(classes.slideOut);
+
+      filmCaption[index].innerText = uniqueFilms[index].title;
+    };
+
+    /// navigate to movie/tv series profile
+    const handleClick = (index) => {
+      const isMovie = films[index].media_type === "movie";
+      const urlName = !isMovie
+        ? films[index].name.toLowerCase().replace(/\s+/g, "-").trim()
+        : films[index].title.toLowerCase().replace(/\s+/g, "-").trim();
+
+      if (isMovie) navigate(`/movie?id=${films[index].id}-${urlName}`);
+      else navigate(`/tv?id=${films[index].id}-${urlName}`);
+    };
+
+    filmsContainer.addEventListener("mousedown", handleMouseDown);
+    filmsContainer.addEventListener("mouseleave", handleMouseLeave);
+    filmsContainer.addEventListener("mouseup", handleMouseUp);
+    filmsContainer.addEventListener("mousemove", handleMouseMove);
+
     filmImage.forEach((item, index) => {
-      item.addEventListener("mouseover", (e) => {
-        filmCaption[index].classList.remove(classes.slideOut);
-        filmCaption[index].classList.add(classes.slideOver);
-
-        filmCaption[index].innerHTML = `as ${uniqueFilms[index].character.map(item => `<b>${item}</b>`).join(', ')}`;
-
-      });
-
-      item.addEventListener("mouseout", (e) => {
-        filmCaption[index].classList.remove(classes.slideOver);
-        filmCaption[index].classList.add(classes.slideOut);
-
-        filmCaption[index].innerText = uniqueFilms[index].title;
-      });
+      item.addEventListener("mouseover", () => handleMouseOver(index));
+      item.addEventListener("mouseout", () => handleMouseOut(index));
+      item.addEventListener("click", () => handleClick(index));
     });
 
-    filmImage.forEach((item, index) => {
-      item.addEventListener("click", () => {
-        const isMovie = films[index].media_type === "movie";
-        const urlName = !isMovie
-          ? films[index].name.toLowerCase().replace(/\s+/g, "-").trim()
-          : films[index].title.toLowerCase().replace(/\s+/g, "-").trim();
+    return () => {
+      filmsContainer.removeEventListener("mousedown", handleMouseDown);
+      filmsContainer.removeEventListener("mouseleave", handleMouseLeave);
+      filmsContainer.removeEventListener("mouseup", handleMouseUp);
+      filmsContainer.removeEventListener("mousemove", handleMouseMove);
 
-        if (isMovie) navigate(`/movie?id=${films[index].id}-${urlName}`);
-        else navigate(`/tv?id=${films[index].id}-${urlName}`);
+      filmImage.forEach((item, index) => {
+        item.removeEventListener("mouseover", () => handleMouseOver(index));
+        item.removeEventListener("mouseout", () => handleMouseOut(index));
+        item.removeEventListener("click", () => handleClick(index));
       });
-    });
+    };
   }, [films, navigate, uniqueFilms]);
 
   return (
