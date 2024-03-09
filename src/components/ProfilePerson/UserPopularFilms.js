@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useMemo } from "react";
 
 import classes from "./UserPopularFilms.module.css";
 
@@ -8,6 +8,28 @@ import noMovieImg from "../../assets/people/noImage.png";
 const UserPopularFilms = ({ films }) => {
   const containerRef = useRef();
   const navigate = useNavigate();
+  
+  const uniqueFilms = useMemo(() => {
+    const array = [];
+
+    films.forEach((film) => {
+      const existingIndex = array.findIndex((item) => item.id === film.id);
+      if (existingIndex !== -1) {
+        array[existingIndex].character.push(film.job || film.character);
+      } else {
+        array.push({
+          id: film.id,
+          title: film.title || film.name,
+          image: film.poster_path
+            ? `https://image.tmdb.org/t/p/w500${film.poster_path}`
+            : noMovieImg,
+          character: [film.character || film.job],
+        });
+      }
+    });
+
+    return array;
+  }, [films]);
 
   useEffect(() => {
     const filmsContainer = containerRef.current;
@@ -48,22 +70,20 @@ const UserPopularFilms = ({ films }) => {
         filmCaption[index].classList.remove(classes.slideOut);
         filmCaption[index].classList.add(classes.slideOver);
 
-        filmCaption[
-          index
-        ].innerHTML = `as <i><b>${films[index].character}</b></i>`;
+        filmCaption[index].innerHTML = `as ${uniqueFilms[index].character.map(item => `<b>${item}</b>`).join(', ')}`;
+
       });
 
       item.addEventListener("mouseout", (e) => {
         filmCaption[index].classList.remove(classes.slideOver);
         filmCaption[index].classList.add(classes.slideOut);
 
-        filmCaption[index].innerText = films[index].title || films[index].name;
+        filmCaption[index].innerText = uniqueFilms[index].title;
       });
     });
 
     filmImage.forEach((item, index) => {
       item.addEventListener("click", () => {
-        
         const isMovie = films[index].media_type === "movie";
         const urlName = !isMovie
           ? films[index].name.toLowerCase().replace(/\s+/g, "-").trim()
@@ -73,25 +93,25 @@ const UserPopularFilms = ({ films }) => {
         else navigate(`/tv?id=${films[index].id}-${urlName}`);
       });
     });
-  }, [films, navigate]);
+  }, [films, navigate, uniqueFilms]);
 
   return (
     <div className={classes.filmsWrapper}>
       <h3>Popular productions</h3>
       <div className={classes.filmsContainer} ref={containerRef}>
-        {films.map((film) => {
-          const img =
-            film.poster_path === null
-              ? noMovieImg
-              : `https://image.tmdb.org/t/p/w500${film.poster_path}`;
+        {uniqueFilms.map((film) => {
           return (
             <div className={classes["film-item"]} key={film.id}>
-              <img src={img} alt="Film img" />
-              <p>{film.title || film.name}</p>
+              <img src={film.image} alt="Film img" />
+              <p>{film.title}</p>
             </div>
           );
         })}
-        {films.length === 0 && <p className={classes.noProductions}>Not found productions for this person.</p>}
+        {films.length === 0 && (
+          <p className={classes.noProductions}>
+            Not found productions for this person.
+          </p>
+        )}
       </div>
     </div>
   );
