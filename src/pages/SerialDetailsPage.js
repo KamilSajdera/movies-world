@@ -36,7 +36,7 @@ const SerialDetailsPage = () => {
       return [];
 
     return crewWithoutRepetitions
-      .filter((item) => item.known_for_department === job)
+      .filter((item) => item.department === job)
       .sort((a, b) => b.popularity - a.popularity);
   };
 
