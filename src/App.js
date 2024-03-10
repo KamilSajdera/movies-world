@@ -6,7 +6,7 @@ import NowPlayingPage, {
   loader as NowPlayingLoader,
 } from "./pages/NowPlayingPage";
 import PopularPage, { loader as PopularPageLoader } from "./pages/PopularPage";
-import NewlyAddedPage from "./pages/NewlyAddedPage";
+import UpcomingPage, { loader as upcomingLoader } from "./pages/UpcomingPage";
 import DiscoverPage from "./pages/DiscoverPage";
 import TopRatedPage, { loader as topRatedLoader } from "./pages/TopRatedPage";
 import { PeoplePage, loader as peoplePageLoader } from "./pages/PeoplePage";
@@ -16,7 +16,9 @@ import FilmDetailsPage, {
 } from "./pages/FilmDetailsPage";
 import ErrorPage from "./ui/ErrorPage";
 import SearchPage, { loader as searchTermLoader } from "./pages/SearchPage";
-import SerialDetailsPage, { loader as tvPageLoader } from "./pages/SerialDetailsPage";
+import SerialDetailsPage, {
+  loader as tvPageLoader,
+} from "./pages/SerialDetailsPage";
 import CreditsPage, { loader as creditsLoader } from "./pages/CreditsPage";
 
 const router = createBrowserRouter([
@@ -32,7 +34,7 @@ const router = createBrowserRouter([
         loader: NowPlayingLoader,
       },
       { path: "popular", element: <PopularPage />, loader: PopularPageLoader },
-      { path: "newlyadded", element: <NewlyAddedPage /> },
+      { path: "upcoming", element: <UpcomingPage />, loader: upcomingLoader },
       { path: "discover", element: <DiscoverPage /> },
       { path: "toprated", element: <TopRatedPage />, loader: topRatedLoader },
       {
@@ -64,8 +66,8 @@ const router = createBrowserRouter([
       {
         path: "credits",
         element: <CreditsPage />,
-        loader: creditsLoader
-      }
+        loader: creditsLoader,
+      },
     ],
   },
 ]);

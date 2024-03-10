@@ -36,9 +36,9 @@ const MainMenu = ({ toggleMenu }) => {
     },
     {
       id: 4,
-      optionName: "newly added",
+      optionName: "upcoming",
       optionImage: newlyaddedImg,
-      pathName: "newlyadded",
+      pathName: "upcoming",
       style: { height: "23px" },
     },
     {
