@@ -16,7 +16,6 @@ const MovieExtraInfo = ({ movieData }) => {
     },
     [movieData.posters, movieData.poster]
 );
-  console.log(postersTab)
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [actualPoster, setActualPoster] = useState(postersTab[currentIndex]);
