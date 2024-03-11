@@ -7,12 +7,16 @@ import nextArrow from "../../assets/next.png";
 const MovieExtraInfo = ({ movieData }) => {
   const posterRef = useRef();
   const postersTab = useMemo(
-    () => [
-      movieData.poster,
-      ...movieData.posters.map((item) => item.file_path),
-    ],
+    () => {
+      const uniquePostersSet = new Set([
+        movieData.poster,
+        ...movieData.posters.map((item) => item.file_path),
+      ]);
+      return [...uniquePostersSet];
+    },
     [movieData.posters, movieData.poster]
-  );
+);
+  console.log(postersTab)
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [actualPoster, setActualPoster] = useState(postersTab[currentIndex]);
