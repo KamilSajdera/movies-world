@@ -141,7 +141,7 @@
     }
 
     .result-person img 
-    { width: 35%; }
+    { width: 25%; }
 
     .person_data 
     { width: 65%; }
@@ -164,9 +164,7 @@
     { width: calc(100% - 140px); }
 
     .result-person 
-    {
-        width: 55%;
-    }
+    { width: 50%; }
 }
 
 @media screen and (min-width: 1350px) {
