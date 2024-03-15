@@ -26,20 +26,17 @@
     width: 100%;
     text-align: center;
     margin-top: 30px;
+    position: relative;
+    cursor: pointer;
 }
 
 .movie-item img 
 {
     width: 70%;
     border-radius: 5px;
-    cursor: pointer;
     transition: all .3s cubic-bezier(0, 0.26, 0, 1.15);
-}
-
-.movie-item img:hover 
-{
-    box-shadow: 0px 0px 4px 2px #464646;
-    transform: scale(1.02);
+    aspect-ratio: 1/1.5;
+    object-fit: cover;
 }
 
 .movie-item p 
@@ -48,6 +45,58 @@
     font-size: 1.1em;
     font-weight: 600;
 }
+
+.overlay 
+{
+    position: absolute;
+    width: 81%;
+    aspect-ratio: 1 / 1.51;
+    background: #0000007d;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 700;
+    transition: all .3s ease;
+    opacity: 0;
+    z-index: 1;
+    overflow: hidden;
+    display: none;
+}
+
+.movie-date 
+{
+    position: absolute;
+    top: 2px;
+    left: -20px;
+    background: #1f72b7;
+    padding: 3px 5px;
+    transition: all .3s ease;
+}
+
+.movie-votes 
+{
+    position: absolute;
+    bottom: 4px;
+    right: -20px;
+    background: #2e2e2e;
+    padding: 5px;
+    transition: all .3s ease;
+}
+
+.movie-votes svg 
+{ padding-inline: 5px; }
+
+.movie-votes svg:first-child 
+{ color: #ebaa00; }
+
+.movie-item:hover .overlay 
+{ opacity: 1; }
+
+.movie-item:hover .movie-votes 
+{ right: -2px; }
+
+.movie-item:hover .movie-date 
+{ left: 2px; }
 
 @media screen and (min-width: 767px) {
     .movie-item 
@@ -64,7 +113,14 @@
 
     .movie-item img 
     { width: 80%; }
+
+    .overlay 
+    { display: block; }
+
+    .movie-item:hover img
+    { filter: blur(2px); }
 }
+
 
 @keyframes floatingCaption {
     0% 
