@@ -9,7 +9,7 @@ import classes from "./PagesWrapper.module.css";
 import MoviesList from "./MoviesList";
 import SliderControls from "./SliderControls";
 
-const PagesWrapper = ({ movies, title }) => {
+const PagesWrapper = ({ movies, title, totalPages }) => {
   const [currentlyMovieNumber, setCurrentlyMovieNumber] = useState(0);
   const pageWrapperRef = useRef();
   const navigate = useNavigate();
@@ -79,6 +79,7 @@ const PagesWrapper = ({ movies, title }) => {
       <MoviesList
         title={title}
         movies={movies}
+        totalPages={totalPages}
         onChangeMovie={(value) => setCurrentlyMovieNumber(value)}
       />
     </>

@@ -4,7 +4,7 @@ import PagesWrapper from "../ui/PagesWrapper/PagesWrapper";
 const TopRatedPage = () => {
   const data = useLoaderData();
 
-  return <PagesWrapper movies={data.results} title="Top rated movies" />;
+  return <PagesWrapper movies={data.results} totalPages={data.total_pages} title="Top rated movies" />;
 };
 
 export default TopRatedPage;

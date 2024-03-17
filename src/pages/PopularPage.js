@@ -5,7 +5,7 @@ import PagesWrapper from "../ui/PagesWrapper/PagesWrapper";
 const PopularPage = () => {
   const data = useLoaderData();
 
-  return <PagesWrapper movies={data.results} title="Popular movies" />;
+  return <PagesWrapper movies={data.results} totalPages={data.total_pages} title="Popular movies" />;
 };
 
 export const loader = async () => {

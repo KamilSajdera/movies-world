@@ -4,7 +4,7 @@ import PagesWrapper from "../ui/PagesWrapper/PagesWrapper";
 
 const UpcomingPage = () => {
   const data = useLoaderData();
-  return <PagesWrapper movies={data.results} title="Upcoming movies" />;
+  return <PagesWrapper movies={data.results} totalPages={data.total_pages} title="Upcoming movies" />;
 };
 
 export default UpcomingPage;

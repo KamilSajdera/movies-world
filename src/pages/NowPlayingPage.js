@@ -5,7 +5,7 @@ const NowPlayingPage = () => {
   const data = useLoaderData();
 
   return (
-    <PagesWrapper movies={data.results} title="Currently playing in cinemas" />
+    <PagesWrapper movies={data.results} totalPages={data.total_pages} title="Currently playing in cinemas" />
   );
 };
 

@@ -1,19 +1,27 @@
+import { useNavigate } from "react-router-dom";
 import classes from "./MoviesList.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser } from "@fortawesome/free-solid-svg-icons";
+import PaginationSelection from "../PaginationSelection";
 
 const MoviesList = (props) => {
-  const { title, movies } = props;
+  const { title, movies, totalPages } = props;
+  const navigate = useNavigate();
 
   const handleItemClick = (value) => {
     props.onChangeMovie(value);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  function changePageHandler(nr) {
+    navigate("?page=" + nr)
+  }
+
   return (
     <section className={classes.moviesList}>
       <h2>{title}</h2>
+      <PaginationSelection onChangePage={changePageHandler} totalPages={totalPages} />
       {movies.map((movie, index) => (
         <div
           className={classes["movie-item"]}
