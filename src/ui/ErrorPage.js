@@ -24,7 +24,7 @@ const ErrorPage = () => {
     <div className={classes.errorContainer}>
       <img src={logo} alt="error-logo" />
       <h1>Oops!</h1>
-      <h3>{error.status} - {message}</h3>
+      <h3>{message}</h3>
       <p>{desc}</p>
       <button className={classes.goToHomeBtn} onClick={() => navigate('./')}>Go to Home</button>
     </div>

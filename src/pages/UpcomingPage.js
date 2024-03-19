@@ -38,10 +38,11 @@ export async function loader({params, request}) {
   );
 
   if (!response.ok) {
+    const responseError = await response.json();
     throw json(
       {
-        message: "Could not fetch upcoming page",
-        desc: "Something went wrong while loading the upcoming page. Check the correctness of the link.",
+        message: "Something went wrong while loading the upcoming page.",
+        desc: responseError.status_message
       },
       { status: 500 }
     );

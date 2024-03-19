@@ -27,10 +27,11 @@ export const loader = async ({params, request}) => {
   );
 
   if (!response.ok) {
+    const responseError = await response.json();
     throw json(
       {
-        message: "Could not fetch popular movies page.",
-        desc: "Something went wrong while loading the popular movies page. Check the correctness of the link.",
+        message: "Something went wrong while loading the popular page.",
+        desc: responseError.status_message
       },
       { status: 500 }
     );
