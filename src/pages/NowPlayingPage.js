@@ -9,7 +9,10 @@ const NowPlayingPage = () => {
   );
 };
 
-export const loader = async () => {
+export const loader = async ({params, request}) => {
+  const searchParams = new URL(request.url).searchParams;
+  const page = searchParams.get('page') || 1
+
   const options = {
     method: "GET",
     headers: {
@@ -20,7 +23,7 @@ export const loader = async () => {
   };
 
   const response = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing",
+    `https://api.themoviedb.org/3/movie/now_playing?page=${page}`,
     options
   );
 

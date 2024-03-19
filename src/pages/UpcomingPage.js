@@ -9,7 +9,10 @@ const UpcomingPage = () => {
 
 export default UpcomingPage;
 
-export async function loader() {
+export async function loader({params, request}) {
+  const searchParams = new URL(request.url).searchParams;
+  const page = searchParams.get('page') || 1;
+
   const options = {
     method: "GET",
     headers: {
@@ -30,7 +33,7 @@ export async function loader() {
   const maxFormattedDate = `${maxDate.getFullYear()}-${maxDate.getMonth()+1 < 10 ? `0${maxDate.getMonth()+1}` : maxDate.getMonth()+1}-${maxDate.getDate() < 10 ? `0${maxDate.getDate()}` : maxDate.getDate()}`
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_date.gte=${minFormattedDate}&primary_release_date.lte=${maxFormattedDate}`,
+    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&primary_release_date.gte=${minFormattedDate}&primary_release_date.lte=${maxFormattedDate}`,
     options
   );
 

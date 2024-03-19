@@ -8,7 +8,10 @@ const PopularPage = () => {
   return <PagesWrapper movies={data.results} totalPages={data.total_pages} title="Popular movies" />;
 };
 
-export const loader = async () => {
+export const loader = async ({params, request}) => {
+  const searchParams = new URL(request.url).searchParams;
+  const page = searchParams.get('page') || 1;
+
   const options = {
     method: "GET",
     headers: {
@@ -19,7 +22,7 @@ export const loader = async () => {
   };
 
   const response = await fetch(
-    "https://api.themoviedb.org/3/movie/popular",
+    `https://api.themoviedb.org/3/movie/popular?page=${page}`,
     options
   );
 

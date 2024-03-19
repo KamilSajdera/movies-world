@@ -9,7 +9,10 @@ const TopRatedPage = () => {
 
 export default TopRatedPage;
 
-export async function loader() {
+export async function loader({params, request}) {
+  const searchParams = new URL(request.url).searchParams;
+  const page = searchParams.get('page') || 1;
+
   const options = {
     method: "GET",
     headers: {
@@ -20,7 +23,7 @@ export async function loader() {
   };
 
   const response = await fetch(
-    "https://api.themoviedb.org/3/movie/top_rated",
+    `https://api.themoviedb.org/3/movie/top_rated?page=${page}`,
     options
   );
 
