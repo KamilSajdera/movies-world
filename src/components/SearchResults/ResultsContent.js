@@ -6,7 +6,7 @@ import CategoryMenu from "./CategoryMenu";
 import MoviesSection from "./MoviesSection";
 import SeriesSection from "./SeriesSection";
 import PeopleSection from "./PeopleSection";
-import PaginationBox from "./PaginationBox";
+import PaginationSelection from "../../ui/PaginationSelection";
 
 const ResultsContent = ({ results, title }) => {
   const location = useLocation();
@@ -60,17 +60,15 @@ const ResultsContent = ({ results, title }) => {
         categoryNr={categoryNr}
         onChangeCategory={changeCategoryHandle}
       />
-      <PaginationBox
+      <PaginationSelection
         totalPages={totalPages}
-        pageNumber={pageNumber}
         onChangePage={changePageHandler}
       />
       {categoryNr === 1 && <MoviesSection movies={results.movies.results} />}
       {categoryNr === 2 && <SeriesSection series={results.series.results} />}
       {categoryNr === 3 && <PeopleSection people={results.people.results} />}
-      <PaginationBox
+      <PaginationSelection
         totalPages={totalPages}
-        pageNumber={pageNumber}
         onChangePage={changePageHandler}
       />
       

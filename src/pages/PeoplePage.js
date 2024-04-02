@@ -1,14 +1,16 @@
-import { useLoaderData, json } from "react-router-dom";
+import { useLoaderData, json, useNavigate } from "react-router-dom";
 
 import PeopleList from "../components/PeoplePage/PeopleList";
-import Pagination from "../components/PeoplePage/Pagination";
+import PaginationSelection from "../ui/PaginationSelection";
 import noImage from "../assets/people/noProfileImage.png";
 
 const PeoplePage = () => {
   const data = useLoaderData();
   const fetchedPeopleList = data.results;
   const trendingPeopleList = [];
-  const currentPage = data.page;
+  const totalPages = 500;
+
+  const navigate = useNavigate();
 
   for (const index in fetchedPeopleList) {
     const person = fetchedPeopleList[index];
@@ -37,28 +39,34 @@ const PeoplePage = () => {
     trendingPeopleList.push(personData);
   }
 
+  function changePageHandler(nr) {
+    navigate("?page=" + nr);
+  }
+
   return (
     <>
-      <Pagination currentPage={currentPage} />
-      <PeopleList
-        trendingPeople={trendingPeopleList}
-        currentPage={currentPage}
+      <PaginationSelection
+        totalPages={totalPages}
+        onChangePage={changePageHandler}
       />
-      <Pagination currentPage={currentPage} />
+      <PeopleList trendingPeople={trendingPeopleList} currentPage={data.page} />
+      <PaginationSelection
+        totalPages={totalPages}
+        onChangePage={changePageHandler}
+      />
     </>
   );
 };
 
 const loader = async ({ request, params }) => {
   const searchParams = new URL(request.url).searchParams;
-  const pageNumber = searchParams.get('page') || 1;
+  const pageNumber = searchParams.get("page") || 1;
 
   const options = {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-      `Bearer ${process.env.REACT_APP_BEARER_KEY}`,
+      Authorization: `Bearer ${process.env.REACT_APP_BEARER_KEY}`,
     },
   };
 
