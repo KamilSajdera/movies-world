@@ -1,0 +1,63 @@
+.searcherForm 
+{
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 1.25em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 3px 0px 1px #70adc436;
+}
+
+.searcher-icon
+{
+    width: 10%;
+    color: #7eceec;
+}
+
+.searcherForm input 
+{
+    width: 70%;
+    margin-inline: 5%;
+    border: none; 
+    outline: none;
+    background: transparent;
+    color: #d2d2d2;
+    font-size: 0.95em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.searcherForm input::placeholder
+{
+    color: #d4d4d4; 
+    font-size: 0.8em;
+}
+
+.searcherForm button
+{
+    width: 35px;
+    height: 35px;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    background: #7eceec;
+    font-weight: 700;
+    color: #262626;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 767px) {
+    .searcherForm 
+    { width: 65%; }
+}
+
+@media screen and (min-width: 1023px) { 
+    .searcherForm 
+    { width: 50%; }
+}
+
+@media screen and (min-width: 1350px) { 
+    .searcherForm 
+    { width: 40%; }
+}
