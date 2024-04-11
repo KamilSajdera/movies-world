@@ -1,5 +1,7 @@
 import classes from "./HomePage.module.css";
 
+import SearchTermForm from "../ui/SearchTermForm";
+
 const HomePage = () => {
   return (
     <section className={classes.greetingSection}>
@@ -21,6 +23,8 @@ const HomePage = () => {
         with cinema. Discover movies thanks to our website with many categories
         and details. Enjoy!
       </p>
+
+      <SearchTermForm />
     </section>
   );
 };
