@@ -5,7 +5,7 @@ import SearchTermForm from "../../ui/SearchTermForm";
 const UserTools = () => {
   return (
     <div className={classes.mainContent}>
-      <SearchTermForm />
+      <SearchTermForm placeholder="Search..."/>
       <div className={classes.trendingSection}></div>
     </div>
   );
