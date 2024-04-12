@@ -2,12 +2,14 @@
 {
     width: 90%;
     margin: 0 auto;
-    padding: 10px;
+    padding-inline: 10px;
     font-size: 1.25em;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 4px 3px 0px 1px #70adc436;
+    border-bottom: 4px solid #335f7a;
+    border-right: 4px solid #335f7a;
 }
 
 .searcher-icon
@@ -19,19 +21,28 @@
 .searcherForm input 
 {
     width: 70%;
-    margin-inline: 5%;
+    margin: 5px 5%;
     border: none; 
     outline: none;
     background: transparent;
     color: #d2d2d2;
     font-size: 0.95em;
     font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    padding: 5px 10px;
+    transition: background 200ms ease;
 }
 
 .searcherForm input::placeholder
 {
     color: #d4d4d4; 
     font-size: 0.8em;
+    font-weight: 400;
+}
+
+.searcherForm input:focus 
+{
+    background-color: #cccccc1c;
 }
 
 .searcherForm button
