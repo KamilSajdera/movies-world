@@ -9,6 +9,8 @@ const PaginationSelection = (props) => {
   const [searchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get("page")) || 1;
 
+  if(totalPages <= 1)  return;
+
   function renderNumbers() {
     let numbersArray = [];
 
