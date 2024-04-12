@@ -1,0 +1,52 @@
+.mainContent 
+{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mainContent form 
+{
+    position: relative!important;
+}
+
+.mainContent form::after 
+{
+    content: "Enter the name of the series, movie or an actor.";
+    display: block;
+    position: absolute;
+    bottom:-60px;
+    left: 0;
+    width: 100%;
+    color: #e3e3e3;
+    font-style: italic;
+}
+
+.trendingSection 
+{
+    width: 100%;
+    margin-top: 50px;
+}
+
+.trending_items 
+{
+    width: 40%;
+    margin-inline: auto;
+}
+
+@media screen and (min-width: 1023px)
+{
+
+    .mainContent 
+    {
+        padding-inline: 10%;
+    }
+
+    .trendingSection 
+    {
+        width: 50%;
+        margin-top: 0;
+    }
+}
