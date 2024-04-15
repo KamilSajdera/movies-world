@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import RootPage from "./pages/RootPage";
-import HomePage from "./pages/HomePage";
+import HomePage, { loader as homeLoader} from "./pages/HomePage";
 import NowPlayingPage, {
   loader as NowPlayingLoader,
 } from "./pages/NowPlayingPage";
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
     element: <RootPage />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <HomePage /> },
+      { index: true, element: <HomePage />, loader: homeLoader },
       {
         path: "nowplaying",
         element: <NowPlayingPage />,

@@ -2,7 +2,7 @@ import classes from "./Home.module.css";
 
 import UserTools from "./UserTools";
 
-const Home = () => {
+const Home = ({trendingArray}) => {
   return (
     <section className={classes.homeContainer}>
       <h1>
@@ -23,7 +23,7 @@ const Home = () => {
         with cinema. Discover movies thanks to our website with many categories
         and details. Enjoy!
       </p>
-      <UserTools />
+      <UserTools trendingArray={trendingArray}/>
     </section>
   );
 };

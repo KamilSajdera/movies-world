@@ -24,29 +24,11 @@
     font-style: italic;
 }
 
-.trendingSection 
-{
-    width: 100%;
-    margin-top: 50px;
-}
-
-.trending_items 
-{
-    width: 40%;
-    margin-inline: auto;
-}
 
 @media screen and (min-width: 1023px)
 {
-
     .mainContent 
     {
         padding-inline: 10%;
-    }
-
-    .trendingSection 
-    {
-        width: 50%;
-        margin-top: 0;
     }
 }
