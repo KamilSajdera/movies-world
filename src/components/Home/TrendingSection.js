@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 
@@ -10,6 +12,14 @@ import classes from "./TrendingSection.module.css";
 import "./custom-swiper.css";
 
 const TrendingSection = ({ items }) => {
+
+  const navigate = useNavigate();
+
+  const navigateHandle = (id, name) => {
+    const urlName = name.toLowerCase().replace(/\s+/g, "-").trim();
+    navigate(`/movie?id=${id}-${urlName}`);
+  }
+
   return (
     <div className={classes.trendingSection}>
       <Swiper
@@ -31,7 +41,7 @@ const TrendingSection = ({ items }) => {
         className={classes.mySwiper}
       >
         {items.map((item) => (
-          <SwiperSlide>
+          <SwiperSlide key={item.id} onClick={() => navigateHandle(item.id, item.title)}>
             <img
               src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
               alt={item.title}
