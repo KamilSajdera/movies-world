@@ -10,6 +10,7 @@
 .mainContent form 
 {
     position: relative!important;
+    margin-top: 80px;
 }
 
 .mainContent form::after 
@@ -30,5 +31,6 @@
     .mainContent 
     {
         padding-inline: 10%;
+        align-items: flex-start;
     }
 }
