@@ -8,7 +8,6 @@ const RootPage = () => {
 
   const mainStyle = {
     width: "100%",
-    minHeight: "100vh",
     color: "#fff",
     paddingTop: "55px",
   };

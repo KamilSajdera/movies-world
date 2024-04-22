@@ -17,7 +17,7 @@ const MoviesList = (props) => {
   function changePageHandler(nr) {
     navigate("?page=" + nr)
   }
-
+  
   return (
     <section className={classes.moviesList}>
       <h2>{title}</h2>
