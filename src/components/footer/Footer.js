@@ -2,9 +2,17 @@ import classes from "./Footer.module.css";
 
 import logo from "../../assets/tmdb.svg";
 
+import { useLocation } from "react-router-dom";
+
 const Footer = () => {
+  const { pathname } = useLocation();
   return (
-    <footer className={classes.footer}>
+    <footer
+      className={classes.footer}
+      style={
+        pathname === "/search" ? { position: "absolute", bottom: "0px" } : {}
+      }
+    >
       <div className={classes.logo}>
         <h4>Data provides by</h4>
         <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer">
@@ -17,7 +25,8 @@ const Footer = () => {
           href="https://github.com/KamilSajdera"
           target="_blank"
           rel="noreferrer"
-        >{" "}
+        >
+          {" "}
           <b>Kamil Sajdera</b>
         </a>
         <p>All rights reserved.</p>
