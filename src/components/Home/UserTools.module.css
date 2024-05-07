@@ -30,7 +30,15 @@
 {
     .mainContent 
     {
-        padding-inline: 10%;
+        padding-inline: 5%;
         align-items: flex-start;
+    }
+}
+
+@media screen and (min-width: 1350px)
+{
+    .mainContent 
+    {
+        padding-inline: 10%;
     }
 }

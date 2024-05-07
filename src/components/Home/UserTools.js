@@ -6,7 +6,7 @@ import TrendingSection from "./TrendingSection";
 const UserTools = ({trendingArray}) => {
   return (
     <div className={classes.mainContent}>
-      <SearchTermForm placeholder="Search..."/>
+      <SearchTermForm placeholder="Search..." style={{width: "45%"}}/>
       <TrendingSection items={trendingArray} />
     </div>
   );
