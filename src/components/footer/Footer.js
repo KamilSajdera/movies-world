@@ -5,12 +5,16 @@ import logo from "../../assets/tmdb.svg";
 import { useLocation } from "react-router-dom";
 
 const Footer = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
+  const isQuery = search.slice(7).length > 0;
+
   return (
     <footer
       className={classes.footer}
       style={
-        pathname === "/search" ? { position: "absolute", bottom: "0px" } : {}
+        pathname === "/search" && !isQuery
+          ? { position: "absolute", bottom: "0px" }
+          : {}
       }
     >
       <div className={classes.logo}>
