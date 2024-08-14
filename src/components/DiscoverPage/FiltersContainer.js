@@ -65,6 +65,7 @@ export default function FiltersContainer() {
             />
           </div>
         </div>
+        <button type="submit" className={classes.submitBtn}>Search</button>
       </form>
     </section>
   );
