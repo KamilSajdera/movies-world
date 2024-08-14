@@ -1,5 +1,11 @@
+import FiltersContainer from "../components/DiscoverPage/FiltersContainer";
+
 const DiscoverPage = () => {
-    return <h1>Discover Page</h1>;
-  };
-  
-  export default DiscoverPage;
+  return (
+    <>
+      <FiltersContainer />
+    </>
+  );
+};
+
+export default DiscoverPage;

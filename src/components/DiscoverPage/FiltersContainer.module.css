@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.filtersContainer {
+  margin: 30px auto;
+  width: 90%;
+  border: 1px solid #272727;
+  padding: 10px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.label {
+  position: absolute;
+  background: #000;
+  top: -11px;
+  left: 15px;
+  padding: 3px 8px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.filtersContainer form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.filter-category {
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-category h4 {
+  font-size: 0.9em;
+  width: 100%;
+}
+
+.filter_item {
+  padding: 2px 15px;
+  background: #242424;
+  border-radius: 20px;
+  font-size: 0.85em;
+}
+
+.inputBox {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.inputBox label {
+  display: inline-block;
+  width: 35%;
+  text-align: left;
+  color: #c8c8c8;
+  font-size: 0.95em;
+}
+
+.inputBox input {
+  width: 65%;
+  font-size: 0.9em;
+  padding: 5px 10px;
+  background: transparent;
+  outline: none;
+  border: 1px solid #272727;
+  border-radius: 3px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8em;
+}
+
+.inputBox input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.inputBox input[name="language"] {
+  width: 100%;
+  padding: 10px;
+  color: #e2e2e2;
+  font-size: 0.9em;
+}
+
+.inputBox input[name="language"]::placeholder {
+  font-size: 0.85em;
+}
+
+.inputBox input[type="number"] {
+  width: 50%;
+}
+
+@media screen and (min-width: 767px) {
+  .filter-category {
+    width: 47%;
+    align-content: flex-start;
+  }
+
+  .inputBox {
+    margin: 0;
+    text-align: left;
+  }
+
+  .label {
+    font-size: 17px;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (min-width: 1023px) {
+    .filtersContainer {
+        margin-top: -40px;
+    }
+}
