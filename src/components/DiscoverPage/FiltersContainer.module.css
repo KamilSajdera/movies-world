@@ -39,10 +39,30 @@
 }
 
 .filter_item {
-  padding: 2px 15px;
   background: #242424;
   border-radius: 20px;
   font-size: 0.85em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter_item input[type="checkbox"] {
+  display: none;
+}
+
+.filter_item span {
+  padding: 2px 15px;
+  border-radius: 20px;
+  display: block;
+  transition: background 100ms ease;
+}
+
+.filter_item input[type="checkbox"]:checked + span {
+  background: #74bed9;
+  font-weight: 600;
+  color: #000;
 }
 
 .inputBox {

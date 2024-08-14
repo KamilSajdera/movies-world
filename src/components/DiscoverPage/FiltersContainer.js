@@ -8,17 +8,105 @@ export default function FiltersContainer() {
       <form>
         <div className={classes["filter-category"]}>
           <h4>Genres</h4>
-          <div className={classes["filter_item"]}>Action</div>
-          <div className={classes["filter_item"]}>Adventure</div>
-          <div className={classes["filter_item"]}>Comedy</div>
-          <div className={classes["filter_item"]}>Family</div>
-          <div className={classes["filter_item"]}>Fantasy</div>
-          <div className={classes["filter_item"]}>History</div>
-          <div className={classes["filter_item"]}>Music</div>
-          <div className={classes["filter_item"]}>Thriller</div>
-          <div className={classes["filter_item"]}>Horror</div>
-          <div className={classes["filter_item"]}>Drama</div>
-          <div className={classes["filter_item"]}>Mystery</div>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="Action"
+              className={classes["checkbox"]}
+            />
+            <span>Action</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="Adventure"
+              className={classes["checkbox"]}
+            />
+            <span>Adventure</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="Comedy"
+              className={classes["checkbox"]}
+            />
+            <span>Comedy</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="Family"
+              className={classes["checkbox"]}
+            />
+            <span>Family</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="Fantasy"
+              className={classes["checkbox"]}
+            />
+            <span>Fantasy</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="History"
+              className={classes["checkbox"]}
+            />
+            <span>History</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="Music"
+              className={classes["checkbox"]}
+            />
+            <span>Music</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="Thriller"
+              className={classes["checkbox"]}
+            />
+            <span>Thriller</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="Horror"
+              className={classes["checkbox"]}
+            />
+            <span>Horror</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="Drama"
+              className={classes["checkbox"]}
+            />
+            <span>Drama</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="Mystery"
+              className={classes["checkbox"]}
+            />
+            <span>Mystery</span>
+          </label>
         </div>
         <div className={classes["filter-category"]}>
           <h4>Release dates</h4>
