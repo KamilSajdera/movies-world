@@ -56,7 +56,7 @@ export default function SortOptions() {
         ref={selectButtonRef}
       >
         <span className={classes["selected-value"]} ref={selectedValueRef}>
-          <span style={{color: "#717171"}}>None selected</span>
+          <span style={{ color: "#717171" }}>None selected</span>
         </span>
         <span className={classes.arrow}></span>
       </button>
@@ -66,37 +66,37 @@ export default function SortOptions() {
         id="select-dropdown"
         ref={optionListRef}
       >
-        <li role="option">
-          <input type="radio" id="github" name="social-account" />
-          <label htmlFor="github">Title [A-Z]</label>
+        <li role="option" aria-selected>
+          <input type="radio" id="titleAZ" name="sort_option" />
+          <label htmlFor="titleAZ">Title [A-Z]</label>
         </li>
-        <li role="option">
-          <input type="radio" id="github" name="social-account" />
-          <label htmlFor="github">Title [Z-A]</label>
+        <li role="option" aria-selected>
+          <input type="radio" id="titleZA" name="sort_option" />
+          <label htmlFor="titleZA">Title [Z-A]</label>
         </li>
-        <li role="option">
-          <input type="radio" id="github" name="social-account" />
-          <label htmlFor="github">Popularity descending</label>
+        <li role="option" aria-selected>
+          <input type="radio" id="popularity_des" name="sort_option" />
+          <label htmlFor="popularity_des">Popularity descending</label>
         </li>
-        <li role="option">
-          <input type="radio" id="instagram" name="social-account" />
-          <label htmlFor="instagram">Popularity ascending</label>
+        <li role="option" aria-selected>
+          <input type="radio" id="popularity_asc" name="sort_option" />
+          <label htmlFor="popularity_asc">Popularity ascending</label>
         </li>
-        <li role="option">
-          <input type="radio" id="facebook" name="social-account" />
-          <label htmlFor="facebook">Rating descending</label>
+        <li role="option" aria-selected>
+          <input type="radio" id="rating_des" name="sort_option" />
+          <label htmlFor="rating_des">Rating descending</label>
         </li>
-        <li role="option">
-          <input type="radio" id="linkedIn" name="social-account" />
-          <label htmlFor="linkedIn">Rating ascending</label>
+        <li role="option" aria-selected>
+          <input type="radio" id="rating_asc" name="sort_option" />
+          <label htmlFor="rating_asc">Rating ascending</label>
         </li>
-        <li role="option">
-          <input type="radio" id="twitter" name="social-account" />
-          <label htmlFor="twitter">Release date descending</label>
+        <li role="option" aria-selected>
+          <input type="radio" id="rel_date_des" name="sort_option" />
+          <label htmlFor="rel_date_des">Release date descending</label>
         </li>
-        <li role="option">
-          <input type="radio" id="reddit" name="social-account" />
-          <label htmlFor="reddit">Release date ascending</label>
+        <li role="option" aria-selected>
+          <input type="radio" id="rel_date_asc" name="sort_option" />
+          <label htmlFor="rel_date_asc">Release date ascending</label>
         </li>
       </ul>
     </div>
