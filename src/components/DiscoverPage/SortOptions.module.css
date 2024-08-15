@@ -52,6 +52,7 @@
   transform: scaleY(0);
   opacity: 0;
   visibility: hidden;
+  z-index: 2;
 }
 
 .select-dropdown:focus-within {
@@ -102,8 +103,6 @@
   left: 0;
   opacity: 0;
 }
-
-/* interactivity */
 
 .custom-select.active .arrow {
   transform: rotate(180deg);
