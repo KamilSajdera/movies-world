@@ -67,35 +67,75 @@ export default function SortOptions() {
         ref={optionListRef}
       >
         <li role="option" aria-selected>
-          <input type="radio" id="titleAZ" name="sort_option" value="title.asc"/>
+          <input
+            type="radio"
+            id="titleAZ"
+            name="sort_option"
+            value="title.asc"
+          />
           <label htmlFor="titleAZ">Title [A-Z]</label>
         </li>
         <li role="option" aria-selected>
-          <input type="radio" id="titleZA" name="sort_option" value="title.desc"/>
+          <input
+            type="radio"
+            id="titleZA"
+            name="sort_option"
+            value="title.desc"
+          />
           <label htmlFor="titleZA">Title [Z-A]</label>
         </li>
         <li role="option" aria-selected>
-          <input type="radio" id="popularity_des" name="sort_option" value="popularity.desc"/>
+          <input
+            type="radio"
+            id="popularity_des"
+            name="sort_option"
+            value="popularity.desc"
+          />
           <label htmlFor="popularity_des">Popularity descending</label>
         </li>
         <li role="option" aria-selected>
-          <input type="radio" id="popularity_asc" name="sort_option" value="popularity.asc"/>
+          <input
+            type="radio"
+            id="popularity_asc"
+            name="sort_option"
+            value="popularity.asc"
+          />
           <label htmlFor="popularity_asc">Popularity ascending</label>
         </li>
         <li role="option" aria-selected>
-          <input type="radio" id="rating_des" name="sort_option" value="vote_average.desc"/>
+          <input
+            type="radio"
+            id="rating_des"
+            name="sort_option"
+            value="vote_average.desc"
+          />
           <label htmlFor="rating_des">Rating descending</label>
         </li>
         <li role="option" aria-selected>
-          <input type="radio" id="rating_asc" name="sort_option" value="vote_average.asc"/>
+          <input
+            type="radio"
+            id="rating_asc"
+            name="sort_option"
+            value="vote_average.asc"
+          />
           <label htmlFor="rating_asc">Rating ascending</label>
         </li>
         <li role="option" aria-selected>
-          <input type="radio" id="rel_date_des" name="sort_option" value="primary_release_date.desc"/>
+          <input
+            type="radio"
+            id="rel_date_des"
+            name="sort_option"
+            value="primary_release_date.desc"
+          />
           <label htmlFor="rel_date_des">Release date descending</label>
         </li>
         <li role="option" aria-selected>
-          <input type="radio" id="rel_date_asc" name="sort_option" value="primary_release_date.asc"/>
+          <input
+            type="radio"
+            id="rel_date_asc"
+            name="sort_option"
+            value="primary_release_date.asc"
+          />
           <label htmlFor="rel_date_asc">Release date ascending</label>
         </li>
       </ul>

@@ -22,12 +22,12 @@
 .filtersContainer form {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .filter-category {
   width: 100%;
-  margin-top: 15px;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -36,6 +36,7 @@
 .filter-category h4 {
   font-size: 0.9em;
   width: 100%;
+  text-wrap: nowrap;
 }
 
 .filter_item {
@@ -66,7 +67,7 @@
 }
 
 .inputBox {
-  width: 70%;
+  width: 80%;
   margin: auto;
   text-align: center;
 }
@@ -96,14 +97,20 @@
   filter: invert(1);
 }
 
-.inputBox input[name="language"] {
+.inputBox input::-webkit-outer-spin-button,
+.inputBox input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputBox input[type="text"] {
   width: 100%;
   padding: 10px;
   color: #e2e2e2;
   font-size: 0.9em;
 }
 
-.inputBox input[name="language"]::placeholder {
+.inputBox input[type="text"]::placeholder {
   font-size: 0.85em;
 }
 
@@ -128,6 +135,15 @@
   cursor: pointer;
 }
 
+.three_items {
+  width: 50%;
+}
+
+.three_items .inputBox {
+  width: 100%;
+  text-align: left;
+}
+
 @media screen and (min-width: 767px) {
   .filter-category {
     width: 47%;
@@ -139,11 +155,20 @@
     text-align: left;
   }
 
+  .inputBox input[type="number"] {
+    padding: 5px 2px;
+    text-align: center;
+  }
+
   .label {
     font-size: 17px;
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .three_items {
+    width: 23.5%;
   }
 }
 

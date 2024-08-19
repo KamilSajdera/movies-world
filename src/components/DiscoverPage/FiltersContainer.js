@@ -1,18 +1,20 @@
 import classes from "./FiltersContainer.module.css";
 import SortOptions from "./SortOptions";
 
+import { Form } from "react-router-dom";
+
 export default function FiltersContainer() {
   return (
     <section className={classes.filtersContainer}>
       <div className={classes.label}>Filters</div>
-      <form>
+      <Form method="POST" action="/discover">
         <div className={classes["filter-category"]}>
           <h4>Genres</h4>
           <label className={classes["filter_item"]}>
             <input
               type="checkbox"
               name="genres"
-              value="Action"
+              value="28"
               className={classes["checkbox"]}
             />
             <span>Action</span>
@@ -21,7 +23,7 @@ export default function FiltersContainer() {
             <input
               type="checkbox"
               name="genres"
-              value="Adventure"
+              value="12"
               className={classes["checkbox"]}
             />
             <span>Adventure</span>
@@ -30,7 +32,16 @@ export default function FiltersContainer() {
             <input
               type="checkbox"
               name="genres"
-              value="Comedy"
+              value="16"
+              className={classes["checkbox"]}
+            />
+            <span>Animation</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="35"
               className={classes["checkbox"]}
             />
             <span>Comedy</span>
@@ -39,61 +50,25 @@ export default function FiltersContainer() {
             <input
               type="checkbox"
               name="genres"
-              value="Family"
+              value="80"
               className={classes["checkbox"]}
             />
-            <span>Family</span>
+            <span>Crime</span>
           </label>
           <label className={classes["filter_item"]}>
             <input
               type="checkbox"
               name="genres"
-              value="Fantasy"
+              value="99"
               className={classes["checkbox"]}
             />
-            <span>Fantasy</span>
+            <span>Documentary</span>
           </label>
           <label className={classes["filter_item"]}>
             <input
               type="checkbox"
               name="genres"
-              value="History"
-              className={classes["checkbox"]}
-            />
-            <span>History</span>
-          </label>
-          <label className={classes["filter_item"]}>
-            <input
-              type="checkbox"
-              name="genres"
-              value="Music"
-              className={classes["checkbox"]}
-            />
-            <span>Music</span>
-          </label>
-          <label className={classes["filter_item"]}>
-            <input
-              type="checkbox"
-              name="genres"
-              value="Thriller"
-              className={classes["checkbox"]}
-            />
-            <span>Thriller</span>
-          </label>
-          <label className={classes["filter_item"]}>
-            <input
-              type="checkbox"
-              name="genres"
-              value="Horror"
-              className={classes["checkbox"]}
-            />
-            <span>Horror</span>
-          </label>
-          <label className={classes["filter_item"]}>
-            <input
-              type="checkbox"
-              name="genres"
-              value="Drama"
+              value="18"
               className={classes["checkbox"]}
             />
             <span>Drama</span>
@@ -102,10 +77,73 @@ export default function FiltersContainer() {
             <input
               type="checkbox"
               name="genres"
-              value="Mystery"
+              value="10751"
+              className={classes["checkbox"]}
+            />
+            <span>Family</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="14"
+              className={classes["checkbox"]}
+            />
+            <span>Fantasy</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="36"
+              className={classes["checkbox"]}
+            />
+            <span>History</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="27"
+              className={classes["checkbox"]}
+            />
+            <span>Horror</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="10402"
+              className={classes["checkbox"]}
+            />
+            <span>Music</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="9648"
               className={classes["checkbox"]}
             />
             <span>Mystery</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="53"
+              className={classes["checkbox"]}
+            />
+            <span>Thriller</span>
+          </label>
+          <label className={classes["filter_item"]}>
+            <input
+              type="checkbox"
+              name="genres"
+              value="10752"
+              className={classes["checkbox"]}
+            />
+            <span>War</span>
           </label>
         </div>
         <div className={classes["filter-category"]}>
@@ -129,7 +167,9 @@ export default function FiltersContainer() {
           <h4>Sort</h4>
           <SortOptions />
         </div>
-        <div className={classes["filter-category"]}>
+        <div
+          className={`${classes["filter-category"]} ${classes["three_items"]}`}
+        >
           <h4>Min. rated</h4>
           <div className={classes.inputBox}>
             <input
@@ -141,20 +181,34 @@ export default function FiltersContainer() {
             />
           </div>
         </div>
-        <div className={classes["filter-category"]}>
+        <div
+          className={`${classes["filter-category"]} ${classes["three_items"]}`}
+        >
           <h4>Min. user votes</h4>
           <div className={classes.inputBox}>
             <input
               name="min_user_votes"
               placeholder="(0-500)"
               min={0}
-              max={50}
+              max={500}
               type="number"
             />
           </div>
         </div>
-        <button type="submit" className={classes.submitBtn}>Search</button>
-      </form>
+        <div className={classes["filter-category"]}>
+          <h4>With people</h4>
+          <div className={classes.inputBox}>
+            <input
+              name="with_people"
+              placeholder="Names separate by comma"
+              type="text"
+            />
+          </div>
+        </div>
+        <button type="submit" className={classes.submitBtn}>
+          Search
+        </button>
+      </Form>
     </section>
   );
 }
