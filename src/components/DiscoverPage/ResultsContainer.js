@@ -2,6 +2,7 @@ import classes from "./ResultsContainer.module.css";
 
 export default function ResultsContainer() {
   return (
+    <>
     <div className={classes.default}>
       <span>D</span>
       <span>i</span>
@@ -12,5 +13,7 @@ export default function ResultsContainer() {
       <span>e</span>
       <span>r</span>
     </div>
+    <p className={classes.default_p}>Find movies using filters and sort options.</p>
+    </>
   );
 }
