@@ -1,9 +1,11 @@
-import classes from "./FiltersContainer.module.css";
-import SortOptions from "./SortOptions";
-
 import { Form } from "react-router-dom";
 
-export default function FiltersContainer() {
+import classes from "./FiltersContainer.module.css";
+import SortOptions from "./SortOptions";
+import LanguageChoice from "./LanguageChoice";
+
+export default function FiltersContainer({langs}) {
+  
   return (
     <section className={classes.filtersContainer}>
       <div className={classes.label}>Filters</div>
@@ -160,7 +162,7 @@ export default function FiltersContainer() {
         <div className={classes["filter-category"]}>
           <h4>Language</h4>
           <div className={classes.inputBox}>
-            <input name="language" placeholder="None selected" type="text" />
+            <LanguageChoice langs={langs} />
           </div>
         </div>
         <div className={classes["filter-category"]}>
