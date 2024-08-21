@@ -198,11 +198,11 @@ export default function FiltersContainer({langs}) {
           </div>
         </div>
         <div className={classes["filter-category"]}>
-          <h4>With people</h4>
+          <h4>Keywords</h4>
           <div className={classes.inputBox}>
             <input
-              name="with_people"
-              placeholder="Names separate by comma"
+              name="with_keywords"
+              placeholder="Keywords separate by comma"
               type="text"
             />
           </div>
