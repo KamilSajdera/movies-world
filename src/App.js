@@ -1,13 +1,16 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import RootPage from "./pages/RootPage";
-import HomePage, { loader as homeLoader} from "./pages/HomePage";
+import HomePage, { loader as homeLoader } from "./pages/HomePage";
 import NowPlayingPage, {
   loader as NowPlayingLoader,
 } from "./pages/NowPlayingPage";
 import PopularPage, { loader as PopularPageLoader } from "./pages/PopularPage";
 import UpcomingPage, { loader as upcomingLoader } from "./pages/UpcomingPage";
-import DiscoverPage from "./pages/DiscoverPage";
+import DiscoverPage, {
+  action as discoverAction,
+  loader as discoverLoader,
+} from "./pages/DiscoverPage";
 import TopRatedPage, { loader as topRatedLoader } from "./pages/TopRatedPage";
 import { PeoplePage, loader as peoplePageLoader } from "./pages/PeoplePage";
 import ProfilePage, { loader as profilePageLoader } from "./pages/ProfilePage";
@@ -35,7 +38,12 @@ const router = createBrowserRouter([
       },
       { path: "popular", element: <PopularPage />, loader: PopularPageLoader },
       { path: "upcoming", element: <UpcomingPage />, loader: upcomingLoader },
-      { path: "discover", element: <DiscoverPage /> },
+      {
+        path: "discover",
+        element: <DiscoverPage />,
+        action: discoverAction,
+        loader: discoverLoader,
+      },
       { path: "toprated", element: <TopRatedPage />, loader: topRatedLoader },
       {
         path: "people",
