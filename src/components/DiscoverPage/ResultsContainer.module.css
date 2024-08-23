@@ -3,7 +3,7 @@
 .default {
   text-align: center;
   font-size: 4.5em;
-  margin-top: 120px;
+  margin-top: 50px;
   font-family: "Josefin Sans", sans-serif;
   letter-spacing: 1px;
 }
@@ -59,10 +59,34 @@
   padding-inline: 10px;
 }
 
+.noResult {
+  text-align: center;
+  margin: 50px auto -20px auto;
+  font-style: italic;
+  font-weight: 600;
+  color: #a9a9a9;
+  letter-spacing: 1px;
+  text-shadow: 0px 0px 20px #fff;
+}
+
+.results-container {
+  width: 90%;
+  margin: 65px auto 40px auto;
+}
+
+.results-numbers {
+  text-align: center;
+  margin: auto;
+}
+
 @media screen and (min-width: 767px) {
   .default {
     font-size: 5em;
     margin-top: 90px;
+  }
+
+  .noResult {
+    margin-bottom: -55px;
   }
 }
 
