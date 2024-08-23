@@ -1,24 +1,35 @@
+import { useEffect, useState } from "react";
 import { json, useActionData, useLoaderData } from "react-router-dom";
+
 import FiltersContainer from "../components/DiscoverPage/FiltersContainer";
 import ResultsContainer from "../components/DiscoverPage/ResultsContainer";
+import ErrorBlock from "../ui/ErrorBlock";
 
 const DiscoverPage = () => {
   const languagesFetchData = useLoaderData();
   const filteredResults = useActionData();
-  let languagesArray = [];
+  const [isError, setIsError] = useState(false);
 
-  for (const index in languagesFetchData) {
-    const langItem = {
-      id: index,
-      name: languagesFetchData[index].english_name,
-      short: languagesFetchData[index].iso_639_1,
-    };
+  useEffect(() => {
+    if (filteredResults?.errorMessage) {
+      setIsError(true);
+      const timer = setTimeout(() => {
+        setIsError(false);
+      }, 5000);
 
-    languagesArray.push(langItem);
-  }
+      return () => clearTimeout(timer);
+    }
+  }, [filteredResults]);
+
+  const languagesArray = languagesFetchData.map((lang, index) => ({
+    id: index,
+    name: lang.english_name,
+    short: lang.iso_639_1,
+  }));
 
   return (
     <>
+      {isError && <ErrorBlock message={filteredResults?.errorMessage} />}
       <FiltersContainer langs={languagesArray} />
       <ResultsContainer results={filteredResults} />
     </>
@@ -67,6 +78,31 @@ export async function action({ request }) {
     min_user_votes: formData.get("min_user_votes"),
     with_keywords: formData.get("with_keywords").split(/\s+/).join(""),
   };
+
+  if (
+    parseInt(filterData.min_rated) < 0 ||
+    parseInt(filterData.min_rated) > 10
+  ) {
+    return {
+      errorMessage: "Value in min. rated input should be in 0-10 range.",
+    };
+  }
+
+  if (
+    parseInt(filterData.min_user_votes) < 0 ||
+    parseInt(filterData.min_user_votes) > 500
+  ) {
+    return {
+      errorMessage: "Value in min. user votes input should be in 0-500 range.",
+    };
+  }
+
+  if (filterData.release_start > filterData.release_end) {
+    return {
+      errorMessage:
+        "Start release date cannot be grather than end release date.",
+    };
+  }
 
   const options = {
     method: "GET",
