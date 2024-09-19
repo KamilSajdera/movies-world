@@ -79,6 +79,15 @@
   margin: auto;
 }
 
+.results-items {
+  margin: 40px auto 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
 @media screen and (min-width: 767px) {
   .default {
     font-size: 5em;

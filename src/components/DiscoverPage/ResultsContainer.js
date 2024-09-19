@@ -1,3 +1,4 @@
+import ResultItem from "./result-item";
 import classes from "./ResultsContainer.module.css";
 
 export default function ResultsContainer({ results }) {
@@ -31,6 +32,18 @@ export default function ResultsContainer({ results }) {
           <div className={classes["results-numbers"]}>
             Results: <b>{results.total_results}</b> | Pages:{" "}
             <b>{results.total_pages}</b>
+          </div>
+          <div className={classes["results-items"]}>
+            {results.results.map((result) => (
+              <ResultItem
+                key={result.id}
+                id={result.id}
+                logo={result.poster_path}
+                title={result.title}
+                description={result.overview}
+                rating={Math.round(result.vote_average)}
+              />
+            ))}
           </div>
         </div>
       )}
