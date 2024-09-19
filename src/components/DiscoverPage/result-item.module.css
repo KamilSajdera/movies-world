@@ -5,9 +5,13 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #1f1f1f;
   cursor: pointer;
+  border-radius: 10px;
+}
+
+.result_item:nth-child(2n+1)
+{
+  background: #1b1b1b;
 }
 
 .result_item:last-child {
@@ -15,13 +19,14 @@
 }
 
 .result_item img {
-  width: 45%;
+  width: 35%;
 }
 
 .result_data {
   width: 100%;
-  text-align: left;
-  padding-left: 13px;
+  text-align: justify;
+  padding: 5px 10px;
+  font-size: 0.95em;
 }
 
 .rating {
@@ -64,6 +69,7 @@
 @media screen and (min-width: 767px) {
   .result_item {
     width: 45%;
+    background: none!important;
   }
 
   .result_item:last-child {
@@ -73,14 +79,14 @@
 
 @media screen and (min-width: 1023px) {
   .result_item img {
-    width: 35%;
+    width: 28%;
   }
 }
 
 @media screen and (min-width: 1100px) {
   .result_item {
     width: 30%;
-    border-bottom: 1px solid #1f1f1f!important;
+    max-height: 240px;
   }
 
   .result_item img {
