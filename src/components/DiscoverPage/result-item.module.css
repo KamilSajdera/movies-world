@@ -36,15 +36,17 @@
 }
 
 .rating svg {
-  color: rgb(220, 220, 15);
-  font-size: 1.45em;
+  color: #dcdc0f;
+  font-size: 1.75em;
+  filter: drop-shadow(0px 0px 8px #dcdc0f);
 }
 
 .rating p {
   font-weight: 600;
   position: absolute;
-  top: 3px;
-  right: 9px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 0.95em;
   color: black;
 }
