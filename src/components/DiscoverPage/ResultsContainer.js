@@ -1,9 +1,20 @@
+import { useSearchParams } from "react-router-dom";
+import PaginationSelection from "../../ui/PaginationSelection";
 import ResultItem from "./result-item";
 import classes from "./ResultsContainer.module.css";
 
 export default function ResultsContainer({ results }) {
   const isSearched = results !== undefined;
   const isResults = results?.total_results > 0;
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleChangePage = (value) => {
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set("page", value);
+
+    setSearchParams(newSearchParams);
+  };
 
   return (
     <>
@@ -33,6 +44,10 @@ export default function ResultsContainer({ results }) {
             Results: <b>{results.total_results}</b> | Pages:{" "}
             <b>{results.total_pages}</b>
           </div>
+          <PaginationSelection
+            totalPages={results.total_pages}
+            onChangePage={handleChangePage}
+          />
           <div className={classes["results-items"]}>
             {results.results.map((result) => (
               <ResultItem
