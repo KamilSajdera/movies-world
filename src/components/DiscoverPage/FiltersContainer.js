@@ -4,12 +4,11 @@ import classes from "./FiltersContainer.module.css";
 import SortOptions from "./SortOptions";
 import LanguageChoice from "./LanguageChoice";
 
-export default function FiltersContainer({langs}) {
-  
+export default function FiltersContainer({ langs }) {
   return (
     <section className={classes.filtersContainer}>
       <div className={classes.label}>Filters</div>
-      <Form method="POST" action="/discover">
+      <Form method="get" action="/discover">
         <div className={classes["filter-category"]}>
           <h4>Genres</h4>
           <label className={classes["filter_item"]}>

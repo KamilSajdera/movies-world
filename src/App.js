@@ -7,10 +7,7 @@ import NowPlayingPage, {
 } from "./pages/NowPlayingPage";
 import PopularPage, { loader as PopularPageLoader } from "./pages/PopularPage";
 import UpcomingPage, { loader as upcomingLoader } from "./pages/UpcomingPage";
-import DiscoverPage, {
-  action as discoverAction,
-  loader as discoverLoader,
-} from "./pages/DiscoverPage";
+import DiscoverPage, { loader as discoverLoader } from "./pages/DiscoverPage";
 import TopRatedPage, { loader as topRatedLoader } from "./pages/TopRatedPage";
 import { PeoplePage, loader as peoplePageLoader } from "./pages/PeoplePage";
 import ProfilePage, { loader as profilePageLoader } from "./pages/ProfilePage";
@@ -41,7 +38,6 @@ const router = createBrowserRouter([
       {
         path: "discover",
         element: <DiscoverPage />,
-        action: discoverAction,
         loader: discoverLoader,
       },
       { path: "toprated", element: <TopRatedPage />, loader: topRatedLoader },
