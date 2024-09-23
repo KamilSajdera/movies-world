@@ -93,7 +93,10 @@ export const loader = async ({ request }) => {
     };
   }
 
-  if (filterData.release_start > filterData.release_end) {
+  if (
+    filterData.release_end &&
+    filterData.release_start > filterData.release_end
+  ) {
     return {
       errorMessage:
         "Start release date cannot be grather than end release date.",
