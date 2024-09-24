@@ -5,6 +5,8 @@ import classes from "./result-item.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
+import noImg from "../../assets/people/noImage.png";
+
 export default function ResultItem({ title, logo, description, rating, id }) {
   const navigate = useNavigate();
   function handleNavigate() {
@@ -15,7 +17,10 @@ export default function ResultItem({ title, logo, description, rating, id }) {
 
   return (
     <div className={classes["result_item"]} onClick={handleNavigate}>
-      <img src={`https://image.tmdb.org/t/p/w500${logo}`} alt={title} />
+      <img
+        src={logo === null ? noImg : `https://image.tmdb.org/t/p/w500${logo}`}
+        alt={title}
+      />
       <div className={classes["result_data"]}>
         <h4>{title}</h4>
         <div className={classes.rating}>
