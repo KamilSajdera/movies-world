@@ -3,6 +3,7 @@ import { Form } from "react-router-dom";
 import classes from "./FiltersContainer.module.css";
 import SortOptions from "./SortOptions";
 import LanguageChoice from "./LanguageChoice";
+import KeywordsList from "./keywords-list";
 
 export default function FiltersContainer({ langs }) {
   return (
@@ -199,11 +200,7 @@ export default function FiltersContainer({ langs }) {
         <div className={classes["filter-category"]}>
           <h4>Keywords</h4>
           <div className={classes.inputBox}>
-            <input
-              name="with_keywords"
-              placeholder="Keywords separate by comma"
-              type="text"
-            />
+            <KeywordsList />
           </div>
         </div>
         <button type="submit" className={classes.submitBtn}>

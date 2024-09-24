@@ -1,0 +1,89 @@
+.keywordsContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-content: center;
+  border: 1px solid #272727;
+}
+
+.keywordsContainer input {
+    border: none;
+    width: auto!important;
+}
+
+.keywordsContainer svg {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+}
+
+.keywords-list {
+  list-style-type: none;
+  width: 100%;
+  background-color: #1a1a1a;
+  margin-top: 45px;
+  position: absolute;
+  border: 1px solid #272727;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 3;
+  max-height: 250px;
+  overflow: auto;
+}
+
+.keywords-list li {
+  padding: 6px 10px;
+  font-size: 0.9em;
+}
+
+.keywords-list li:hover {
+  background: #4b4b4b;
+  cursor: pointer;
+}
+
+
+.enteredKeywords {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    max-width: 85%;
+    overflow-x: auto;
+}
+
+.enteredKeywords::-webkit-scrollbar {
+    height: 3px;
+}
+
+.entered-keyword {
+    background: #4b4b4b;
+    padding: 2px 10px;
+    margin-inline: 2px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    z-index: 2!important;
+    text-wrap: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.entered-keyword svg {
+    animation: none;
+    position: static;
+    transform: none;
+    padding-left: 5px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+@keyframes spin {
+  from {
+    transform: translateY(-50%) rotate(0);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
