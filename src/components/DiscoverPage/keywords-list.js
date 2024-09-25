@@ -77,6 +77,12 @@ export default function KeywordsList() {
       <div className={classes.enteredKeywords} ref={keywordsContainerRef}>
         {userKeywordsList.map((item) => (
           <div className={classes["entered-keyword"]} key={item.id}>
+            <input
+              name="with_keywords"
+              value={item.id}
+              readOnly
+              className={classes.hideInput}
+            />
             {item.name}{" "}
             <FontAwesomeIcon
               icon={faXmark}
@@ -87,7 +93,7 @@ export default function KeywordsList() {
       </div>
 
       <input
-        name="with_keywords"
+        name="with_keywords_helper"
         placeholder="Search keywords"
         type="text"
         onChange={handleSearchKeywords}

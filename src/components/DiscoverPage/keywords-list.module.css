@@ -79,6 +79,13 @@
   font-weight: 700;
 }
 
+.hideInput {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  display: none;
+}
+
 @keyframes spin {
   from {
     transform: translateY(-50%) rotate(0);
