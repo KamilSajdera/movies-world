@@ -4,10 +4,10 @@ import ResultItem from "./result-item";
 import classes from "./ResultsContainer.module.css";
 
 export default function ResultsContainer({ results }) {
-  const isSearched = results !== undefined;
-  const isResults = results?.total_results > 0;
-
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const isSearched = searchParams.size > 0;
+  const isResults = results?.total_results > 0;
 
   const handleChangePage = (value) => {
     const newSearchParams = new URLSearchParams(searchParams);
@@ -38,7 +38,7 @@ export default function ResultsContainer({ results }) {
           </p>
         </>
       )}
-      {results?.total_results > 0 && (
+      {results?.total_results > 0 && isSearched && (
         <div className={classes["results-container"]}>
           <div className={classes["results-numbers"]}>
             Results: <b>{results.total_results}</b> | Pages:{" "}
