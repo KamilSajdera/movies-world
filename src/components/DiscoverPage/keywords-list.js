@@ -66,12 +66,22 @@ export default function KeywordsList() {
     }, 100);
   };
 
+  function handleRemoveKeyword(id) {
+    let updatedKeywords = userKeywordsList.filter((item) => item.id !== id);
+
+    setUserKeywordsList(updatedKeywords);
+  }
+
   return (
     <div className={classes.keywordsContainer}>
       <div className={classes.enteredKeywords} ref={keywordsContainerRef}>
         {userKeywordsList.map((item) => (
           <div className={classes["entered-keyword"]} key={item.id}>
-            {item.name} <FontAwesomeIcon icon={faXmark} />{" "}
+            {item.name}{" "}
+            <FontAwesomeIcon
+              icon={faXmark}
+              onClick={() => handleRemoveKeyword(item.id)}
+            />{" "}
           </div>
         ))}
       </div>
