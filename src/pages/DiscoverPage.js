@@ -72,7 +72,7 @@ export const loader = async ({ request }) => {
     sort: url?.searchParams?.get("sort_option") || "popularity.desc",
     min_rated: url?.searchParams?.get("min_rated") || 0,
     min_user_votes: url?.searchParams?.get("min_user_votes") || 0,
-    with_keywords: url?.searchParams?.get("with_keywords") || "",
+    with_keywords: url?.searchParams?.getAll("with_keywords") || "",
   };
 
   if (
@@ -124,7 +124,7 @@ export const loader = async ({ request }) => {
     urlFetch += `&vote_count.gte=${filterData.min_user_votes}`;
 
   if (filterData.with_keywords.length > 0)
-    urlFetch += `&with_keywords=${filterData.with_keywords}`;
+    urlFetch += `&with_keywords=${filterData.with_keywords.toString()}`;
 
   const responseFilteredData = await fetch(urlFetch, options);
 
